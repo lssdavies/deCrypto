@@ -41,7 +41,7 @@ Decrypt crypto at *[deCrypto](https://lssdavies.github.io/deCrypto/)*
 
 &nbsp;
 
-## Contriburtors
+## Contributors
 ***
 Larry Davies
 
@@ -80,6 +80,6 @@ Mohammad Jwair
 ***
 &nbsp;
 
-### Resources I used or was inspired by...
+### Inspiring resources...
 ***
 &nbsp;
