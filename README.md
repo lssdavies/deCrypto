@@ -83,3 +83,9 @@ Mohammad Jwair
 ### Resources I used or was inspired by...
 ***
 &nbsp;
+
+
+proxies?
+https://stackoverflow.com/questions/43262121/trying-to-use-fetch-and-pass-in-mode-no-cors  
+
+https://developer.mozilla.org/en-US/docs/Web/API/WebSocket  needed for continous like real ltime feeds of trading  ???
