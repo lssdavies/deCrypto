@@ -3,7 +3,9 @@
     --secondaryColor: #f4c371;
     --tertiaryColor: #923267;
     --fourthColor: #260e42;
-    --additionalColor: #eeeeee;
+    --additionalColor: #a9dbce;
+    --accentColor: #e96aa1;
+    --accentColorOpague:rgba(233,106,161,0.4);
 }
 
 *   {
@@ -16,8 +18,173 @@ body    {
     color: var(--secondaryColor);
     font-family:Helvetica, Arial, sans-serif;
 }
+.logo   {
+    z-index: 1;
+}
+
+/*Header Styling and Menu Navbar Styling*/
 header {
-    background-color: #371d5c;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: var(--primaryColor);
     margin: 0;
     padding: 5px;
+    width: 100%;
+}
+/*Positioning Hamburger Menu*/
+.navbar-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+/*Styling Checkbox to be used to Animate Menu*/
+.navbar-menu .toggler   {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    opacity: 0;/*hides check box*/
+}
+.navbar-menu .hamburgerMenu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 80px;
+    height: 80px;
+    background-color: var(--primaryColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*Creates Center Line in HamburgerMenu*/
+.navbar-menu .hamburgerMenu > div   {
+    position: relative;
+    width: 75%;
+    height: 0.5rem;
+    background-color: var(--secondaryColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+}
+/*Creates Top and Bottom lines, shows as one line above middle line*/
+.navbar-menu .hamburgerMenu div::before,
+.navbar-menu .hamburgerMenu div::after  {
+    content: '';
+    position: absolute;
+    top: -15px;
+    z-index: 1;
+    width: 100%;
+    height: 0.5rem;
+    background-color: var(--secondaryColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*Moves Bottom line below middle line*/
+.navbar-menu .hamburgerMenu div::after  {
+    top: 15px
+}
+/*Animates HamburgerMenu when checkbox is checked*/
+.navbar-menu .toggler:checked + .hamburgerMenu div  {
+    transform: rotate(135deg);
+}
+/*Turn hamburgerMenu to a X*/
+.navbar-menu .toggler:checked + .hamburgerMenu div::before, .navbar-menu .toggler:checked + .hamburgerMenu div::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+/*Animate X on hover*/
+.navbar-menu .toggler:checked:hover + .hamburgerMenu div  {
+    transform: rotate(220deg);
+}
+/* Displays Nav links when hamburgerMenu is clicked*/
+.navbar-menu .toggler:checked ~ .menu {
+    visibility: visible;
+}
+/*Animates overlay zooms out for nav menu*/  
+.navbar-menu .toggler:checked ~ .menu > div {
+    transform: scale(1);
+    transition-duration: 0.75s;
+}
+  
+  .navbar-menu .toggler:checked ~ .menu > div > div {
+    opacity: 1;
+    transition:  opacity 0.4s ease 0.4s;
+}
+  
+.navbar-menu .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+  
+.navbar-menu .menu > div {
+    background: var(--accentColorOpague);
+    border-radius: 50%;
+    width: 200vw;
+    height: 200vw;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}
+  
+.navbar-menu .menu > div > div {
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+  
+  .navbar-menu .menu > div > div > ul > li {
+    list-style: none;
+    color: var(--primaryColor);
+    font-size: 6vw;
+    padding: 1rem;
+}
+  
+.navbar-menu .menu > div > div > ul > li > a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.4s ease;
+}
+.navbar-menu .menu > div > div > ul > li > a:hover {
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 2px 2px 3px var(--fourthColor) ;
+    transition: color 0.4s ease;
+    border-bottom: 2px solid var(--primaryColor);
+    padding: 0.5rem;
+ }
+/*Hero Image Styling*/
+.hero   {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: right;
+    background-image: url("../images/heroImage3.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 240px;
+    border-bottom: 2px solid var(--fourthColor);  
 }
