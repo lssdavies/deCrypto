@@ -199,3 +199,10 @@ header {
         background-position: right;
     }
 }
+/*Additional styling to work with Tailwind CSS*/
+.sectionBorder    {
+    background-color: var(--primaryColor);
+}
+.mainSection   {
+    background-color: var(--secondaryColor);
+}

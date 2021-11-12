@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!--Link to Tailwind CSS-->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Decrypto</title>
 </head>
 <body>
     <!--Header-->
     <header>
       <div class="logo">
-        <img src="./assets/images/decryptoLogo3.png">  
+        <img src="./assets/images/decryptoLogo3.png" alt="Logo">  
       </div>
       <!--Created Multiple Div tag to create hamburger menu-->
       <nav class="navbar-menu">
@@ -34,5 +36,11 @@
     <!--Hero Section-->
     <section class="hero">
     </section>
-    <main class=""></main>
+    <!--Tailwind CSS will be used from this point in conjunction with custom css style.css-->
+    <main class="p-4 sectionBorder">
+      <div class="mainSection min-w-full p-4">
+        <h1 class="text-center text-2xl text-white drop-shadow-sm">About Crypto</h1>
+        <p class="text-justify text-white p-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quisquam, mollitia sequi cum odio nulla tenetur! Ea minus explicabo placeat quis accusantium necessitatibus, illo nesciunt ipsam? Nulla impedit vero iure? Non animi earum repellendus obcaecati neque! Rerum quas ipsum quaerat ut labore, omnis voluptatem ullam illo saepe aperiam architecto aspernatur.</p>
+      </div>
+    </main>
     </body>
