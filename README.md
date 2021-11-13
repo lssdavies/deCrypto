@@ -89,3 +89,6 @@ proxies?
 https://stackoverflow.com/questions/43262121/trying-to-use-fetch-and-pass-in-mode-no-cors  
 
 https://developer.mozilla.org/en-US/docs/Web/API/WebSocket  needed for continous like real ltime feeds of trading  ???
+
+whitespaces
+https://stackoverflow.com/questions/20668872/remove-whitespace-only-array-elements
