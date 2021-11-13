@@ -1,5 +1,6 @@
-//  VARIABLES ***/
+// //  VARIABLES ***/
 var coinLibKey = "c06378ec9fc1b93c"
+var symbols = ""
 var today = ""
 hiLowCoinArr = []
 
@@ -34,6 +35,8 @@ var getCoinData = function () {
 
             hiLowCoinArr.push(data.data[i].symbol)
             console.log(hiLowCoinArr);
+
+
           };
           var symbolsForApi = hiLowCoinArr.join(" ").replace(/\s/g, ',');
           console.log(symbolsForApi)
@@ -42,11 +45,11 @@ var getCoinData = function () {
             hiLowCall(symbolsForApi);
           }, 1000)
 
+
         })
     })
 }
 getCoinData()
-
 function hiLowCall(symbolsForApi) {
   var hiLowUrl = "https://coinlib.io/api/v1/coin?key=c06378ec9fc1b93c&symbol=" + symbolsForApi + "";
 
@@ -69,8 +72,57 @@ function hiLowCall(symbolsForApi) {
         })
     })
 
-}
+  }
 
+
+// // //** TEST ICON GET **
+// //  var currentIconContainer = document.createElement("div");
+// var currentIcon = document.createElement("i");
+// // currentIconContainer.setAttribute("id", "icon")
+// // currentIcon.classList = "weather-icon";
+
+
+// currentIcon.innerHTML= "<img src='https://cryptoicons.org/api/icon/eth/200'>"
+
+
+
+// currentIcon.innerHTML = "<img src='http://openweathermap.org/img/wn/" + iconCode + "@2x.png' width = '40px'>";
+
+// // hiLowCoinArr = []
+
+//     function getIcons () {
+
+    
+//     var iconUrl = "https://cryptoicons.org/api/icon/btc/200";
+//     console.log(iconUrl);
+  
+  
+
+//     fetch(iconUrl)
+//       .then(function (response) {
+//         response.json()
+//           .then(function (data) {
+//             //console.log as check then display in main card
+//             console.log(data);
+//           })
+//         })
+      
+//       }
+      // setTimeout(function () {
+        //  getIcons();
+      // }, 1000)
+
+
+
+
+
+
+
+
+
+
+
+//**** TEST APIS ****/
 
 //https://coinlib.io/api/v1/coin?key=XXX&pref=USD&symbol=coin1,coin2,coin3,coin4,coin5,coin6
 
