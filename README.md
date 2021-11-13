@@ -92,3 +92,6 @@ https://developer.mozilla.org/en-US/docs/Web/API/WebSocket  needed for continous
 
 whitespaces
 https://stackoverflow.com/questions/20668872/remove-whitespace-only-array-elements
+
+Key Terms:
+https://www.investopedia.com/terms/v/virtual-currency.asp
