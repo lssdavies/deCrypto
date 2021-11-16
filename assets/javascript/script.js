@@ -30,7 +30,6 @@ currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
 // currentCoinDataListUl.appendChild(currentCoinMathCalcLi)
 
-
 //* check that api fetch works then add these
 //  var currentCoinSymbolLi = document.createElement("li")
 //  currentCoinSymbolLi.classList = "list-group-item symbol-item"
@@ -77,6 +76,7 @@ var getCoinData = function () {
                         console.log(data.data[i].rank);
                         console.log(data.data[i].priceUsd);
                         console.log(data.data[i].changePercent24Hr);
+                        console.log(data.data[i].marketCapUsd);
                         var rank = data.data[i].rank
 
                         var currentCoinRankLi = document.createElement("li")
@@ -84,22 +84,14 @@ var getCoinData = function () {
                         currentCoinRankLi.classList = "list-group-item rank-item"
                         currentCoinRankLi.textContent = "rank: " + rank
 
-              
-
-
                         // //             var today = data.data.timestamp
                         // //             var date = new Date(today * 1000);
                         // //             var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
                         // //             console.log(dateCoin);
 
-                        // //             //   // //OTHER ITEMS WE DIDN'T SPECIFY:
-                        // //             //   // //average price for 24hrs
-                        // //             //   // console.log(data.data[i].vwap24Hr);
-                        // //             //   // //market cap
-                        // //             //   // console.log(data.data[i].marketCapUsd);
-
-                        // //             hiLowCoinArr.push(data.data[i].symbol)
-                        // //             console.log(hiLowCoinArr);
+                        //this we need to fill var for the second fetch - the second fetch gets us the hi & lo data pts
+                        hiLowCoinArr.push(data.data[i].symbol)
+                        console.log(hiLowCoinArr);
 
 
                              };
@@ -116,13 +108,11 @@ var getCoinData = function () {
 // getCoinData()
 
 
-
-
+//Second fetch: gets us the hi & lo data pts
 function hiLowCall(symbolsForApi) {
     var hiLowUrl = "https://coinlib.io/api/v1/coin?key=c06378ec9fc1b93c&symbol=" + symbolsForApi + "";
 
     console.log(hiLowUrl);
-
 
     fetch(hiLowUrl)
         .then(function (response) {
