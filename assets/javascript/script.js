@@ -1,11 +1,17 @@
 // //  VARIABLES ***/
+// Variables needed to run 1st Fetch Call getCoinData() 
 var coinLibKey = "c06378ec9fc1b93c"
 var symbols = ""
 var today = ""
+
+//Array for storing symbols from first Fetch Call getCoinData()- this Var then used in 2nd Fetch call hiLowCall() in order to get High & low
 hiLowCoinArr = []
 
 
-/* variables for coin dashboard*/
+//*   VARIABLES  broken out for creating Coin Cards 
+// We are calling data for the top 6 coins
+// Each card will have:
+//Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
 var currentCoinDataCard = document.createElement("div")
 
 var dashboard = document.querySelector(".data-here")
@@ -23,7 +29,7 @@ var currentCoinDataListUl = document.createElement("ul")
 currentCoinDataListUl.classList = "list-group coin-list"
 currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
-// text content is Ms formula
+// text content for Math Li is Mohammad's formula
 //  var currentCoinMathLi = document.createElement("li")
 //  currentCoinMathCalcLi.classList = "list-group-item math-item"
 
@@ -61,6 +67,8 @@ currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
 
 // // /***   COINCAP API FETCH  *****/
+
+//First Fetch Call: gets the majority of our data points 
 var getCoinData = function () {
   var apiUrl = "https://api.coincap.io/v2/assets?limit=6";
 
@@ -73,9 +81,11 @@ var getCoinData = function () {
           for (var i = 0; i < data.data.length; i++) {
             console.log(data.data[i].symbol);
             console.log(data.data[i].rank);
+            console.log(data.data[i].marketCapUsd);
             console.log(data.data[i].priceUsd);
             console.log(data.data[i].changePercent24Hr);
-            console.log(data.data[i].marketCapUsd);
+
+
             var rank = data.data[i].rank
 
             var currentCoinRankLi = document.createElement("li")
@@ -88,31 +98,34 @@ var getCoinData = function () {
             // //        var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
             // //         console.log(dateCoin);
 
-            //this we need to fill var for the second fetch - the second fetch gets us the hi & lo data pts
+            //this Var will need to use in 2nd Fetch API
+            //hiLowCoinArr defined globally
+            // (2nd fetch gets us the hi & lo data pts)
             hiLowCoinArr.push(data.data[i].symbol)
             console.log(hiLowCoinArr);
-
-
           };
-          // //           var symbolsForApi = hiLowCoinArr.join(" ").replace(/\s/g, ',');
-          // //           console.log(symbolsForApi)
 
-          // setTimeout(function () {
-          //     hiLowCall(symbolsForApi);
-          // }, 1000)
+          //var for inserting/calling 2nd Fetch Call (hiLowCall)
+          var symbolsForApi = hiLowCoinArr.join(" ").replace(/\s/g, ',');
+          console.log(symbolsForApi)
+
+          //* Set timeout for  2nd Fetch Call hiLowCall(), otherwise  2nd fetch runs too soon & data comes back null/undefined (these are async)
+          setTimeout(function () {
+            hiLowCall(symbolsForApi);
+          }, 1000)
         })
     })
 }
-
 // getCoinData()
 
 
-//Second fetch: gets us the hi & lo data pts
+//Second Fetch Call: gets us the hi & low data pts
 function hiLowCall(symbolsForApi) {
   var hiLowUrl = "https://coinlib.io/api/v1/coin?key=c06378ec9fc1b93c&symbol=" + symbolsForApi + "";
-
+  //too confirm hiLowCall is formated properly:
   console.log(hiLowUrl);
 
+  //
   fetch(hiLowUrl)
     .then(function (response) {
       response.json()
@@ -121,8 +134,10 @@ function hiLowCall(symbolsForApi) {
           console.log(data);
 
           for (var i = 0; i < data.coins.length; i++) {
+            //name & symbol just to confirm that we are pulling data from the same coins as from the 1st call
             console.log(data.coins[i].name);
             console.log(data.coins[i].symbol);
+            //need these 2 data points for our Coin Cards
             console.log(data.coins[i].high_24h);
             console.log(data.coins[i].low_24h);
           }
@@ -145,14 +160,14 @@ var inputValidation = parseInt(function (InputValue) {
 });
 //Math
 
+//we would use  - data.data[i].priceUsd - from the first call for this
 var Calculate = function (CrptoPrice) {
   cryptoAmount = InputValue / CrptoPrice;
   return cryptoAmount;
 }
+
+
 //create list element
-
-
-
 // var createlist = function(criptoApi, cryptoAmount, criptoList) {
 //         var criptoLi = $("<li>");
 //         var criptoSpan = $("<span>").text(cryptoAmount);
@@ -165,68 +180,6 @@ var Calculate = function (CrptoPrice) {
 //         // append to ul list on the page
 
 //         $("#list-" + criptoList).append(criptoLi)
-
-
-
-//         // var currentCoinDataCard = document.createElement("div")
-
-//         // var currentCoinDataCardBody = document.createElement("div")
-//         // currentCoinDataCard.appendChild(currentCoinDataCardBody)
-
-//         // var currentCoinDataTitle = document.createElement("h2")
-//         // currentCoinDataTitle.classList = "card-title coin-title"
-//         // currentCoinDataCardBody.appendChild(currentCoinDataTitle)
-
-//         // var currentCoinDataListUl = document.createElement("ul")
-//         // currentCoinDataListUl.classList = "list-group coin-list"
-//         // currentCoinDataCardBody.appendChild(currentCoinDataListUl)
-
-
-//         // var currentCoinMathLi = document.createElement("li")
-//         // currentCoinMathCalcLi.classList = "list-group-item math-item"
-//         // currentCoinDataListUl.appendChild(currentCoinMathCalcLi)
-
-//         var apiUrl = "https://api.coincap.io/v2/assets?limit=6";
-
-//         fetch(apiUrl)
-//           .then(function (response) {
-//             return response.json()
-//               .then(function (data) {
-//                 console.log(data);
-
-//                 for (var i = 0; i < data.data.length; i++) {
-//                   console.log(data.data[i].name);
-//                   console.log(data.data[i].symbol);
-//                   console.log(data.data[i].rank);
-//                   console.log(data.data[i].priceUsd);
-//                   console.log(data.data[i].changePercent24Hr);
-
-
-//                   var today = data.data.timestamp
-//                   var date = new Date(today * 1000);
-//                   var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
-//                   console.log(dateCoin);
-
-//                   //   // //OTHER ITEMS WE DIDN'T SPECIFY:
-//                   //   // //average price for 24hrs
-//                   //   // console.log(data.data[i].vwap24Hr);
-//                   //   // //market cap
-//                   //   // console.log(data.data[i].marketCapUsd);
-
-//                   hiLowCoinArr.push(data.data[i].symbol)
-//                   console.log(hiLowCoinArr);
-
-
-//                 };
-//                 var symbolsForApi = hiLowCoinArr.join(" ").replace(/\s/g, ',');
-//                 console.log(symbolsForApi)
-
-//                 setTimeout(function () {
-//                   hiLowCall(symbolsForApi);
-//                 }, 1000)
-//               })
-//           })
-//     }
 
 
 // save function
@@ -260,18 +213,10 @@ $("#input-box").on("shown.bs.modal", function () {
 // });
 
 
-
-
-
+// To Test Btn functionality
 $("#myBtn").click(function () {
   //   alert( "Handler for .click() called." );
   console.log("testBtn")
   getCoinData()
 });
-
-
-// var btnClick = document.querySelector("listen-here")
-
-// btnClick.addEventListener("click", btnHandler)
-
 
