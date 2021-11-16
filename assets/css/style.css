@@ -6,7 +6,7 @@
     --additionalColor: #a9dbce;
     --accentColor: #e96aa1;
     --accentColorOpague:rgba(233,106,161,0.8);
-    --secondYellow: #fec260
+    --secondYellow: #fec260;
 }
 
 *   {
@@ -33,11 +33,7 @@ header {
     padding: 5px;
     width: 100%;
 }
-/*Hide navBar until media quary is met*/
-.navBar > div   {
-    visibility: hidden;
-}
-/*Positioning Hamburger Menu*/
+    /*Positioning Hamburger Menu*/
 .navbar-menu {
     position: fixed;
     top: 0;
@@ -62,20 +58,21 @@ header {
     z-index: 1;
     width: 80px;
     height: 80px;
-    background-color: var(--primaryColor);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background-color: var(--primaryColor);
+    
 }
 /*Creates Center Line in HamburgerMenu*/
 .navbar-menu .hamburgerMenu > div   {
     position: relative;
     width: 75%;
     height: 0.5rem;
-    background-color: var(--secondaryColor);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background-color: var(--secondYellow);
     transition: all 0.5s ease;
 }
 /*Creates Top and Bottom lines, shows as one line above middle line*/
@@ -87,10 +84,10 @@ header {
     z-index: 1;
     width: 100%;
     height: 0.5rem;
-    background-color: var(--secondaryColor);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    background-color: var(--secondYellow);
 }
 /*Moves Bottom line below middle line*/
 .navbar-menu .hamburgerMenu div::after  {
@@ -130,11 +127,11 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     visibility: hidden;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 1;
 }
   
@@ -145,8 +142,8 @@ header {
     height: 200vh;
     display: flex;
     flex: none;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     transform: scale(0);
     transition: all 0.4s ease;
 }
