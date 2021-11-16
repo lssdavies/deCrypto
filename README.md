@@ -1,6 +1,4 @@
 # deCrypto
-<<<<<<< HEAD
-=======
 
 ## Purpose
 ***
@@ -137,4 +135,3 @@ https://www.ramseysolutions.com/retirement/investing-in-cryptocurrency
 https://simple.wikipedia.org/wiki/Cryptocurrency
 
 https://time.com/nextadvisor/investing/cryptocurrency/what-is-cryptocurrency/
->>>>>>> a3eef2ef3ceb120462d3f56a5f15c12a57aa5682
