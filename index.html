@@ -1,15 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!--Link to Tailwind CSS and custom css-->
+    <link href="./assets/css/tailwind.css" rel="stylesheet"/>
+    <link href="./assets/css/style.css" rel="stylesheet" />
+    <!--Link to fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Shalimar&display=swap" rel="stylesheet">
     <title>Decrypto</title>
 </head>
-
 <body>
     <!--Header-->
     <header>
-        <img src="./assets/images/decryptoLogo2.png">
+      <div class="logo">
+        <img src="./assets/images/decryptoLogo3.png" alt="Logo" />  
+      </div>
+      <!--Created Multiple Div tag to create hamburger menu-->
+      <nav class="navbar-menu">
+        <input type="checkbox" class="toggler">
+        <div class="hamburgerMenu"><div></div></div>
+        <div class="menu">
+          <div>
+            <div>
+              <ul>
+                <li><a href="#">About Crypto</a></li>
+                <li><a href="#">Exchanges</a></li>
+                <li><a href="#">Glossary</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
     </header>
+    <!--Hero Section-->
+    <section class="hero">
+    </section>
+    <!--Tailwind CSS will be used from this point in conjunction with custom css style.css-->
+    <main class="p-4 sectionBorder flex">
+      <div class="mainSection min-w-full p-4 rounded">
+        <h1 class="text-center text-4xl text-purple-900 font-bold">Considering Crypto?</h1>
+        <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use deCrypto to find the top ranked crypto currencies using our informational dashboard. deCryptos's dashboard will present you with the top 6 trading crytocurrencies as well as their name, trading symbol, price, high and low values and the cryto's percentage change in the last 24hours. Click the get started button to check it out</p>
+        </div>
+        <!--Button to Open Modal-->
+         <div>
+          <button id="myBtn" class="ml-4 border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop"> Get Started!</button>
+        </div>
+        <!--Div container to store dynamically generated html from js file-->
+        <div class="">
+
+        </div>
+    </main>
+    <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
+      <div class="min-w-full p-4 bg-pink-500 rounded">
+        <h1 class="text-center text-4xl text-purple-900 font-bold">Exchanges</h1>
+        <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid quos, corporis, sunt laudantium nesciunt, animi atque tempore nulla suscipit non impedit? Accusamus voluptate autem pariatur placeat nostrum esse quisquam suscipit impedit officia, nesciunt dolore harum ipsa sed reprehenderit distinctio ea ducimus? Odit nobis laboriosam eius! Accusantium quod neque deleniti necessitatibus!</p>
+      </div>
+    </section>
+    <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
+      <div class="min-w-full p-4 bg-white rounded">
+        <h1 class="text-center text-4xl text-purple-900 font-bold">Glossary</h1>
+        <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. </p>
+      </div>
+    </section>
+    <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
+      <div class="min-w-full p-4 bg-green-400 rounded">
+        <h1 class="text-center text-4xl text-purple-900 font-bold">Contact</h1>
+        <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. </p>
+      </div>
+    </section>
+    </body>
+    </html>
