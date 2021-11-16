@@ -16,7 +16,7 @@
 }
 
 body    {
-    color: var(--secondaryColor);
+    color: var(--primaryColor);
     font-family: 'Cairo', Helvetica, Arial, sans-serif;
 }
 .logo   {
