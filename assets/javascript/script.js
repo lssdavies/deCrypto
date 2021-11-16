@@ -12,7 +12,6 @@ var dashboard = document.querySelector(".data-here")
 dashboard.appendChild(currentCoinDataCard)
 
 
-
 var currentCoinDataCardBody = document.createElement("div")
 currentCoinDataCard.appendChild(currentCoinDataCardBody)
 
@@ -63,46 +62,46 @@ currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
 // // /***   COINCAP API FETCH  *****/
 var getCoinData = function () {
-    var apiUrl = "https://api.coincap.io/v2/assets?limit=6";
+  var apiUrl = "https://api.coincap.io/v2/assets?limit=6";
 
-    fetch(apiUrl)
-        .then(function (response) {
-            return response.json()
-                .then(function (data) {
-                    console.log(data);
+  fetch(apiUrl)
+    .then(function (response) {
+      return response.json()
+        .then(function (data) {
+          console.log(data);
 
-                    for (var i = 0; i < data.data.length; i++) {
-                        console.log(data.data[i].symbol);
-                        console.log(data.data[i].rank);
-                        console.log(data.data[i].priceUsd);
-                        console.log(data.data[i].changePercent24Hr);
-                        console.log(data.data[i].marketCapUsd);
-                        var rank = data.data[i].rank
+          for (var i = 0; i < data.data.length; i++) {
+            console.log(data.data[i].symbol);
+            console.log(data.data[i].rank);
+            console.log(data.data[i].priceUsd);
+            console.log(data.data[i].changePercent24Hr);
+            console.log(data.data[i].marketCapUsd);
+            var rank = data.data[i].rank
 
-                        var currentCoinRankLi = document.createElement("li")
-                        currentCoinDataListUl.appendChild(currentCoinRankLi)
-                        currentCoinRankLi.classList = "list-group-item rank-item"
-                        currentCoinRankLi.textContent = "rank: " + rank
+            var currentCoinRankLi = document.createElement("li")
+            currentCoinDataListUl.appendChild(currentCoinRankLi)
+            currentCoinRankLi.classList = "list-group-item rank-item"
+            currentCoinRankLi.textContent = "rank: " + rank
 
-                        // //             var today = data.data.timestamp
-                        // //             var date = new Date(today * 1000);
-                        // //             var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
-                        // //             console.log(dateCoin);
+            // //    var today = data.data.timestamp
+            // //     var date = new Date(today * 1000);
+            // //        var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
+            // //         console.log(dateCoin);
 
-                        //this we need to fill var for the second fetch - the second fetch gets us the hi & lo data pts
-                        hiLowCoinArr.push(data.data[i].symbol)
-                        console.log(hiLowCoinArr);
+            //this we need to fill var for the second fetch - the second fetch gets us the hi & lo data pts
+            hiLowCoinArr.push(data.data[i].symbol)
+            console.log(hiLowCoinArr);
 
 
-                             };
-                        // //           var symbolsForApi = hiLowCoinArr.join(" ").replace(/\s/g, ',');
-                        // //           console.log(symbolsForApi)
+          };
+          // //           var symbolsForApi = hiLowCoinArr.join(" ").replace(/\s/g, ',');
+          // //           console.log(symbolsForApi)
 
-                        // setTimeout(function () {
-                        //     hiLowCall(symbolsForApi);
-                        // }, 1000)
-                    })
+          // setTimeout(function () {
+          //     hiLowCall(symbolsForApi);
+          // }, 1000)
         })
+    })
 }
 
 // getCoinData()
@@ -110,25 +109,25 @@ var getCoinData = function () {
 
 //Second fetch: gets us the hi & lo data pts
 function hiLowCall(symbolsForApi) {
-    var hiLowUrl = "https://coinlib.io/api/v1/coin?key=c06378ec9fc1b93c&symbol=" + symbolsForApi + "";
+  var hiLowUrl = "https://coinlib.io/api/v1/coin?key=c06378ec9fc1b93c&symbol=" + symbolsForApi + "";
 
-    console.log(hiLowUrl);
+  console.log(hiLowUrl);
 
-    fetch(hiLowUrl)
-        .then(function (response) {
-            response.json()
-                .then(function (data) {
-                    //console.log as check then display in main card
-                    console.log(data);
+  fetch(hiLowUrl)
+    .then(function (response) {
+      response.json()
+        .then(function (data) {
+          //console.log as check then display in main card
+          console.log(data);
 
-                    for (var i = 0; i < data.coins.length; i++) {
-                        console.log(data.coins[i].name);
-                        console.log(data.coins[i].symbol);
-                        console.log(data.coins[i].high_24h);
-                        console.log(data.coins[i].low_24h);
-                    }
-                })
+          for (var i = 0; i < data.coins.length; i++) {
+            console.log(data.coins[i].name);
+            console.log(data.coins[i].symbol);
+            console.log(data.coins[i].high_24h);
+            console.log(data.coins[i].low_24h);
+          }
         })
+    })
 }
 
 
@@ -136,19 +135,19 @@ var cripto = {};
 //pull and validation input
 var InputValue = document.querySelector("input").value;
 var inputValidation = parseInt(function (InputValue) {
-    if (InputValue == null || InputValue == "") {
-        window.alert("Please Enter The amount")
-    } else if (InputValue > 0) {
-        return InputValue
-    } else {
-        window.alert("Please Enter a Correct Amount")
-    }
+  if (InputValue == null || InputValue == "") {
+    window.alert("Please Enter The amount")
+  } else if (InputValue > 0) {
+    return InputValue
+  } else {
+    window.alert("Please Enter a Correct Amount")
+  }
 });
 //Math
 
 var Calculate = function (CrptoPrice) {
-    cryptoAmount = InputValue / CrptoPrice;
-    return cryptoAmount;
+  cryptoAmount = InputValue / CrptoPrice;
+  return cryptoAmount;
 }
 //create list element
 
@@ -232,18 +231,18 @@ var Calculate = function (CrptoPrice) {
 
 // save function
 var savecripto = function () {
-    localStorage.setItem("tasks", JSON.stringify(cripto));
+  localStorage.setItem("tasks", JSON.stringify(cripto));
 }
 // modal was triggered
 $("#input-box").on("show.bs.modal", function () {
-    // clear values
-    $("#inputDescriptin").val("");
+  // clear values
+  $("#inputDescriptin").val("");
 });
 
 // modal is fully visible
 $("#input-box").on("shown.bs.modal", function () {
-    // highlight textarea
-    $("#input-box").trigger("focus");
+  // highlight textarea
+  $("#input-box").trigger("focus");
 });
 
 // //activate the button
@@ -265,9 +264,9 @@ $("#input-box").on("shown.bs.modal", function () {
 
 
 $("#myBtn").click(function () {
-    //   alert( "Handler for .click() called." );
-    console.log("testBtn")
-    getCoinData()
+  //   alert( "Handler for .click() called." );
+  console.log("testBtn")
+  getCoinData()
 });
 
 
