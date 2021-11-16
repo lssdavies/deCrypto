@@ -49,13 +49,13 @@ $("#input-box").on("shown.bs.modal", function() {
 
 //activate the button
 $(".button").on("click", function() {
-            var vinput = inputValidation();
-            if (vinput) {
-                for (i = 0; i < 10; i++) {
-                    var criptoAmont = Calculate(criptoPrice)
-                    createlist(criptoApi, criptoAmont, criptoList)
-                    savecripto();
-                };
-
-            };
+    var vinput = inputValidation();
+    if (vinput) {
+        for (i = 0; i < 10; i++) {
+            var criptoAmont = Calculate(criptoPrice)
+            createlist(criptoApi, criptoAmont, criptoList)
+            savecripto();
         };
+
+    };
+});
