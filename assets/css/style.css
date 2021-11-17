@@ -16,7 +16,8 @@
 }
 
 body    {
-    color: var(--primaryColor);
+
+
     font-family: 'Cairo', Helvetica, Arial, sans-serif;
 }
 .logo   {
@@ -190,6 +191,36 @@ header {
     height: 240px;
     border: 2px solid var(--fourthColor);  
 }
+
+/*Modal Styling*/
+.modalContainer {
+    background-color: var(--accentColorOpague);
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    height: 100vh;
+    width: 100vw;
+    /*z-index: 1;*/
+}
+
+/*open and close modal*/
+.modalContainer .open   {
+    opacity: 1;
+}
+
+.modal  {
+    background-color: whitesmoke;
+    margin: 0 auto;
+    height: 90vh;
+    width: 85vw;
+    max-width: 100%;
+    border-radius: 1rem;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+}
+
+/*Media Queries*/
 @media screen and (min-width: 481px)    {
     .hero   {
         background-image: url("../images/heroImage3.png");
@@ -207,7 +238,9 @@ header {
 /*Additional styling to work with Tailwind CSS*/
 .sectionBorder    {
     background-color: var(--primaryColor);
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
 }
 .mainSection   {
     background-color: var(--secondYellow);
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
 }
