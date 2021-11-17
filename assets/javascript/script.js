@@ -93,6 +93,12 @@ var getCoinData = function () {
             currentCoinRankLi.classList = "list-group-item rank-item"
             currentCoinRankLi.textContent = "rank: " + rank
 
+
+            var currentCoinPriceLi = document.createElement("li")
+            currentCoinDataListUl.appendChild(currentCoinPriceLi)
+            currentCoinPriceLi.classList = "list-group-item price-item"
+
+
             // //    var today = data.data.timestamp
             // //     var date = new Date(today * 1000);
             // //        var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
@@ -140,6 +146,13 @@ function hiLowCall(symbolsForApi) {
             //need these 2 data points for our Coin Cards
             console.log(data.coins[i].high_24h);
             console.log(data.coins[i].low_24h);
+
+            var hi = data.coins[i].high_24h
+            var currentCoinHiLi = document.createElement("li")
+            currentCoinDataListUl.appendChild(currentCoinHiLi)
+            currentCoinHiLi.classList = "list-group-item hi-item"
+
+
           }
         })
     })
