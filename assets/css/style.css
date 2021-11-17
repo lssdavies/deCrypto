@@ -194,6 +194,10 @@ header {
 
 /*Modal Styling*/
 .modalContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     background-color: var(--accentColorOpague);
     position: fixed;
     top: 0;
@@ -202,12 +206,14 @@ header {
     pointer-events: none;
     height: 100vh;
     width: 100vw;
-    /*z-index: 1;*/
+    transition:
+    
 }
 
 /*open and close modal*/
-.modalContainer .open   {
+.open   {
     opacity: 1;
+   pointer-events: auto;
 }
 
 .modal  {
@@ -243,4 +249,26 @@ header {
 .mainSection   {
     background-color: var(--secondYellow);
     box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+}
+
+/*Dynamicall Generated HTMl*/
+.card-body   {
+    border: .2em solid var(--primaryColor);
+    border-radius: .5em;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    
+
+}
+.card-body h2{
+    margin: 0;
+    padding: .5em;
+    background-color: var(--secondYellow);
+    font-weight: bold;
+    /*border-top-right-radius: .5em;
+    border-top-left-radius: .5em;*/
+
+
 }

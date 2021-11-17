@@ -27,7 +27,7 @@
             <div>
               <ul>
                 <li><a href="#">About Crypto</a></li>
-                <li><a href="#">Exchanges</a></li>
+                <li><a href="#">FAQ's</a></li>
                 <li><a href="#">Glossary</a></li>
                 <li><a href="#">Contact</a></li>
               </ul>
@@ -48,7 +48,7 @@
         <div class="min-w-full flex items-center justify-center" >
           <button id="myBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4">Get Started!</button>
         </div>
-        <div class="modalContainer min-w-full flex items-center justify-center" id="modalContainer">
+        <div class="modalContainer" id="modalContainer">
           <div class="modal">
             <div class="">
               <h1 class="text-center text-4xl text-purple-900 font-bold p-4">Decrypto Dashboard</h1>
@@ -56,6 +56,20 @@
             </div>
             <!--Div container to store dynamically generated html from js file-->
             <div class="dashboard min-w-full flex items-center justify-center  p-4 m-2" id="dashboard">
+            
+                <div class="card-body">
+                  <h2 class="card-title">BitCoin</h2>
+                  <ul class="group-item">
+                    <li class="list-group-item">Price: </li>
+                    <li class="list-group-item">Symbol: </li>
+                    <li class="list-group-item">Rank: </li>
+                    <li class="list-group-item"> % Change: </li>
+                    <li class="list-group-item">Market Cap: </li>
+                    <li class="list-group-item">Buying Power: </li>
+                  </ul>
+                  
+                
+              </div>
             </div>
             <div class="min-w-full flex items-center justify-center  p-4 m-2">
               <button id="closeBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop">Close Dashboard</button>  
@@ -84,19 +98,18 @@
     </section>
     <!--Modal Pop-Up control-->
     <script>
-     var popUp = document.getElementById("myBtn");
-     var modalContainer = document.getElementById("modalContainer");
-     var close = document.getElementById("closeBtn");
+     var popUp = document.querySelector("#myBtn");
+     var modalContainer = document.querySelector("#modalContainer");
+     var close = document.querySelector("#closeBtn");
 
-    popUp.addEventListener("click", () => {
-      modalContainer.classList.add("open");
+    popUp.addEventListener("click", function() {
+      modalContainer.classList= "modalContainer open";
     });
     
-    close.addEventListener("click", () => {
-      modalContainer.classList.remove("open");
+    close.addEventListener("click", function() {
+      
+      modalContainer.classList = "modalContainer";
     });
-    
-
-   </script>
+    </script>
     </body>
     </html>
