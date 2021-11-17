@@ -135,3 +135,5 @@ https://www.ramseysolutions.com/retirement/investing-in-cryptocurrency
 https://simple.wikipedia.org/wiki/Cryptocurrency
 
 https://time.com/nextadvisor/investing/cryptocurrency/what-is-cryptocurrency/
+
+https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-strings

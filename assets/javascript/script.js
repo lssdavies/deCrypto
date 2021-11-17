@@ -7,24 +7,30 @@ var today = ""
 //Array for storing symbols from first Fetch Call getCoinData()- this Var then used in 2nd Fetch call hiLowCall() in order to get High & low
 hiLowCoinArr = []
 
+// combinedCalls = []
+//combin data from 2 api calls into 2 array
+// var x = [1,2,3,4,5]
+// var y = [6,7,8,9]
+// combinedCalls.push.apply(x, y)
+// console.log(combinedCalls);// [1, 2, 3, 2, 3, 4, 5]
+
 
 //*   VARIABLES  broken out for creating Coin Cards 
 // We are calling data for the top 6 coins
 // Each card will have:
 //Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
 var currentCoinDataCard = document.createElement("div")
-
+//card
 var dashboard = document.querySelector(".data-here")
 dashboard.appendChild(currentCoinDataCard)
-
-
+//card-body
 var currentCoinDataCardBody = document.createElement("div")
 currentCoinDataCard.appendChild(currentCoinDataCardBody)
-
+//Title
 var currentCoinDataTitle = document.createElement("h2")
 currentCoinDataTitle.classList = "card-title coin-title"
 currentCoinDataCardBody.appendChild(currentCoinDataTitle)
-
+//Ul
 var currentCoinDataListUl = document.createElement("ul")
 currentCoinDataListUl.classList = "list-group coin-list"
 currentCoinDataCardBody.appendChild(currentCoinDataListUl)
@@ -35,15 +41,6 @@ currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
 // currentCoinDataListUl.appendChild(currentCoinMathCalcLi)
 
-//* check that api fetch works then add these
-//  var currentCoinSymbolLi = document.createElement("li")
-//  currentCoinSymbolLi.classList = "list-group-item symbol-item"
-//  currentCoinDataListUl.appendChild(currentCoinSymbolLi)
-
-//  var currentCoinRankLi = document.createElement("li")
-//  currentCoinDataListUl.appendChild(currentCoinRankLi)
-//  currentCoinRankLi.classList = "list-group-item rank-item"
-//  currentCoinRankLi.textContent = "rank: " + rank
 
 // var currentCoinPriceLi = document.createElement("li")
 //  currentCoinDataListUl.appendChild(currentCoinPriceLi)
@@ -85,18 +82,11 @@ var getCoinData = function () {
             console.log(data.data[i].priceUsd);
             console.log(data.data[i].changePercent24Hr);
 
-
-            var rank = data.data[i].rank
-
-            var currentCoinRankLi = document.createElement("li")
-            currentCoinDataListUl.appendChild(currentCoinRankLi)
-            currentCoinRankLi.classList = "list-group-item rank-item"
-            currentCoinRankLi.textContent = "rank: " + rank
-
-
-            var currentCoinPriceLi = document.createElement("li")
-            currentCoinDataListUl.appendChild(currentCoinPriceLi)
-            currentCoinPriceLi.classList = "list-group-item price-item"
+            //var to be brought into the second fetch
+            // var symbol = data.data[i].symbol
+            // var rank = data.data[i].rank
+            // var price = data.data[i].priceUsd
+            // var market = data.data[i].marketCapUsd
 
 
             // //    var today = data.data.timestamp
@@ -109,6 +99,8 @@ var getCoinData = function () {
             // (2nd fetch gets us the hi & lo data pts)
             hiLowCoinArr.push(data.data[i].symbol)
             console.log(hiLowCoinArr);
+
+            // priceArr.push(data.data[i].priceUsd)
           };
 
           //var for inserting/calling 2nd Fetch Call (hiLowCall)
@@ -118,7 +110,7 @@ var getCoinData = function () {
           //* Set timeout for  2nd Fetch Call hiLowCall(), otherwise  2nd fetch runs too soon & data comes back null/undefined (these are async)
           setTimeout(function () {
             hiLowCall(symbolsForApi);
-          }, 1000)
+          }, 2000)
         })
     })
 }
@@ -131,14 +123,16 @@ function hiLowCall(symbolsForApi) {
   //too confirm hiLowCall is formated properly:
   console.log(hiLowUrl);
 
-  //
+
   fetch(hiLowUrl)
     .then(function (response) {
+
+
       response.json()
         .then(function (data) {
           //console.log as check then display in main card
           console.log(data);
-
+ 
           for (var i = 0; i < data.coins.length; i++) {
             //name & symbol just to confirm that we are pulling data from the same coins as from the 1st call
             console.log(data.coins[i].name);
@@ -147,12 +141,55 @@ function hiLowCall(symbolsForApi) {
             console.log(data.coins[i].high_24h);
             console.log(data.coins[i].low_24h);
 
-            var hi = data.coins[i].high_24h
-            var currentCoinHiLi = document.createElement("li")
-            currentCoinDataListUl.appendChild(currentCoinHiLi)
-            currentCoinHiLi.classList = "list-group-item hi-item"
 
 
+            // // var rank = data.data[i].rank
+            // // var price = data.data[i].priceUsd
+            // var hi = data.coins[i].high_24h
+            // var lo = data.coins[i].low_24h
+
+
+
+
+            // check that api fetch works then add these
+            // var currentCoinSymbolLi = document.createElement("li")
+            // currentCoinSymbolLi.classList = "list-group-item symbol-item"
+
+            // currentCoinDataListUl.appendChild(currentCoinSymbolLi)
+            // // // currentCoinSymbolLi.innerHTML("angke")
+            // var currentCoinRankLi = document.querySelector("#rank")
+            // // var currentCoinRankLi = document.createElement("li")
+            // currentCoinDataListUl.appendChild(currentCoinRankLi)
+            // currentCoinRankLi.classList = "list-group-item rank-item"
+            // currentCoinRankLi.textContent = "Rank: " + rank
+
+            // var currentCoinPriceLi = document.createElement("li")
+            // currentCoinDataListUl.appendChild(currentCoinPriceLi)
+            // currentCoinPriceLi.classList = "list-group-item price-item"
+            // currentCoinPriceLi.textContent = "Price (USD): " + price
+
+            // var currentCoinMarketLi = document.createElement("li")
+            // currentCoinDataListUl.appendChild(currentCoinMarketLi)
+            // currentCoinMarketLi.classList = "list-group-item market-item"
+            // currentCoinMarketLi.textContent = "Market Cap USD: " + market
+
+
+
+            // //second fetch
+            // var currentCoinHiLi = document.createElement("li")
+            // currentCoinDataListUl.appendChild(currentCoinHiLi)
+            // currentCoinHiLi.classList = "list-group-item hi-item"
+            // currentCoinHiLi.textContent = "High Price: " + hi
+
+            // var currentCoinLoLi = document.createElement("li")
+            // currentCoinDataListUl.appendChild(currentCoinLoLi)
+            // currentCoinLoLi.classList = "list-group-item lo-item"
+            // currentCoinLoLi.textContent = "Lo Price: " + lo
+
+
+            setTimeout(function () {
+              createGlobalDom(combinedCalls);
+            }, 2000)
           }
         })
     })
@@ -174,9 +211,15 @@ var inputValidation = parseInt(function (InputValue) {
 //Math
 
 //we would use  - data.data[i].priceUsd - from the first call for this
-var Calculate = function (CrptoPrice) {
-  cryptoAmount = InputValue / CrptoPrice;
-  return cryptoAmount;
+var calculate = function () {
+ purchase = "100" / price;
+  // return cryptoAmount;
+   // //Purchase Power
+  var currentCoinPurchaseLi = document.createElement("li")
+  currentCoinPurchaseLi.classList = "list-group-item purchase-item"
+  currentCoinPriceLi.textContent = "Price (USD): " + purchase
+  currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
+
 }
 
 
@@ -233,3 +276,16 @@ $("#myBtn").click(function () {
   getCoinData()
 });
 
+// var x = [1,2,3,4,5]
+// var y = [6,7,8,9]
+
+
+// x.push.apply(x, y)
+// console.log(x);// [1, 2, 3, 2, 3, 4, 5]
+// var createGlobalDom = function () { 
+
+
+
+
+
+// }
