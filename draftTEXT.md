@@ -54,46 +54,38 @@ According to Decoding Crypto: Are there regulations in the US for Cryptocurrency
 
 
 Key Terms
-Cryptocurrency
+Cryptocurrency:
 A virtual alternative to government issued money that is meant for secure,  peer-to peer internet transactions
 
-Cryptography
+Cryptography:
 Cryptography means “secret writing”, a way of sending coded messages between two parties.In computing, it is the mathematical practice through programming languages that applies this basic theory and customized variations of cryptography to encrypt transactions, and user data.  
 
-Blockchain
+Blockchain:
 All cryptocurrency transactions are stored in groups - or “blocks. When a block is full, it is closed then linked - or chained - to the previously filled block using cryptography. This process creates a timeline of transactional events and data that cannot be altered. 
 
-Crypto Bank
+Crypto Bank:
 Cryptocurrency app for banking and investment where registration typically comes with federally-insured bank accounts, a prepaid debit card and cryptocurrency wallet.
 
-Crypto Exchange
-
-Crypto Burning
+Crypto Burning:
 When a coin is intentionally sent to a wallet that is not used - throwing away money. Often done to affect supply and demand or to conceal true ownership amounts.
 
-Crypto wallet
+Crypto wallet:
 Digital place to store cryptocurrency, often provided by crypto exchange platforms
 
-Symbol
+Symbol:
 Name abbreviation of an exchange listed cryptocurrency
 
-Price
+Price:
 Current price of cryptocurrency in US dollars at a given moment
 
-Rank
+Rank:
 Rank in ascending order where 1 is the highest market cap
 
-Market Cap
+Market Cap:
 Total value of all of the cryptocurrency coins that have been mined. In traditional trading, defined as the total dollar value of all of the shares of a company’s stock. In math terms: supply quantity x price.
 
-Percent Change
+Percent Change:
 The value change in the last 24 hour period, where increased value is shown as positive and decreased value is shown as negative
-
-High
-The highest price the item was traded at in a given time period.
-
-Low
-The lowest price the item was traded at in a given time period.
 
 Bitcoin
 First and probably most name-recognized form of cryptocurrency 

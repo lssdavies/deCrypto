@@ -32,10 +32,31 @@ header {
     background-color: var(--primaryColor);
     margin: 0;
     padding: 5px;
-    width: 100%;
+    
+    
 }
-    /*Positioning Hamburger Menu*/
+
+.largerResNav  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    right: 0;
+    
+    
+}
+
+.largerResNav  nav button {
+    margin: 0.5rem;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+    
+}
+
+    /*Positioning Hamburger Menu currently hidden to present MVP*/
 .navbar-menu {
+    display: none;
     position: fixed;
     top: 0;
     right: 0;
