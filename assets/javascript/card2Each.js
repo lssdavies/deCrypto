@@ -3,9 +3,6 @@ var symbols = ""
 var today = ""
 var price = ""
 
-//Array for storing symbols from first Fetch Call getCoinData()- this Var then used in 2nd Fetch call hiLowCall() in order to get High & low
-hiLowCoinArr = []
-
 //*   VARIABLES  broken out for creating Coin Cards 
 //We are calling data for the top 6 coins
 //Each card will have:
@@ -27,6 +24,48 @@ var currentCoinDataListUl = document.createElement("ul")
 currentCoinDataListUl.classList = "list-group coin-list"
 currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
+//News DOM Creation
+// News Container
+var news = document.querySelector(".news")
+//card
+var newsCard = document.createElement("div")
+news.appendChild(newsCard)
+//Title
+var newsCardTitle = document.createElement("h2")
+newsCardTitle.classList = "card-title news-title"
+newsCardTitle.innerHTML = "Latest News"
+newsCard.appendChild(newsCardTitle)
+// New List
+var newsListUl = document.createElement("ul")
+newsListUl.classList = "list-group news-list"
+newsCard.appendChild(newsListUl)
+
+
+/*****    Input Form Handling*****/
+let formSubmitHandler = function (event) {
+  event.preventDefault();
+  //confirm desired event
+  // console.log(event);
+
+  //get city name from input field el
+  // let cityName = cityNameInputEl.value.replace(/\s/g, '');
+  let dollars = dollarsInputEl.value;
+
+  //console cityName later will be displayed in main card
+  // console.log(cityName);
+  if (dollars) {
+    //get weather data using cityName var in getWeather function
+    console.log(dollars);
+    //clear input field
+    dollarsInputEl.value = "";
+    // forecastCard.innerHTML = ""
+  } else {
+    //update to modal later
+    alert("Please enter a valid US City name.");
+  };
+  console.log(dollars);
+  return dollars;
+}
 
 
 //First Fetch Call: gets the majority of our data points 
@@ -57,9 +96,10 @@ var getTop5 = function () {
             var rank = data.coins[i].rank
             var priceRound = (Math.round(data.coins[i].price * 100) / 100).toLocaleString('en-US', {
               style: 'currency',
-              currency: 'USD',      });
-            var purchase = (Math.round((100 / data.coins[i].price) * 10) / 10)
-
+              currency: 'USD',
+            });
+            // var purchase = (Math.round((100 / data.coins[i].price) * 10) / 10)
+            var purchase = 100 / data.coins[i].price
             // Rank
             var currentCoinRankLi = document.createElement("li")
             currentCoinRankLi.classList = "list-group-item rank-item"
@@ -80,81 +120,63 @@ var getTop5 = function () {
             currentCoinPriceLi.classList = "list-group-item price-item"
             currentCoinPriceLi.textContent = "Price (USD): " + priceRound
             currentCoinDataListUl.appendChild(currentCoinPriceLi)
+
+
             //purchase
             var currentCoinPurchaseLi = document.createElement("li")
             currentCoinPurchaseLi.classList = "list-group-item purchase-item"
             currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase
             currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
 
+            calculate(data.coins[i].price)
 
             // setTimeout(function () {
             //   calculate(price)
             // }, 2000)
-
+          
 
           };
+
         })
     })
 }
 
+//input function card - PURCHASE POWER
+var calculate = function (price) {
+  purchase = "100" / price;
+  console.log(price)
+}
 
 
 
+// // //Second Fetch Call: gets us the hi & low data pts
+var getNews = function () {
+
+  // var newsUrl = "https://min-api.cryptocompare.com/data/news/feeds"
+   var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
+
+  console.log(newsUrl);
+  
 
 
+  fetch(newsUrl)
+    .then(function (response) {
+      response.json()
+        .then(function (data) {
+          //console.log as check then display in main card
+          console.log(data);
+          // console.log(data.Data[i].url)
+  
+          for (var i = 0; i < 4; i++) {
 
-// //Second Fetch Call: gets us the hi & low data pts
-// function hiLowCall(symbolsForApi, id) {
-//   var hiLowUrl = "https://coinlib.io/api/v1/coin?key=c06378ec9fc1b93c&symbol=" + symbolsForApi + "";
-//   //too confirm hiLowCall is formated properly:
-//   console.log(hiLowUrl);
+            console.log(data.data[i].url)
+        
+            // console.log(data.coins[i].name)
+           }
 
-
-//   fetch(hiLowUrl)
-//     .then(function (response) {
-
-
-//       response.json()
-//         .then(function (data) {
-//           //console.log as check then display in main card
-//           console.log(data);
-
-//           for (var i = 0; i < data.coins.length; i++) {
-//             //name & symbol just to confirm that we are pulling data from the same coins as from the 1st call
-//             console.log(data.coins[i].name);
-//             console.log(data.coins[i].symbol);
-//             //need these 2 data points for our Coin Cards
-//             console.log(data.coins[i].high_24h);
-//             console.log(data.coins[i].low_24h);
-
-//             // // var rank = data.data[i].rank
-//             // // var price = data.data[i].priceUsd
-//             var hi = data.coins[i].high_24h
-//             // var lo = data.coins[i].low_24h
-
-
-//             // Var from first fetch
-//             // ID - Name - 
-//             var currentCoinIdLi = document.createElement("li")
-//             currentCoinIdLi.classList = "list-group-item id-item"
-//             currentCoinIdLi.textContent = "Name: " + id
-//             currentCoinDataListUl.appendChild(currentCoinIdLi)
-
-
-//             // //second fetch
-//             var currentCoinHiLi = document.createElement("li")
-//             currentCoinDataListUl.appendChild(currentCoinHiLi)
-//             currentCoinHiLi.classList = "list-group-item hi-item"
-//             currentCoinHiLi.textContent = "High Price: " + hi
-
-//             // var currentCoinLoLi = document.createElement("li")
-//             // currentCoinDataListUl.appendChild(currentCoinLoLi)
-//             // currentCoinLoLi.classList = "list-group-item lo-item"
-//             // currentCoinLoLi.textContent = "Lo Price: " + lo
-//           }
-//         })
-//     })
-// }
+        })
+    })
+}
 
 
 
@@ -164,8 +186,33 @@ $("#myBtn").click(function () {
   getTop5()
 });
 
+getNews()
 
 
+
+
+
+
+
+
+
+
+
+//LISTENER :  Start App Fetch and Open Modal
+// var popUp = document.querySelector("#myBtn");
+// var modalContainer = document.querySelector("#modalContainer");
+
+// var close = document.querySelector("#closeBtn");
+// popUp.addEventListener("click", function() {
+//  modalContainer.classList= "modalContainer open";
+//  getTop5()
+// });
+
+// close.addEventListener("click", function() {
+//  modalContainer.classList = "modalContainer";
+// });
+
+// userFormEl.addEventListener("submit", formSubmitHandler);
 
 
 

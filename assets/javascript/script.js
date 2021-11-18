@@ -217,9 +217,8 @@ var calculate = function () {
    // //Purchase Power
   var currentCoinPurchaseLi = document.createElement("li")
   currentCoinPurchaseLi.classList = "list-group-item purchase-item"
-  currentCoinPriceLi.textContent = "Price (USD): " + purchase
+  currentCoinPriceLi.textContent = "Purchase Power: " + purchase
   currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
-
 }
 
 
