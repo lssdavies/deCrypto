@@ -1,71 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Link to Tailwind CSS and custom css-->
-    <link href="./assets/css/tailwind.css" rel="stylesheet"/>
-    <link href="./assets/css/style.css" rel="stylesheet" />
-    <!--Link to fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Shalimar&display=swap" rel="stylesheet">
-    <title>Decrypto</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Link to Tailwind CSS and custom css-->
+  <link href="./assets/css/tailwind.css" rel="stylesheet" />
+  <link href="./assets/css/style.css" rel="stylesheet" />
+  <!--Link to fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Shalimar&display=swap" rel="stylesheet">
+  <title>Decrypto</title>
 </head>
+
 <body>
-    <!--Header-->
-    <header id="home">
-      <div class="logo">
-        <img src="./assets/images/decryptoLogo3.png" alt="Logo" />  
+  <!--Header-->
+  <header id="home">
+    <div class="logo">
+      <img src="./assets/images/decryptoLogo3.png" alt="Logo" />
+    </div>
+    <div class="largerResNav">
+      <nav>
+        <button
+          class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a
+            href="#home">Home</a></button>
+        <button
+          class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a
+            href="#about">About</a></button>
+        <button
+          class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a
+            href="#faq">FAQ's</a></button>
+        <button
+          class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a
+            href="#glossary">Glossary</a></button>
+      </nav>
+    </div>
+    <!--Created Multiple Div tag to create hamburger menu, currently hidden to to present MVP-->
+    <nav class="navbar-menu">
+      <input type="checkbox" class="toggler">
+      <div class="hamburgerMenu">
+        <div></div>
       </div>
-      <div class="largerResNav">
-        <nav>
-          <button class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a href="#home">Home</a></button>
-          <button class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a href="#about">About</a></button>
-          <button class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a href="#faq">FAQ's</a></button>
-          <button class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a href="#glossary">Glossary</a></button>
-        </nav>
-      </div>
-      <!--Created Multiple Div tag to create hamburger menu, currently hidden to to present MVP-->
-      <nav class="navbar-menu">
-        <input type="checkbox" class="toggler">
-        <div class="hamburgerMenu"><div></div></div>
-        <div class="menu">
+      <div class="menu">
+        <div>
           <div>
-            <div>
-              <ul>
-                <li><a href="#about">About Crypto</a></li>
-                <li><a href="#faq">FAQ's</a></li>
-                <li><a href="#glossary">Glossary</a></li>
-              </ul>
-            </div>
+            <ul>
+              <li><a href="#about">About Crypto</a></li>
+              <li><a href="#faq">FAQ's</a></li>
+              <li><a href="#glossary">Glossary</a></li>
+            </ul>
           </div>
         </div>
-      </nav>
-    
-    </header>
-    <!--Hero Section-->
-    <section class="hero">
-    </section>
-    <!--Tailwind CSS will be used from this point in conjunction with custom css style.css-->
-    <main class="p-4 sectionBorder flex">
-      <div class="mainSection min-w-full rounded">
-        <h1 class="text-center text-4xl text-purple-900 font-bold">Considering Crypto?</h1>
-        <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use deCrypto to find the top ranked crypto currencies using our informational dashboard. deCryptos's dashboard will present you with the top 5 trading crytocurrencies as well as their name, trading symbol, price, high and low values and the cryto's percentage change in the last 24hours. Click the get started button to check it out</p>
-        <div class="min-w-full flex items-center justify-center" >
-          <button id="myBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4">Get Started!</button>
-        </div>
-        <div class="modalContainer" id="modalContainer">
-          <div class="modal">
-            <div class="">
-              <h1 class="text-center text-4xl text-purple-900 font-bold p-4">Decrypto Dashboard</h1>
-              <p class="pr-4 pl-4 text-center">Financial Disclaimer: This content is for educational purposes only and is not suitable as financial advice.</p>
-            </div>
-            <!--Div container to store dynamically generated html from js file-->
-            <div class="dashboard min-w-full flex items-center justify-center  p-4 m-2" id="dashboard">
-              <div class="card-container">
-                <div class="card-body">
-                  <!-- <h2 class="card-title">BitCoin</h2>
+      </div>
+    </nav>
+
+  </header>
+  <!--Hero Section-->
+  <section class="hero">
+  </section>
+  <!--Tailwind CSS will be used from this point in conjunction with custom css style.css-->
+  <main class="p-4 sectionBorder flex">
+    <div class="mainSection min-w-full rounded">
+      <h1 class="text-center text-4xl text-purple-900 font-bold">Considering Crypto?</h1>
+      <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web
+        application that will help decrypt the mysteries of cryptocurrency. Use deCrypto to find the top ranked crypto
+        currencies using our informational dashboard. deCryptos's dashboard will present you with the top 5 trading
+        crytocurrencies as well as their name, trading symbol, price, high and low values and the cryto's percentage
+        change in the last 24hours. Click the get started button to check it out</p>
+      <div class="min-w-full flex items-center justify-center">
+        <button id="myBtn"
+          class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4">Get
+          Started!</button>
+      </div>
+      <div class="modalContainer" id="modalContainer">
+        <div class="modal">
+          <div class="">
+            <h1 class="text-center text-4xl text-purple-900 font-bold p-4">Decrypto Dashboard</h1>
+            <p class="pr-4 pl-4 text-center">Financial Disclaimer: This content is for educational purposes only and is
+              not suitable as financial advice.</p>
+          </div>
+          <!--Div container to store dynamically generated html from js file-->
+          <div class="dashboard min-w-full flex items-center justify-center  p-4 m-2" id="dashboard">
+            <div class="card-container">
+              <div class="card-body">
+                <!-- <h2 class="card-title">BitCoin</h2>
                   <ul class="group-item">
                     <li class="list-group-item">Price: </li>
                     <li class="list-group-item">Symbol: </li>
@@ -77,143 +96,209 @@
               </div>
 
 
-          </div>
-            </div>
-          </div>
-            <div class="min-w-full flex items-center justify-center  p-4 m-2">
-              <button id="closeBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop">Close Dashboard</button>  
             </div>
           </div>
         </div>
-      </div>    
-    </main>
-    <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
-      <div class="min-w-full p-4 bg-pink-500 rounded">
-        <h1 class="text-center text-4xl text-purple-900 font-bold" id="about">About Crypto</h1>
+        <div class="min-w-full flex items-center justify-center  p-4 m-2">
+          <button id="closeBtn"
+            class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop">Close
+            Dashboard</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+  <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
+    <div class="min-w-full p-4 bg-pink-500 rounded">
+      <h1 class="text-center text-4xl text-purple-900 font-bold" id="about">About Crypto</h1>
 
-        <!-- <div class="dashboard" id="dashboard"> -->
-          
-          <!-- LINK CONTAINTER: Holdsl img and clickable text.  We need to format so they are side by side each article on its own thin row.-->
-       
+      <!-- <div class="dashboard" id="dashboard"> -->
+
+      <!-- LINK CONTAINTER: Holdsl img and clickable text.  We need to format so they are side by side each article on its own thin row.-->
+      <!--        
           <div class="link-container">
-            </div>
+            </div> -->
 
-        <p class="text-justify text-purple-900 p-2">
-          Crypto is short for “cryptocurrency.” Basically, a virtual alternative to government issued money that is meant for secure,  peer-to-peer internet transactions.</p>
-        <p class="text-justify text-purple-900 p-2"> 
-          Similar to exchanging one type of money, say dollars for euros at a bank or money exchange kiosk, you can exchange dollars for - or  “buy” - cryptocurrency “coins” or fractions of coins on the internet and hold them in a digital wallet. Digital currencies are becoming more mainstream. Stores like Whole Foods are beginning to accept crypto as payment and some cryptocurrencies like Crypto.com  offer VisaTM cards.
-        </p>
-        <p class="text-justify text-purple-900 p-2">
-          Bitcoin, the original, and Ethereum are two of the biggest more recognizable names, but there are thousands of different cryptocurrencies put into circulation by private entities,  the values of which are determined by their internet users. Any particular coin is worth what someone is willing to pay for it at any given moment in time. For many, they are an alternative investment. Like stocks, they are considered assets for accounting purposes. 
-        </p>
-          <p class="text-justify text-purple-900 p-2">  
-          Also like stocks, they can be a risky investment! Learn all you can, then decide if crypto is right for you.</p>
-      </div>
-    </section>
-    <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
-      <div class="min-w-full p-4 bg-white rounded" id="faq">
-        <h1 class="text-center text-4xl text-purple-900 font-bold">FAQ's</h1>
-        <p class="text-justify text-purple-900 p-2">What is blockchain technology?
-          All cryptocurrency transactions are stored in groups - or “blocks. When a block is full, it is closed then linked - or chained - to the previously filled block using cryptography. This process creates a timeline of transactional events and data that cannot be altered. In the case of cryptocurrency, this unchangeable electronic ledger is open to other cryptocurrency users and stored on computers within that currency’s network - anyone who uses that particular coin has a copy of this digital journal. The accuracy of these transactions is consistently being verified by this enormous amount of computing power. It is this confirmed, immutable list that enables secure transactions to be made without using a bank or other verifier.  In this way there is no centralized ‘keeper of the books’. Instead, all users control all of the data.
-        </p>
-        <p class="text-justify text-purple-900 p-2">  
-          What is Crypto Mining?
-          To prevent fraud, each cryptocurrency transaction is verified. The Proof of Work verification method, sends a math problem to computers to solve. Each computer - or “miner” - races to solve the puzzle. The first one that does is rewarded with a bit of cryptocurrency. The amount of computing power, not to mention electricity needed to work on and solve these puzzles is incredible, so often these “winners” just about break-even. After the individual verifies the transaction, it is still checked and then approved by a majority (51%) of the ledger holders before it is added to the chain. (Different cryptocurrencies use different methods to verify their transactions.)
-        </p>
-        <p class="text-justify text-purple-900 p-2">
-          How is Crypto different from using Paypal, using Google Pay or performing an electronic funds transfer at my bank?
-          PayPal,  Google Pay, various other payment apps  and banks depend on the traditional financial system to conduct transactions. They ask for permission to transfer currency in its electronic form. At your bank, you could go to the ATM and turn this existing digital representation of money into its physical representation -- dollar bills. 
-        </p>
-        <p class="text-justify text-purple-900 p-2">
-          Cryptocurrency trading happens peer-to-peer; third parties do not have to ask permission. Generally speaking, there is not a physical representation of cryptocurrency; it’s purely electronic computer code. Lastly, unlike money sitting in your bank, it doesn’t have the backing or protections that government-issued currency has.(FDIC Link here?)
-        </p>  
-        <p class="text-justify text-purple-900 p-2">
-          Is it real money?
-          Well.  That depends.  What is your definition of “real” money? Cryptocurrencies have value and can be exchanged, and for the most part, many cryptocurrencies do not represent physically tangible assets like gold or oil. However, some cryptocurrencies are minting physical coins with verifiable values stored on the blockchain and others are pegged to the value of fiat money (money issued by a government and ‘backed’ by that government instead of a physical commodity like silver).
-          
-          According to Investopedia, in their article <a href="https://www.investopedia.com/terms/m/money.asp">“Money”</a> updated February 4, 2021, reviewed by Charles Potters, and fact checked by Yarilet Perez,  “In order to be most useful as money, a currency should be: 1) fungible, 2) durable, 3) portable, 4) recognizable, and 5) stable.”  Many cryptocurrencies aim to adhere to these tenets, however some critics feel there is an argument to be made that cryptocurrency is too volatile to meet the stable requirement.
-        </p> 
-        <p class="text-justify text-purple-900 p-2"> 
-          Where can I buy cryptocurrencies?
-          Many traditional investment platforms  and brokers like Schwab, and Fidelity are adding crypto to their investment line-ups. There are also crypto only exchanges like Coinbase.com, and crypto banks, like Vast.bank.
-        </p>
-        <p class="text-justify text-purple-900 p-2"> 
-          Can I turn Crypto into Cash?
-          Check with the exchange or investment platform you are using for selling instructions. Some websites allow you to sell and apply the proceeds to prepaid debit cards.
-        </p>
-        <p class="text-justify text-purple-900 p-2"> 
-          Is Cryptocurrency safe?
-          Generally speaking transactions and user data are encrypted. However, as a currency, it doesn’t have the backing or protections that government issued currency has. So, if a cryptocurrency company goes under, the government does not cover the loss. In other words crypto is not federally insured. It is also susceptible to fluctuating exchange rates, higher exchange fees and fraud.
-        </p>  
-        <p class="text-justify text-purple-900 p-2">  
-          Is Cryptocurrency legal in the USA?
-          According to Decoding Crypto: Are there regulations in the US for Cryptocurrency on nasdaq.com by John Hyatt, on Aug 19, 2021, cryptocurrencies do not fit perfectly wrapped with little bows in the US regulatory frameworks, but they are recognized. Securities and Exchange commission will apply SEC regulations, Commodities Futures Trading Commission classified some cryptocurrencies as commodities with some derivatives like futures,  traded on public exchanges, and the Treasury department created a Tax Plan with reference to cryptocurrency.
-        </p>
-      </div>
-    </section>
-    <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
-      <div class="min-w-full p-4 bg-green-400 rounded" id="glossary">
-        <h1 class="text-center text-4xl text-purple-900 font-bold">Glossary</h1>
-        <p class="text-justify text-purple-900 p-2">
-          Cryptocurrency:
-          A virtual alternative to government issued money that is meant for secure,  peer-to peer internet transactions
-          </p>
-        
-        <p class="text-justify text-purple-900 p-2">  
-          Cryptography:
-          Cryptography means “secret writing”, a way of sending coded messages between two parties.In computing, it is the mathematical practice through programming languages that applies this basic theory and customized variations of cryptography to encrypt transactions, and user data.
-        </p>  
-        
-        <p class="text-justify text-purple-900 p-2">  
-          Blockchain:
-          All cryptocurrency transactions are stored in groups - or “blocks. When a block is full, it is closed then linked - or chained - to the previously filled block using cryptography. This process creates a timeline of transactional events and data that cannot be altered.
-        </p> 
-        
-        <p class="text-justify text-purple-900 p-2">
-          Crypto Bank:
-          Cryptocurrency app for banking and investment where registration typically comes with federally-insured bank accounts, a prepaid debit card and cryptocurrency wallet.
-        </p>
-          
-        <p class="text-justify text-purple-900 p-2">
-          Crypto Burning:
-          When a coin is intentionally sent to a wallet that is not used - throwing away money. Often done to affect supply and demand or to conceal true ownership amounts.
-        </p>
-        
-          <p class="text-justify text-purple-900 p-2">  
-          Crypto wallet:
-          Digital place to store cryptocurrency, often provided by crypto exchange platforms
-        </p>
-          
-          <p class="text-justify text-purple-900 p-2">
-          Symbol:
-          Name abbreviation of an exchange listed cryptocurrency
-        </p>
-          
-          <p class="text-justify text-purple-900 p-2">
-          Price:
-          Current price of cryptocurrency in US dollars at a given moment
-        </p>
-          <p class="text-justify text-purple-900 p-2">
-          Rank:
-          Rank in ascending order where 1 is the highest market cap
-        </p>
-          <p class="text-justify text-purple-900 p-2">
-          Market Cap:
-          Total value of all of the cryptocurrency coins that have been mined. In traditional trading, defined as the total dollar value of all of the shares of a company’s stock. In math terms: supply quantity x price.
-        </p>
-          <p class="text-justify text-purple-900 p-2">
-          Percent Change:
-          The value change in the last 24 hour period, where increased value is shown as positive and decreased value is shown as negative
-          <p class="text-justify text-purple-900 p-2">
-          Bitcoin
-          First and probably most name-recognized form of cryptocurrency 
-          </p>
-      </div>
-    </section>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <p class="text-justify text-purple-900 p-2">
+        Crypto is short for “cryptocurrency.” Basically, a virtual alternative to government issued money that is meant
+        for secure, peer-to-peer internet transactions.</p>
+      <p class="text-justify text-purple-900 p-2">
+        Similar to exchanging one type of money, say dollars for euros at a bank or money exchange kiosk, you can
+        exchange dollars for - or “buy” - cryptocurrency “coins” or fractions of coins on the internet and hold them in
+        a digital wallet. Digital currencies are becoming more mainstream. Stores like Whole Foods are beginning to
+        accept crypto as payment and some cryptocurrencies like Crypto.com offer VisaTM cards.
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Bitcoin, the original, and Ethereum are two of the biggest more recognizable names, but there are thousands of
+        different cryptocurrencies put into circulation by private entities, the values of which are determined by their
+        internet users. Any particular coin is worth what someone is willing to pay for it at any given moment in time.
+        For many, they are an alternative investment. Like stocks, they are considered assets for accounting purposes.
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Also like stocks, they can be a risky investment! Learn all you can, then decide if crypto is right for you.</p>
+    </div>
+  </section>
+  <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
+    <div class="min-w-full p-4 bg-white rounded" id="faq">
+      <h1 class="text-center text-4xl text-purple-900 font-bold">Crypto in the News</h1>
 
-    <script src="assets/javascript/twoSeparateCalls.js"></script>
-    </body>
-    </html>
+      <!-- placeholder for news  -->
+      <div class="link-container">
+      </div>
+
+      <!-- Playing with FAQ/glossary format  checkout this site: https://www.coinbase.com/learns -->
+      <div class="faq">
+        <h3 class="text-purple-900 font-extrabold text-2xl p-2">What is blockchain technology?</h3>
+        <p class="text-justify text-purple-900 p-2">
+          All cryptocurrency transactions are stored in groups - or “blocks. When a block is full, it is closed then
+          linked - or chained - to the previously filled block using cryptography. This process creates a timeline of
+          transactional events and data that cannot be altered. In the case of cryptocurrency, this unchangeable
+          electronic ledger is open to other cryptocurrency users and stored on computers within that currency’s network
+          - anyone who uses that particular coin has a copy of this digital journal. The accuracy of these transactions
+          is consistently being verified by this enormous amount of computing power. It is this confirmed, immutable
+          list that enables secure transactions to be made without using a bank or other verifier. In this way there is
+          no centralized ‘keeper of the books’. Instead, all users control all of the data.
+        </p>
+      </div>
+
+      <!-- </div>
+      <p class="text-justify text-purple-900 p-2">
+        What is Crypto Mining?
+        To prevent fraud, each cryptocurrency transaction is verified. The Proof of Work verification method, sends a
+        math problem to computers to solve. Each computer - or “miner” - races to solve the puzzle. The first one that
+        does is rewarded with a bit of cryptocurrency. The amount of computing power, not to mention electricity needed
+        to work on and solve these puzzles is incredible, so often these “winners” just about break-even. After the
+        individual verifies the transaction, it is still checked and then approved by a majority (51%) of the ledger
+        holders before it is added to the chain. (Different cryptocurrencies use different methods to verify their
+        transactions.)
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        How is Crypto different from using Paypal, using Google Pay or performing an electronic funds transfer at my
+        bank?
+        PayPal, Google Pay, various other payment apps and banks depend on the traditional financial system to conduct
+        transactions. They ask for permission to transfer currency in its electronic form. At your bank, you could go to
+        the ATM and turn this existing digital representation of money into its physical representation -- dollar bills.
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Cryptocurrency trading happens peer-to-peer; third parties do not have to ask permission. Generally speaking,
+        there is not a physical representation of cryptocurrency; it’s purely electronic computer code. Lastly, unlike
+        money sitting in your bank, it doesn’t have the backing or protections that government-issued currency has.(FDIC
+        Link here?)
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Is it real money?
+        Well. That depends. What is your definition of “real” money? Cryptocurrencies have value and can be exchanged,
+        and for the most part, many cryptocurrencies do not represent physically tangible assets like gold or oil.
+        However, some cryptocurrencies are minting physical coins with verifiable values stored on the blockchain and
+        others are pegged to the value of fiat money (money issued by a government and ‘backed’ by that government
+        instead of a physical commodity like silver).
+
+        According to Investopedia, in their article <a href="https://www.investopedia.com/terms/m/money.asp">“Money”</a>
+        updated February 4, 2021, reviewed by Charles Potters, and fact checked by Yarilet Perez, “In order to be most
+        useful as money, a currency should be: 1) fungible, 2) durable, 3) portable, 4) recognizable, and 5) stable.”
+        Many cryptocurrencies aim to adhere to these tenets, however some critics feel there is an argument to be made
+        that cryptocurrency is too volatile to meet the stable requirement.
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Where can I buy cryptocurrencies?
+        Many traditional investment platforms and brokers like Schwab, and Fidelity are adding crypto to their
+        investment line-ups. There are also crypto only exchanges like Coinbase.com, and crypto banks, like Vast.bank.
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Can I turn Crypto into Cash?
+        Check with the exchange or investment platform you are using for selling instructions. Some websites allow you
+        to sell and apply the proceeds to prepaid debit cards.
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Is Cryptocurrency safe?
+        Generally speaking transactions and user data are encrypted. However, as a currency, it doesn’t have the backing
+        or protections that government issued currency has. So, if a cryptocurrency company goes under, the government
+        does not cover the loss. In other words crypto is not federally insured. It is also susceptible to fluctuating
+        exchange rates, higher exchange fees and fraud.
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Is Cryptocurrency legal in the USA?
+        According to Decoding Crypto: Are there regulations in the US for Cryptocurrency on nasdaq.com by John Hyatt, on
+        Aug 19, 2021, cryptocurrencies do not fit perfectly wrapped with little bows in the US regulatory frameworks,
+        but they are recognized. Securities and Exchange commission will apply SEC regulations, Commodities Futures
+        Trading Commission classified some cryptocurrencies as commodities with some derivatives like futures, traded on
+        public exchanges, and the Treasury department created a Tax Plan with reference to cryptocurrency.
+      </p>
+    </div> -->
+  </section>
+  <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
+    <div class="min-w-full p-4 bg-green-400 rounded" id="glossary">
+      <h1 class="text-center text-4xl text-purple-900 font-bold">Glossary</h1>
+      <p class="text-justify text-purple-900 p-2">
+        Cryptocurrency:
+        A virtual alternative to government issued money that is meant for secure, peer-to peer internet transactions
+      </p>
+
+      <p class="text-justify text-purple-900 p-2">
+        Cryptography:
+        Cryptography means “secret writing”, a way of sending coded messages between two parties.In computing, it is the
+        mathematical practice through programming languages that applies this basic theory and customized variations of
+        cryptography to encrypt transactions, and user data.
+      </p>
+
+      <p class="text-justify text-purple-900 p-2">
+        Blockchain:
+        All cryptocurrency transactions are stored in groups - or “blocks. When a block is full, it is closed then
+        linked - or chained - to the previously filled block using cryptography. This process creates a timeline of
+        transactional events and data that cannot be altered.
+      </p>
+
+      <p class="text-justify text-purple-900 p-2">
+        Crypto Bank:
+        Cryptocurrency app for banking and investment where registration typically comes with federally-insured bank
+        accounts, a prepaid debit card and cryptocurrency wallet.
+      </p>
+
+      <p class="text-justify text-purple-900 p-2">
+        Crypto Burning:
+        When a coin is intentionally sent to a wallet that is not used - throwing away money. Often done to affect
+        supply and demand or to conceal true ownership amounts.
+      </p>
+
+      <p class="text-justify text-purple-900 p-2">
+        Crypto wallet:
+        Digital place to store cryptocurrency, often provided by crypto exchange platforms
+      </p>
+
+      <p class="text-justify text-purple-900 p-2">
+        Symbol:
+        Name abbreviation of an exchange listed cryptocurrency
+      </p>
+
+      <p class="text-justify text-purple-900 p-2">
+        Price:
+        Current price of cryptocurrency in US dollars at a given moment
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Rank:
+        Rank in ascending order where 1 is the highest market cap
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Market Cap:
+        Total value of all of the cryptocurrency coins that have been mined. In traditional trading, defined as the
+        total dollar value of all of the shares of a company’s stock. In math terms: supply quantity x price.
+      </p>
+      <p class="text-justify text-purple-900 p-2">
+        Percent Change:
+        The value change in the last 24 hour period, where increased value is shown as positive and decreased value is
+        shown as negative
+      <p class="text-justify text-purple-900 p-2">
+        Bitcoin
+        First and probably most name-recognized form of cryptocurrency
+      </p>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script src="assets/javascript/twoSeparateCalls.js"></script>
+</body>
+
+</html>
