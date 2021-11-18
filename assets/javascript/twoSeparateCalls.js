@@ -37,12 +37,11 @@ currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 // newsCardTitle.classList = "card-title news-title"
 // newsCardTitle.innerHTML = "Latest News"
 // newsCard.appendChild(newsCardTitle)
-// New List
-var newsCard = document.querySelector(".card-container")
-var newsListUl = document.createElement("ul")
-newsListUl.classList = "list-group news-list"
-newsCard.appendChild(newsListUl)
-
+// // New List
+// var newsCard = document.querySelector(".card-container")
+// var newsListUl = document.createElement("ul")
+// newsListUl.classList = "list-group news-list"
+// newsCard.appendChild(newsListUl)
 
 /*****    Input Form Handling*****/
 // let formSubmitHandler = function (event) {
@@ -170,14 +169,15 @@ var getNews = function() {
                     console.log(data);
                     // console.log(data.Data[i].url)
 
-                    for (var i = 0; i < 4; i++) {
-                        console.log(data.Data[i].title)
-                        console.log(data.Data[i].url)
+                    // for (var i = 0; i < 4; i++) {
+                        console.log(data.Data[0].title)
+                        console.log(data.Data[0].url)
                             // console.log(data.coins[i].name)
 
-                        var articleTitle = data.Data[i].title
-                        var articleLink = data.Data[i].url
+                        var articleTitle = data.Data[0].title
+                        var articleLink = data.Data[0].url
 
+                        $(".card-container").append(`<a href="${articleLink}">${articleTitle}</a>`)
 
                         // var articleATag = document.createElement("a");
                         // articleATag.setAttribute("href", articleLink);
@@ -186,14 +186,13 @@ var getNews = function() {
                         // newsCard.appendChild(articleTitle);
 
 
-                        $(".news-list").append(`<a href="${articleLink}">${articleTitle}</a>`)
 
                         // var link = document.createElement("a").href = articleLink
                         // newsCardP.appendChild(link)
 
                         // <h3 class="card-title article-name" id="${articleTitle}"><a href="${articleLink}"></a><h3>
 
-                    }
+                    // }
 
                 })
         })
