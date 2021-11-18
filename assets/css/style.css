@@ -277,6 +277,7 @@ header {
 /*Dynamicall Generated HTMl*/
 .card-container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
@@ -285,7 +286,7 @@ header {
 .card-body   {
     border: .2em solid var(--primaryColor);
     border-radius: .5em;
-    box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+    /* box-shadow: 4px 4px 5px rgba(0,0,0,0.3); */
     padding: 0;
     margin: 1em;
     min-width: 20%;
@@ -294,7 +295,7 @@ header {
 
 }
 .card-body h2{
-    margin: 0;
+    margin: ;
     padding: .5em;
     background-color: var(--secondYellow);
     font-weight: bold;

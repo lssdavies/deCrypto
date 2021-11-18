@@ -10,13 +10,14 @@ var price = ""
 var currentCoinDataCard = document.createElement("div")
     //card
 var dashboard = document.querySelector(".card-container")
+dashboard.classList = "card-container";
 dashboard.appendChild(currentCoinDataCard)
     //card-body
 var currentCoinDataCardBody = document.createElement("div")
-currentCoinDataCard.appendChild(currentCoinDataCardBody)
+dashboard.appendChild(currentCoinDataCardBody)
     //Title
 var currentCoinDataTitle = document.createElement("h2")
-currentCoinDataTitle.classList = "card-title coin-title"
+currentCoinDataTitle.classList = "card-title"
 currentCoinDataTitle.innerHTML = "Top 5 Coins"
 currentCoinDataCardBody.appendChild(currentCoinDataTitle)
     //Ul
@@ -83,7 +84,7 @@ var getTop5 = function() {
                 .then(function(data) {
                     console.log(data);
 
-                    for (var i = 0; i <= 4; i++) {
+                    for (var i = 0; i <= 2; i++) {
                         console.log(data.coins[i].name)
                         console.log(data.coins[i].symbol);
                         console.log(data.coins[i].rank);
@@ -130,6 +131,7 @@ var getTop5 = function() {
                         currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase
                         currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
 
+                   
                         calculate(data.coins[i].price)
 
                         // setTimeout(function () {
@@ -177,7 +179,7 @@ var getNews = function() {
                         var articleTitle = data.Data[0].title
                         var articleLink = data.Data[0].url
 
-                        $(".card-container").append(`<a href="${articleLink}">${articleTitle}</a>`)
+                        $(".link-container").append(`<a href="${articleLink}">${articleTitle}</a>`)
 
                         // var articleATag = document.createElement("a");
                         // articleATag.setAttribute("href", articleLink);
@@ -206,7 +208,7 @@ var getNews = function() {
 //   getTop5()
 // });
 
-getNews()
+// getNews()
 
 
 // <!--Modal Pop-Up control-->
@@ -216,7 +218,9 @@ var close = document.querySelector("#closeBtn");
 
 popUp.addEventListener("click", function() {
     modalContainer.classList = "modalContainer open";
+    getTop5()
     getNews()
+
 });
 
 close.addEventListener("click", function() {
