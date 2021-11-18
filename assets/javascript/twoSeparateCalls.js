@@ -30,15 +30,17 @@ var news = document.querySelector(".news")
 //card
 var newsCard = document.createElement("div")
 news.appendChild(newsCard)
+var newsCardP = document.createElement("p")
+newsCard.appendChild(newsCardP)
 // //Title
 // var newsCardTitle = document.createElement("h2")
 // newsCardTitle.classList = "card-title news-title"
 // newsCardTitle.innerHTML = "Latest News"
 // newsCard.appendChild(newsCardTitle)
 // New List
-var newsListUl = document.createElement("ul")
-newsListUl.classList = "list-group news-list"
-newsCard.appendChild(newsListUl)
+// var newsListUl = document.createElement("ul")
+// newsListUl.classList = "list-group news-list"
+// newsCard.appendChild(newsListUl)
 
 
 /*****    Input Form Handling*****/
@@ -176,12 +178,18 @@ var getNews = function () {
             var articleLink = data.Data[0].url
 
 
-            var articleATag = document.createElement('a');
-            articleATag.setAttribute("href", articleLink);
-            articleTitle.innerHTML = articleTitle
-            //add new link to the DOM
-            newsCard.appendChild(articleTitle);
+            // var articleATag = document.createElement("a");
+            // articleATag.setAttribute("href", articleLink);
+            // articleTitle.innerHTML = articleTitle
+            // //add new link to the DOM
+            // newsCard.appendChild(articleTitle);
 
+            newsCardP.append(`<a href="${articleLink}">${articleTitle}<a/>`)
+
+            // var link = document.createElement("a").href = articleLink
+            // newsCardP.appendChild(link)
+
+            // <h3 class="card-title article-name" id="${articleTitle}"><a href="${articleLink}"></a><h3>
 
           }
 
