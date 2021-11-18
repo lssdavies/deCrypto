@@ -4,14 +4,60 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Test</title>
 </head>
 <body>
+  <button id="myBtn">Generate</button>
 
-  <!-- <img src="https://cryptoicons.org/api/icon/eth/200"> -->
+  <div id="dashBoard">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  </div>
+  <script>
+    var coinInfo = document.querySelector("#myBtn");
+    coinInfo.addEventListener('click',function()  {
+      getCoinData();
+    })
 
-  <script src="assets/javascript/deCryptoTestJs.js"></script>
+    var getCoinData = function () {
+  var apiUrl = "https://api.coincap.io/v2/assets?limit=6";
+
+  fetch(apiUrl)
+    .then(function (response) {
+      return response.json()
+        .then(function (data) {
+          console.log(data);
+
+          // for (var i = 0; i < data.data.length; i++) {
+          //   console.log(data.data[i].symbol);
+          //   console.log(data.data[i].rank);
+          //   console.log(data.data[i].marketCapUsd);
+          //   console.log(data.data[i].priceUsd);
+          //   console.log(data.data[i].changePercent24Hr);
+
+          //   //var to be brought into the second fetch
+          //   // var symbol = data.data[i].symbol
+          //   // var rank = data.data[i].rank
+          //   // var price = data.data[i].priceUsd
+          //   // var market = data.data[i].marketCapUsd
+
+
+          //   // //    var today = data.data.timestamp
+          //   // //     var date = new Date(today * 1000);
+          //   // //        var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
+          //   // //         console.log(dateCoin);
+
+          //   //this Var will need to use in 2nd Fetch API
+          //   //hiLowCoinArr defined globally
+          //   // (2nd fetch gets us the hi & lo data pts)
+          //   hiLowCoinArr.push(data.data[i].symbol)
+          //   console.log(hiLowCoinArr);
+
+          //   // priceArr.push(data.data[i].priceUsd)
+          
+    })
+  })
+}     
+       </script>
+  
 </body>
 </html>
