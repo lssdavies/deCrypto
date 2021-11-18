@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Link to Tailwind CSS and custom css-->
-    <link href="./assets/css/tailwind.css" rel="stylesheet"/>
+    <link href="./assets/css/tailwind.css" rel="stylesheet" />
     <link href="./assets/css/style.css" rel="stylesheet" />
     <!--Link to fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,59 +13,64 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Shalimar&display=swap" rel="stylesheet">
     <title>Decrypto</title>
 </head>
+
 <body>
     <!--Header-->
     <header>
-      <div class="logo">
-        <img src="./assets/images/decryptoLogo3.png" alt="Logo" />  
-      </div>
-      <!--Created Multiple Div tag to create hamburger menu-->
-      <nav class="navbar-menu">
-        <input type="checkbox" class="toggler">
-        <div class="hamburgerMenu"><div></div></div>
-        <div class="menu">
-          <div>
-            <div>
-              <ul>
-                <li><a href="#">About Crypto</a></li>
-                <li><a href="#">FAQ's</a></li>
-                <li><a href="#">Glossary</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div>
+        <div class="logo">
+            <img src="./assets/images/decryptoLogo3.png" alt="Logo" />
         </div>
-      </nav>
-    
+        <!--Created Multiple Div tag to create hamburger menu-->
+        <nav class="navbar-menu">
+            <input type="checkbox" class="toggler">
+            <div class="hamburgerMenu">
+                <div></div>
+            </div>
+            <div class="menu">
+                <div>
+                    <div>
+                        <ul>
+                            <li><a href="#">About Crypto</a></li>
+                            <li><a href="#">FAQ's</a></li>
+                            <li><a href="#">Glossary</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
     </header>
     <!--Hero Section-->
     <section class="hero">
     </section>
     <!--Tailwind CSS will be used from this point in conjunction with custom css style.css-->
     <main class="p-4 sectionBorder flex">
-      <div class="mainSection min-w-full rounded">
-        <h1 class="text-center text-4xl text-purple-900 font-bold">Considering Crypto?</h1>
-        <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use deCrypto to find the top ranked crypto currencies using our informational dashboard. deCryptos's dashboard will present you with the top 6 trading crytocurrencies as well as their name, trading symbol, price, high and low values and the cryto's percentage change in the last 24hours. Click the get started button to check it out</p>
+        <div class="mainSection min-w-full rounded">
+            <h1 class="text-center text-4xl text-purple-900 font-bold">Considering Crypto?</h1>
+            <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use deCrypto to find the top ranked crypto currencies using our informational dashboard. deCryptos's dashboard
+                will present you with the top 6 trading crytocurrencies as well as their name, trading symbol, price, high and low values and the cryto's percentage change in the last 24hours. Click the get started button to check it out</p>
 
 
-        <div class="min-w-full flex items-center justify-center" >
-          <button id="myBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4">Get Started!</button>
-        </div>
-
-
-        <div class="modalContainer" id="modalContainer">
-          <div class="modal">
-            <div class="">
-              <h1 class="text-center text-4xl text-purple-900 font-bold p-4">Decrypto Dashboard</h1>
-              <p class="pr-4 pl-4 text-center">Disclamer  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et, voluptate adipisci sed esse natus similique eum reiciendis architecto beatae consequuntur.</p>
-
-
-              <div class="news"></div>
+            <div class="min-w-full flex items-center justify-center">
+                <button id="myBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4">Get Started!</button>
             </div>
-            <!-- Div container to store dynamically--> generated html from js file
-            <div class="dashboard min-w-full flex items-center justify-center  p-4 m-2" id="dashboard">
-              <div class="card-container">
-                <!-- <div class="card-body">
+
+
+            <div class="modalContainer" id="modalContainer">
+                <div class="modal">
+                    <div class="">
+                        <h1 class="text-center text-4xl text-purple-900 font-bold p-4">Decrypto Dashboard</h1>
+                        <p class="pr-4 pl-4 text-center">Disclamer Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et, voluptate adipisci sed esse natus similique eum reiciendis architecto beatae consequuntur.</p>
+
+
+                        <div class="news"></div>
+                    </div>
+                    <!-- Div container to store dynamically-->generated html from js file
+                    <div class="dashboard min-w-full flex items-center justify-center  p-4 m-2" id="dashboard">
+                        <div class="card-container"></div>
+
+                        <!-- <div class="card-body">
                   <h2 class="card-title">BitCoin</h2>
                   <ul class="group-item">
                     <li class="list-group-item">Price: </li>
@@ -75,7 +81,7 @@
                     <li class="list-group-item">Buying Power: </li>
                   </ul>
               </div> -->
-              <!-- <div class="card-body">
+                        <!-- <div class="card-body">
                 <h2 class="card-title">BitCoin</h2>
                 <ul class="group-item">
                   <li class="list-group-item">Price: </li>
@@ -96,7 +102,7 @@
                 <li class="list-group-item">Market Cap: </li>
                 <li class="list-group-item">Buying Power: </li>
               </ul> -->
-          <!-- </div>
+                        <!-- </div>
           <div class="card-body">
             <h2 class="card-title">BitCoin</h2>
             <ul class="group-item">
@@ -119,7 +125,7 @@
             <li class="list-group-item">Buying Power: </li>
           </ul>
       </div> -->
-      <!-- <div class="card-body">
+                        <!-- <div class="card-body">
         <h2 class="card-title">BitCoin</h2>
         <ul class="group-item">
           <li class="list-group-item">Price: </li>
@@ -129,41 +135,46 @@
           <li class="list-group-item">Market Cap: </li>
           <li class="list-group-item">Buying Power: </li>
         </ul> -->
-    <!-- </div> -- -->
+                        <!-- </div> -- -->
+                    </div>
+                </div>
+                <div class="min-w-full flex items-center justify-center  p-4 m-2">
+                    <button id="closeBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop">Close Dashboard</button>
+                </div>
             </div>
-          </div>
-            <div class="min-w-full flex items-center justify-center  p-4 m-2">
-              <button id="closeBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop">Close Dashboard</button>  
-            </div>
-          </div>
         </div>
-      </div>    
+        </div>
     </main>
     <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
-      <div class="min-w-full p-4 bg-pink-500 rounded">
-        <h1 class="text-center text-4xl text-purple-900 font-bold">Exchanges</h1>
-        <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid quos, corporis, sunt laudantium nesciunt, animi atque tempore nulla suscipit non impedit? Accusamus voluptate autem pariatur placeat nostrum esse quisquam suscipit impedit officia, nesciunt dolore harum ipsa sed reprehenderit distinctio ea ducimus? Odit nobis laboriosam eius! Accusantium quod neque deleniti necessitatibus!</p>
-        <div class="news">
+        <div class="min-w-full p-4 bg-pink-500 rounded">
+            <h1 class="text-center text-4xl text-purple-900 font-bold">Exchanges</h1>
+            <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid quos, corporis, sunt laudantium nesciunt, animi atque tempore nulla suscipit non
+                impedit? Accusamus voluptate autem pariatur placeat nostrum esse quisquam suscipit impedit officia, nesciunt dolore harum ipsa sed reprehenderit distinctio ea ducimus? Odit nobis laboriosam eius! Accusantium quod neque deleniti necessitatibus!</p>
+            <div class="news">
 
+            </div>
         </div>
-      </div>
     </section>
     <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
-      <div class="min-w-full p-4 bg-white rounded">
-        <h1 class="text-center text-4xl text-purple-900 font-bold">Glossary</h1>
-        <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. </p>
-      </div>
+        <div class="min-w-full p-4 bg-white rounded">
+            <h1 class="text-center text-4xl text-purple-900 font-bold">Glossary</h1>
+            <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. </p>
+        </div>
     </section>
     <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
-      <div class="min-w-full p-4 bg-green-400 rounded">
-        <h1 class="text-center text-4xl text-purple-900 font-bold">Contact</h1>
-        <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. </p>
-      </div>
+        <div class="min-w-full p-4 bg-green-400 rounded">
+            <h1 class="text-center text-4xl text-purple-900 font-bold">Contact</h1>
+            <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing
+                elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. </p>
+        </div>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script src="assets/javascript/twoSeparateCalls.js"></script>
-    </body>
-    </html>
+</body>
 
+</html>
