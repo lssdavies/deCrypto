@@ -85,24 +85,20 @@ var getTop5 = function () {
           console.log(data);
 
           for (var i = 0; i <= 2; i++) {
-            console.log(data.coins[i].name)
-            console.log(data.coins[i].symbol);
-            console.log(data.coins[i].rank);
-            // console.log(data.coins[i].market_cap);
-            // var price = data.coins[i].price
-
-            //   console.log(data.data[i].changePercent24Hr);
 
             //define Var for cards
             var name = data.coins[i].name
             var symbol = data.coins[i].symbol
             var rank = data.coins[i].rank
+            var market = data.coins[i].market_cap
+            var percentChange24 = data.coins[i].delta_24h
             var priceRound = (Math.round(data.coins[i].price * 100) / 100).toLocaleString('en-US', {
               style: 'currency',
               currency: 'USD',
             });
-            // var purchase = (Math.round((100 / data.coins[i].price) * 10) / 10)
             var purchase = 100 / data.coins[i].price
+
+
             // Rank
             var currentCoinRankLi = document.createElement("li")
             currentCoinRankLi.classList = "list-group-item rank-item"
@@ -123,8 +119,16 @@ var getTop5 = function () {
             currentCoinPriceLi.classList = "list-group-item price-item"
             currentCoinPriceLi.textContent = "Price (USD): " + priceRound
             currentCoinDataListUl.appendChild(currentCoinPriceLi)
-
-
+            //Market Cap
+            var currentCoinMarketLi = document.createElement("li")
+            currentCoinMarketLi.classList = "list-group-item market-item"
+            currentCoinMarketLi.textContent = "Market Cap USD: " + market
+            currentCoinDataListUl.appendChild(currentCoinMarketLi)
+            //percent Change
+            var coinPercentChangeLi = document.createElement("li")
+            coinPercentChangeLi.classList = "list-group-item market-item"
+            coinPercentChangeLi.textContent = "Percent Change(24 hr): " + percentChange24
+            currentCoinDataListUl.appendChild(coinPercentChangeLi)
             //purchase
             var currentCoinPurchaseLi = document.createElement("li")
             currentCoinPurchaseLi.classList = "list-group-item purchase-item"
@@ -173,25 +177,25 @@ var getNews = function () {
           // console.log(data.Data[i].url)
 
           for (var i = 0; i < 8; i++) {
-          console.log(data.Data[i].title)
-          console.log(data.Data[i].url)
-          // console.log(data.coins[i].name)
+            console.log(data.Data[i].title)
+            console.log(data.Data[i].url)
+            // console.log(data.coins[i].name)
 
-          var articleTitle = data.Data[i].title
-          var articleLink = data.Data[i].url
+            var articleTitle = data.Data[i].title
+            var articleLink = data.Data[i].url
 
-          var articleImgEl = document.createElement("img")
-          var articleImgSrc = data.Data[i].source_info.img
-          articleImgEl.src = articleImgSrc
-          articleImgEl.style.width ='10em'
-          // articleImg.setAttribute("src", articleImg)
-          var linkContainer = document.querySelector(".link-container")
-          linkContainer.appendChild(articleImgEl)
+            var articleImgEl = document.createElement("img")
+            var articleImgSrc = data.Data[i].source_info.img
+            articleImgEl.src = articleImgSrc
+            articleImgEl.style.width = '10em'
+            // articleImg.setAttribute("src", articleImg)
+            var linkContainer = document.querySelector(".link-container")
+            linkContainer.appendChild(articleImgEl)
 
 
-          $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
-          // $(".link-container").append(`${articleImgSrc}`)
-         }
+            $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
+            // $(".link-container").append(`${articleImgSrc}`)
+          }
 
         })
     })
@@ -275,13 +279,6 @@ close.addEventListener("click", function () {
 //   // (2nd fetch gets us the hi & lo data pts)
 //   hiLowCoinArr.push(data.data[i].symbol)
 //   console.log(hiLowCoinArr);
-
-
-//   //   //Market Cap
-//   //   var currentCoinMarketLi = document.createElement("li")
-//   //   currentCoinMarketLi.classList = "list-group-item market-item"
-//   //   currentCoinMarketLi.textContent = "Market Cap USD: " + market
-//   //   currentCoinDataListUl.appendChild(currentCoinMarketLi)
 
 
 //   //var for inserting/calling 2nd Fetch Call (hiLowCall)
