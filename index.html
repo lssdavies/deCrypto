@@ -45,19 +45,24 @@
       <div class="mainSection min-w-full rounded">
         <h1 class="text-center text-4xl text-purple-900 font-bold">Considering Crypto?</h1>
         <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use deCrypto to find the top ranked crypto currencies using our informational dashboard. deCryptos's dashboard will present you with the top 6 trading crytocurrencies as well as their name, trading symbol, price, high and low values and the cryto's percentage change in the last 24hours. Click the get started button to check it out</p>
+
+
         <div class="min-w-full flex items-center justify-center" >
           <button id="myBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4">Get Started!</button>
         </div>
+
+
         <div class="modalContainer" id="modalContainer">
           <div class="modal">
             <div class="">
               <h1 class="text-center text-4xl text-purple-900 font-bold p-4">Decrypto Dashboard</h1>
               <p class="pr-4 pl-4 text-center">Disclamer  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et, voluptate adipisci sed esse natus similique eum reiciendis architecto beatae consequuntur.</p>
+              <div class="news"></div>
             </div>
-            <!--Div container to store dynamically generated html from js file-->
+            <!-- Div container to store dynamically--> generated html from js file
             <div class="dashboard min-w-full flex items-center justify-center  p-4 m-2" id="dashboard">
               <div class="card-container">
-                <div class="card-body">
+                <!-- <div class="card-body">
                   <h2 class="card-title">BitCoin</h2>
                   <ul class="group-item">
                     <li class="list-group-item">Price: </li>
@@ -67,8 +72,8 @@
                     <li class="list-group-item">Market Cap: </li>
                     <li class="list-group-item">Buying Power: </li>
                   </ul>
-              </div>
-              <div class="card-body">
+              </div> -->
+              <!-- <div class="card-body">
                 <h2 class="card-title">BitCoin</h2>
                 <ul class="group-item">
                   <li class="list-group-item">Price: </li>
@@ -88,8 +93,8 @@
                 <li class="list-group-item"> % Change: </li>
                 <li class="list-group-item">Market Cap: </li>
                 <li class="list-group-item">Buying Power: </li>
-              </ul>
-          </div>
+              </ul> -->
+          <!-- </div>
           <div class="card-body">
             <h2 class="card-title">BitCoin</h2>
             <ul class="group-item">
@@ -111,8 +116,8 @@
             <li class="list-group-item">Market Cap: </li>
             <li class="list-group-item">Buying Power: </li>
           </ul>
-      </div>
-      <div class="card-body">
+      </div> -->
+      <!-- <div class="card-body">
         <h2 class="card-title">BitCoin</h2>
         <ul class="group-item">
           <li class="list-group-item">Price: </li>
@@ -121,8 +126,8 @@
           <li class="list-group-item"> % Change: </li>
           <li class="list-group-item">Market Cap: </li>
           <li class="list-group-item">Buying Power: </li>
-        </ul>
-    </div>
+        </ul> -->
+    <!-- </div> -- -->
             </div>
           </div>
             <div class="min-w-full flex items-center justify-center  p-4 m-2">
@@ -136,6 +141,9 @@
       <div class="min-w-full p-4 bg-pink-500 rounded">
         <h1 class="text-center text-4xl text-purple-900 font-bold">Exchanges</h1>
         <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid quos, corporis, sunt laudantium nesciunt, animi atque tempore nulla suscipit non impedit? Accusamus voluptate autem pariatur placeat nostrum esse quisquam suscipit impedit officia, nesciunt dolore harum ipsa sed reprehenderit distinctio ea ducimus? Odit nobis laboriosam eius! Accusantium quod neque deleniti necessitatibus!</p>
+        <div class="news">
+
+        </div>
       </div>
     </section>
     <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
@@ -150,32 +158,10 @@
         <p class="text-justify text-purple-900 p-4">Then you've have come to right place! Decrypto is a cool web application that will help decrypt the mysteries of cryptocurrency. Use our applicatation to look up the top ranked currencies and. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae itaque molestiae consequuntur et fugiat! Perferendis at illum dicta nihil aut. </p>
       </div>
     </section>
-    <!--Modal Pop-Up control-->
-    <script>
-     var popUp = document.querySelector("#myBtn");
-     var modalContainer = document.querySelector("#modalContainer");
-     var close = document.querySelector("#closeBtn");
 
-    popUp.addEventListener("click", function() {
-      modalContainer.classList= "modalContainer open";
-    });
-    
-    close.addEventListener("click", function() {
-      
-      modalContainer.classList = "modalContainer";
-    });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <script src="assets/javascript/twoSeparateCalls.js"></script>
     </body>
     </html>
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+
