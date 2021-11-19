@@ -4,8 +4,7 @@ var today = ""
 var price = ""
 
 //*   VARIABLES  broken out for creating Coin Cards 
-//We are calling data for the top 6 coins
-//Each card will have:
+//We are calling data for the top 5 coins; Each card will have:
 //Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
 var currentCoinDataCard = document.createElement("div")
 //card
@@ -25,58 +24,12 @@ var currentCoinDataListUl = document.createElement("ul")
 currentCoinDataListUl.classList = "list-group coin-list"
 currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
-//News DOM Creation
-// News Container
-// var news = document.querySelector(".news")
-//     //card
-// var newsCard = document.createElement("div")
-// news.appendChild(newsCard)
 
-//newsCard.appendChild(newsCard)
-// //Title
-// var newsCardTitle = document.createElement("h2")
-// newsCardTitle.classList = "card-title news-title"
-// newsCardTitle.innerHTML = "Latest News"
-// newsCard.appendChild(newsCardTitle)
-// // New List
-// var newsCard = document.querySelector(".card-container")
-// var newsListUl = document.createElement("ul")
-// newsListUl.classList = "list-group news-list"
-// newsCard.appendChild(newsListUl)
-
-/*****    Input Form Handling*****/
-// let formSubmitHandler = function (event) {
-//   event.preventDefault();
-//   //confirm desired event
-//   // console.log(event);
-
-//   //get city name from input field el
-//   // let cityName = cityNameInputEl.value.replace(/\s/g, '');
-//   let dollars = dollarsInputEl.value;
-
-//   //console cityName later will be displayed in main card
-//   // console.log(cityName);
-//   if (dollars) {
-//     //get weather data using cityName var in getWeather function
-//     console.log(dollars);
-//     //clear input field
-//     dollarsInputEl.value = "";
-//     // forecastCard.innerHTML = ""
-//   } else {
-//     //update to modal later
-//     alert("Please enter a valid US City name.");
-//   };
-//   console.log(dollars);
-//   return dollars;
-// }
-
-
-//First Fetch Call: gets the majority of our data points 
+//First Fetch Call: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER
 var getTop5 = function () {
   var apiUrl = "https://coinlib.io/api/v1/coinlist?key=c06378ec9fc1b93c&page=1&pref=USD&order=rank_asc";
 
-  // var apiUrl = "https://coinlib.io/api/v1/coin?key=c06378ec9fc1b93c"
-  // console.log(data)
+  var InputValue = document.querySelector("input").value
 
   fetch(apiUrl)
     .then(function (response) {
@@ -85,7 +38,6 @@ var getTop5 = function () {
           console.log(data);
 
           for (var i = 0; i <= 2; i++) {
-
             //define Var for cards
             var name = data.coins[i].name
             var symbol = data.coins[i].symbol
@@ -135,38 +87,29 @@ var getTop5 = function () {
             currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase
             currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
 
-
-            calculate(data.coins[i].price)
+            calculate(InputValue, data.coins[i].price)
 
             // setTimeout(function () {
             //   calculate(price)
             // }, 2000)
-
-
           };
-
         })
     })
 }
 
 //input function card - PURCHASE POWER
-var calculate = function (price) {
-  purchase = "100" / price;
+var calculate = function (InputValue, phone) {
+  purchase = InputValue / phone;
   console.log(price)
 }
 
-
-
-
-// // //Second Fetch Call: gets us the hi & low data pts
+// // //Second Fetch Call: GETS NEWS FOR PAGE
 var getNews = function () {
 
   // var newsUrl = "https://min-api.cryptocompare.com/data/news/feeds"
   var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
 
   console.log(newsUrl);
-
-
 
   fetch(newsUrl)
     .then(function (response) {
@@ -196,25 +139,12 @@ var getNews = function () {
             $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
             // $(".link-container").append(`${articleImgSrc}`)
           }
-
         })
     })
 }
-//possible code  for dom creation
-//https://medium.com/@tforward/get-html-to-the-dom-fast-with-js-template-literals-insertadjacenthtml-24b8aa4e8807
-
-
 getNews()
 
-// $("#myBtn").click(function () {
-//   //   alert( "Handler for .click() called." );
-//   console.log("testBtn")
-//   getTop5()
-// });
-
-// getNews()
-
-
+//START LISTENER :  Start App Fetch and Open Modal
 // <!--Modal Pop-Up control-->
 var popUp = document.querySelector("#myBtn");
 var modalContainer = document.querySelector("#modalContainer");
@@ -227,7 +157,6 @@ popUp.addEventListener("click", function () {
 });
 
 close.addEventListener("click", function () {
-
   modalContainer.classList = "modalContainer";
 
 })
@@ -238,50 +167,39 @@ close.addEventListener("click", function () {
 
 
 
-//LISTENER :  Start App Fetch and Open Modal
-// var popUp = document.querySelector("#myBtn");
-// var modalContainer = document.querySelector("#modalContainer");
-
-// var close = document.querySelector("#closeBtn");
-// popUp.addEventListener("click", function() {
-//  modalContainer.classList= "modalContainer open";
-//  getTop5()
-// });
-
-// close.addEventListener("click", function() {
-//  modalContainer.classList = "modalContainer";
-// });
-
-// userFormEl.addEventListener("submit", formSubmitHandler);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //  *************************     Items for possible use later ****************************
 
+//News DOM Creation
+// News Container
+// var news = document.querySelector(".news")
+//     //card
+// var newsCard = document.createElement("div")
+// news.appendChild(newsCard)
 
-//   // //    var today = data.data.timestamp
-//   // //     var date = new Date(today * 1000);
-//   // //        var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
-//   // //         console.log(dateCoin);
-//   //this Var will need to use in 2nd Fetch API
-//   //hiLowCoinArr defined globally
-//   // (2nd fetch gets us the hi & lo data pts)
-//   hiLowCoinArr.push(data.data[i].symbol)
-//   console.log(hiLowCoinArr);
+//newsCard.appendChild(newsCard)
+// //Title
+// var newsCardTitle = document.createElement("h2")
+// newsCardTitle.classList = "card-title news-title"
+// newsCardTitle.innerHTML = "Latest News"
+// newsCard.appendChild(newsCardTitle)
+// // New List
+// var newsCard = document.querySelector(".card-container")
+// var newsListUl = document.createElement("ul")
+// newsListUl.classList = "list-group news-list"
+// newsCard.appendChild(newsListUl)
 
+  // //    var today = data.data.timestamp
+  // //     var date = new Date(today * 1000);
+  // //        var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
+  // //         console.log(dateCoin);
+  //this Var will need to use in 2nd Fetch API
+  //hiLowCoinArr defined globally
+  // (2nd fetch gets us the hi & lo data pts)
+ // hiLowCoinArr.push(data.data[i].symbol)
+ // console.log(hiLowCoinArr);
 
-//   //var for inserting/calling 2nd Fetch Call (hiLowCall)
+  //var for inserting/calling 2nd Fetch Call (hiLowCall)
 //   var symbolsForApi = hiLowCoinArr.join(" ").replace(/\s/g, ',');
 //   console.log(symbolsForApi)
 
@@ -293,3 +211,14 @@ close.addEventListener("click", function () {
 // }
 //         }
 //     })
+
+/*  for testing: 
+// $("#myBtn").click(function () {
+//   //   alert( "Handler for .click() called." );
+//   console.log("testBtn")
+//   getTop5()
+// });
+// getNews()*/
+
+//possible code  for dom creation
+//https://medium.com/@tforward/get-html-to-the-dom-fast-with-js-template-literals-insertadjacenthtml-24b8aa4e8807
