@@ -19,11 +19,11 @@ dashboard.appendChild(currentCoinDataCardBody)
 var currentCoinDataTitle = document.createElement("h2")
 currentCoinDataTitle.classList = "card-title"
 currentCoinDataTitle.innerHTML = "Top 5 Coins"
-currentCoinDataCardBody.appendChild(currentCoinDataTitle)
-//Ul
-var currentCoinDataListUl = document.createElement("ul")
-currentCoinDataListUl.classList = "list-group coin-list"
-currentCoinDataCardBody.appendChild(currentCoinDataListUl)
+// dashboard.appendChild(currentCoinDataTitle)
+// //Ul
+// var currentCoinDataListUl = document.createElement("ul")
+// currentCoinDataListUl.classList = "list-group coin-list"
+// currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
 
 
@@ -38,7 +38,8 @@ function getTop5(InputValue) {
       return response.json()
         .then(function (data) {
           console.log(data);
-
+          
+          dashboard.appendChild(currentCoinDataTitle)
           for (var i = 0; i <= 4; i++) {
             //define Var for cards
             var name = data.coins[i].name
@@ -57,6 +58,14 @@ function getTop5(InputValue) {
             });
 
             const purchase = calculate(InputValue, data.coins[i].price);
+            // //card-body
+            // var currentCoinDataCardBody = document.createElement("div")
+            // dashboard.appendChild(currentCoinDataCardBody)
+   
+            //Ul
+            var currentCoinDataListUl = document.createElement("ul")
+            currentCoinDataListUl.classList = "list-group coin-list"
+            currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
             // Rank
             var currentCoinRankLi = document.createElement("li")
@@ -91,7 +100,7 @@ function getTop5(InputValue) {
             //purchase
             var currentCoinPurchaseLi = document.createElement("li")
             currentCoinPurchaseLi.classList = "list-group-item purchase-item"
-            
+
             if (validInput) {
               currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase;
             }
@@ -157,13 +166,13 @@ function getNews() {
             var linkDiv = document.createElement("div")
             linkDiv.classList = "news-card"
 
-             var linkContainer = document.querySelector(".link-container")
-             linkContainer.appendChild(linkDiv)
-             linkDiv.appendChild(articleImgEl)
-             $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
-            
+            var linkContainer = document.querySelector(".link-container")
+            linkContainer.appendChild(linkDiv)
+            linkDiv.appendChild(articleImgEl)
+            $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
 
-            
+
+
           }
         })
     })
