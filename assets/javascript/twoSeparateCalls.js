@@ -94,8 +94,8 @@ function getTop5() {
             currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
 
           }
+        })
     })
-})
 }
 // getTop5()
 
@@ -151,25 +151,25 @@ function getNews() {
             // articleImgEl.style.width = '10em'
             // articleImg.setAttribute("src", articleImg)
 
-           var linkDiv = document.createElement("div")
-           linkDiv.classList = "news-card"
- 
-             var linkContainer = document.querySelector(".link-container")
-             linkContainer.appendChild(linkDiv)
+            var linkDiv = document.createElement("div")
+            linkDiv.classList = "news-card"
 
-             linkDiv.appendChild(articleImgEl)
+            var linkContainer = document.querySelector(".link-container")
+            linkContainer.appendChild(linkDiv)
+
+            linkDiv.appendChild(articleImgEl)
 
 
-             $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
+            $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
             //  $(".link-container").append(`${articleImgSrc}`)
           }
         })
     })
 }
 
- setTimeout(function () { 
-   getNews()
- }, 2000)
+setTimeout(function () {
+  getNews()
+}, 2000)
 
 
 
