@@ -30,10 +30,10 @@ currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
 
 /*************  FIRST FETCH CALL: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER ************/
-function getTop5(InputValue) {
+function getTop5() {
   var apiUrl = "https://coinlib.io/api/v1/coinlist?key=c06378ec9fc1b93c&page=1&pref=USD&order=rank_asc";
 
-  const validInput = isValidInput(InputValue);
+  // const validInput = isValidInput(InputValue);
 
   fetch(apiUrl)
     .then(function (response) {
@@ -100,7 +100,7 @@ function getTop5(InputValue) {
         })
     })
 }
-
+getTop5()
 
 
 //    *******INPUT VALIDAITON    ****
@@ -213,14 +213,14 @@ close.addEventListener("click", function () {
 //START LISTENER :  Start App Fetch and Open Modal
 
 // <!--Modal Pop-Up control-->
-var popUp = document.querySelector("#myBtn");
-var coinDashboard = document.querySelector("#dashboard");
+// var popUp = document.querySelector("#myBtn");
+// var coinDashboard = document.querySelector("#dashboard");
 
-popUp.addEventListener("click", function (event) {
-  event.preventDefault();
-  var InputValue = document.querySelector(".input-value").value
-  getTop5(InputValue)
-})
+// popUp.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   var InputValue = document.querySelector(".input-value").value
+//   getTop5(InputValue)
+// })
 
 
 
