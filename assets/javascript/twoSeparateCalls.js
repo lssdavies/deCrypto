@@ -4,211 +4,145 @@ var today = ""
 var price = ""
 
 //*   VARIABLES  broken out for creating Coin Cards 
-//We are calling data for the top 6 coins
-//Each card will have:
+//We are calling data for the top 5 coins; Each card will have:
 //Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
 var currentCoinDataCard = document.createElement("div")
-    //card
+//card
 var dashboard = document.querySelector(".card-container")
 dashboard.classList = "card-container";
 dashboard.appendChild(currentCoinDataCard)
-    //card-body
+//card-body
 var currentCoinDataCardBody = document.createElement("div")
 dashboard.appendChild(currentCoinDataCardBody)
-    //Title
+//Title
 var currentCoinDataTitle = document.createElement("h2")
 currentCoinDataTitle.classList = "card-title"
 currentCoinDataTitle.innerHTML = "Top 5 Coins"
 currentCoinDataCardBody.appendChild(currentCoinDataTitle)
-    //Ul
+//Ul
 var currentCoinDataListUl = document.createElement("ul")
 currentCoinDataListUl.classList = "list-group coin-list"
 currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
-//News DOM Creation
-// News Container
-// var news = document.querySelector(".news")
-//     //card
-// var newsCard = document.createElement("div")
-// news.appendChild(newsCard)
 
-//newsCard.appendChild(newsCard)
-// //Title
-// var newsCardTitle = document.createElement("h2")
-// newsCardTitle.classList = "card-title news-title"
-// newsCardTitle.innerHTML = "Latest News"
-// newsCard.appendChild(newsCardTitle)
-// // New List
-// var newsCard = document.querySelector(".card-container")
-// var newsListUl = document.createElement("ul")
-// newsListUl.classList = "list-group news-list"
-// newsCard.appendChild(newsListUl)
+//First Fetch Call: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER
+var getTop5 = function () {
+  var apiUrl = "https://coinlib.io/api/v1/coinlist?key=c06378ec9fc1b93c&page=1&pref=USD&order=rank_asc";
 
-/*****    Input Form Handling*****/
-// let formSubmitHandler = function (event) {
-//   event.preventDefault();
-//   //confirm desired event
-//   // console.log(event);
+  var InputValue = document.querySelector("input").value
 
-//   //get city name from input field el
-//   // let cityName = cityNameInputEl.value.replace(/\s/g, '');
-//   let dollars = dollarsInputEl.value;
+  fetch(apiUrl)
+    .then(function (response) {
+      return response.json()
+        .then(function (data) {
+          console.log(data);
 
-//   //console cityName later will be displayed in main card
-//   // console.log(cityName);
-//   if (dollars) {
-//     //get weather data using cityName var in getWeather function
-//     console.log(dollars);
-//     //clear input field
-//     dollarsInputEl.value = "";
-//     // forecastCard.innerHTML = ""
-//   } else {
-//     //update to modal later
-//     alert("Please enter a valid US City name.");
-//   };
-//   console.log(dollars);
-//   return dollars;
-// }
+          for (var i = 0; i <= 2; i++) {
+            //define Var for cards
+            var name = data.coins[i].name
+            var symbol = data.coins[i].symbol
+            var rank = data.coins[i].rank
+            var market = data.coins[i].market_cap
+            var percentChange24 = data.coins[i].delta_24h
+            var priceRound = (Math.round(data.coins[i].price * 100) / 100).toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            });
+            var purchase = 100 / data.coins[i].price
 
 
-//First Fetch Call: gets the majority of our data points 
-var getTop5 = function() {
-    var apiUrl = "https://coinlib.io/api/v1/coinlist?key=c06378ec9fc1b93c&page=1&pref=USD&order=rank_asc";
+            // Rank
+            var currentCoinRankLi = document.createElement("li")
+            currentCoinRankLi.classList = "list-group-item rank-item"
+            currentCoinRankLi.textContent = "Rank: " + rank
+            currentCoinDataListUl.appendChild(currentCoinRankLi)
+            // ID - Name - 
+            var currentCoinNameLi = document.createElement("li")
+            currentCoinNameLi.classList = "list-group-item name-item"
+            currentCoinNameLi.textContent = "Name: " + name
+            currentCoinDataListUl.appendChild(currentCoinNameLi)
+            // Symbol
+            var currentCoinSymbolLi = document.createElement("li")
+            currentCoinSymbolLi.classList = "list-group-item symbol-item"
+            currentCoinSymbolLi.textContent = "Trading Symbol: " + symbol
+            currentCoinDataListUl.appendChild(currentCoinSymbolLi)
+            //Price
+            var currentCoinPriceLi = document.createElement("li")
+            currentCoinPriceLi.classList = "list-group-item price-item"
+            currentCoinPriceLi.textContent = "Price (USD): " + priceRound
+            currentCoinDataListUl.appendChild(currentCoinPriceLi)
+            //Market Cap
+            var currentCoinMarketLi = document.createElement("li")
+            currentCoinMarketLi.classList = "list-group-item market-item"
+            currentCoinMarketLi.textContent = "Market Cap USD: " + market
+            currentCoinDataListUl.appendChild(currentCoinMarketLi)
+            //percent Change
+            var coinPercentChangeLi = document.createElement("li")
+            coinPercentChangeLi.classList = "list-group-item market-item"
+            coinPercentChangeLi.textContent = "Percent Change(24 hr): " + percentChange24
+            currentCoinDataListUl.appendChild(coinPercentChangeLi)
+            //purchase
+            var currentCoinPurchaseLi = document.createElement("li")
+            currentCoinPurchaseLi.classList = "list-group-item purchase-item"
+            currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase
+            currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
 
-    // var apiUrl = "https://coinlib.io/api/v1/coin?key=c06378ec9fc1b93c"
-    // console.log(data)
+            calculate(InputValue, data.coins[i].price)
 
-    fetch(apiUrl)
-        .then(function(response) {
-            return response.json()
-                .then(function(data) {
-                    console.log(data);
-
-                    for (var i = 0; i <= 2; i++) {
-                        console.log(data.coins[i].name)
-                        console.log(data.coins[i].symbol);
-                        console.log(data.coins[i].rank);
-                        // console.log(data.coins[i].market_cap);
-                        // var price = data.coins[i].price
-
-                        //   console.log(data.data[i].changePercent24Hr);
-
-                        //define Var for cards
-                        var name = data.coins[i].name
-                        var symbol = data.coins[i].symbol
-                        var rank = data.coins[i].rank
-                        var priceRound = (Math.round(data.coins[i].price * 100) / 100).toLocaleString('en-US', {
-                            style: 'currency',
-                            currency: 'USD',
-                        });
-                        // var purchase = (Math.round((100 / data.coins[i].price) * 10) / 10)
-                        var purchase = 100 / data.coins[i].price
-                            // Rank
-                        var currentCoinRankLi = document.createElement("li")
-                        currentCoinRankLi.classList = "list-group-item rank-item"
-                        currentCoinRankLi.textContent = "Rank: " + rank
-                        currentCoinDataListUl.appendChild(currentCoinRankLi)
-                            // ID - Name - 
-                        var currentCoinNameLi = document.createElement("li")
-                        currentCoinNameLi.classList = "list-group-item name-item"
-                        currentCoinNameLi.textContent = "Name: " + name
-                        currentCoinDataListUl.appendChild(currentCoinNameLi)
-                            // Symbol
-                        var currentCoinSymbolLi = document.createElement("li")
-                        currentCoinSymbolLi.classList = "list-group-item symbol-item"
-                        currentCoinSymbolLi.textContent = "Trading Symbol: " + symbol
-                        currentCoinDataListUl.appendChild(currentCoinSymbolLi)
-                            //Price
-                        var currentCoinPriceLi = document.createElement("li")
-                        currentCoinPriceLi.classList = "list-group-item price-item"
-                        currentCoinPriceLi.textContent = "Price (USD): " + priceRound
-                        currentCoinDataListUl.appendChild(currentCoinPriceLi)
-
-
-                        //purchase
-                        var currentCoinPurchaseLi = document.createElement("li")
-                        currentCoinPurchaseLi.classList = "list-group-item purchase-item"
-                        currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase
-                        currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
-
-                   
-                        calculate(data.coins[i].price)
-
-                        // setTimeout(function () {
-                        //   calculate(price)
-                        // }, 2000)
-
-
-                    };
-
-                })
+            // setTimeout(function () {
+            //   calculate(price)
+            // }, 2000)
+          };
         })
+    })
 }
 
 //input function card - PURCHASE POWER
-var calculate = function(price) {
-    purchase = "100" / price;
-    console.log(price)
+var calculate = function (InputValue, phone) {
+  purchase = InputValue / phone;
+  console.log(price)
 }
 
+// // //Second Fetch Call: GETS NEWS FOR PAGE
+var getNews = function () {
+
+  // var newsUrl = "https://min-api.cryptocompare.com/data/news/feeds"
+  var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
+
+  console.log(newsUrl);
+
+  fetch(newsUrl)
+    .then(function (response) {
+      response.json()
+        .then(function (data) {
+          //console.log as check then display in main card
+          console.log(data);
+          // console.log(data.Data[i].url)
+
+          for (var i = 0; i < 8; i++) {
+            console.log(data.Data[i].title)
+            console.log(data.Data[i].url)
+            // console.log(data.coins[i].name)
+
+            var articleTitle = data.Data[i].title
+            var articleLink = data.Data[i].url
+
+            var articleImgEl = document.createElement("img")
+            var articleImgSrc = data.Data[i].source_info.img
+            articleImgEl.src = articleImgSrc
+            articleImgEl.style.width = '10em'
+            // articleImg.setAttribute("src", articleImg)
+            var linkContainer = document.querySelector(".link-container")
+            linkContainer.appendChild(articleImgEl)
 
 
-// // //Second Fetch Call: gets us the hi & low data pts
-var getNews = function() {
-
-    // var newsUrl = "https://min-api.cryptocompare.com/data/news/feeds"
-    var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
-
-    console.log(newsUrl);
-
-
-
-    fetch(newsUrl)
-        .then(function(response) {
-            response.json()
-                .then(function(data) {
-                    //console.log as check then display in main card
-                    console.log(data);
-                    // console.log(data.Data[i].url)
-
-                    // for (var i = 0; i < 4; i++) {
-                        console.log(data.Data[0].title)
-                        console.log(data.Data[0].url)
-                            // console.log(data.coins[i].name)
-
-                        var articleTitle = data.Data[0].title
-                        var articleLink = data.Data[0].url
-
-                        $(".link-container").append(`<a href="${articleLink}">${articleTitle}</a>`)
-
-                        // var articleATag = document.createElement("a");
-                        // articleATag.setAttribute("href", articleLink);
-                        // articleTitle.innerHTML = articleTitle
-                        // //add new link to the DOM
-                        // newsCard.appendChild(articleTitle);
-
-
-
-                        // var link = document.createElement("a").href = articleLink
-                        // newsCardP.appendChild(link)
-
-                        // <h3 class="card-title article-name" id="${articleTitle}"><a href="${articleLink}"></a><h3>
-
-                    // }
-
-                })
+            $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
+            // $(".link-container").append(`${articleImgSrc}`)
+          }
         })
+    })
 }
-
-
-
-// $("#myBtn").click(function () {
-//   //   alert( "Handler for .click() called." );
-//   console.log("testBtn")
-//   getTop5()
-// });
-
-// getNews()
+getNews()
 
 
 //Modal Pop-Up control
@@ -260,31 +194,20 @@ close.addEventListener("click", function() {
 });
 
 
+//START LISTENER :  Start App Fetch and Open Modal
+// <!--Modal Pop-Up control-->
+var popUp = document.querySelector("#myBtn");
+var modalContainer = document.querySelector("#modalContainer");
+var close = document.querySelector("#closeBtn");
 
+popUp.addEventListener("click", function () {
+  modalContainer.classList = "modalContainer open";
+  getTop5()
 
+});
 
-
-
-
-//LISTENER :  Start App Fetch and Open Modal
-// var popUp = document.querySelector("#myBtn");
-// var modalContainer = document.querySelector("#modalContainer");
-
-// var close = document.querySelector("#closeBtn");
-// popUp.addEventListener("click", function() {
-//  modalContainer.classList= "modalContainer open";
-//  getTop5()
-// });
-
-// close.addEventListener("click", function() {
-//  modalContainer.classList = "modalContainer";
-// });
-
-// userFormEl.addEventListener("submit", formSubmitHandler);
-
-
-
-
+close.addEventListener("click", function () {
+  modalContainer.classList = "modalContainer";
 
 
 
@@ -297,26 +220,36 @@ close.addEventListener("click", function() {
 
 //  *************************     Items for possible use later ****************************
 
+//News DOM Creation
+// News Container
+// var news = document.querySelector(".news")
+//     //card
+// var newsCard = document.createElement("div")
+// news.appendChild(newsCard)
 
-//   // //    var today = data.data.timestamp
-//   // //     var date = new Date(today * 1000);
-//   // //        var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
-//   // //         console.log(dateCoin);
-//   //this Var will need to use in 2nd Fetch API
-//   //hiLowCoinArr defined globally
-//   // (2nd fetch gets us the hi & lo data pts)
-//   hiLowCoinArr.push(data.data[i].symbol)
-//   console.log(hiLowCoinArr);
+//newsCard.appendChild(newsCard)
+// //Title
+// var newsCardTitle = document.createElement("h2")
+// newsCardTitle.classList = "card-title news-title"
+// newsCardTitle.innerHTML = "Latest News"
+// newsCard.appendChild(newsCardTitle)
+// // New List
+// var newsCard = document.querySelector(".card-container")
+// var newsListUl = document.createElement("ul")
+// newsListUl.classList = "list-group news-list"
+// newsCard.appendChild(newsListUl)
 
+  // //    var today = data.data.timestamp
+  // //     var date = new Date(today * 1000);
+  // //        var dateCoin = date.textContent = (moment().format("MMMM Do YYYY, h:mm:ss a"));
+  // //         console.log(dateCoin);
+  //this Var will need to use in 2nd Fetch API
+  //hiLowCoinArr defined globally
+  // (2nd fetch gets us the hi & lo data pts)
+ // hiLowCoinArr.push(data.data[i].symbol)
+ // console.log(hiLowCoinArr);
 
-//   //   //Market Cap
-//   //   var currentCoinMarketLi = document.createElement("li")
-//   //   currentCoinMarketLi.classList = "list-group-item market-item"
-//   //   currentCoinMarketLi.textContent = "Market Cap USD: " + market
-//   //   currentCoinDataListUl.appendChild(currentCoinMarketLi)
-
-
-//   //var for inserting/calling 2nd Fetch Call (hiLowCall)
+  //var for inserting/calling 2nd Fetch Call (hiLowCall)
 //   var symbolsForApi = hiLowCoinArr.join(" ").replace(/\s/g, ',');
 //   console.log(symbolsForApi)
 
@@ -328,3 +261,14 @@ close.addEventListener("click", function() {
 // }
 //         }
 //     })
+
+/*  for testing: 
+// $("#myBtn").click(function () {
+//   //   alert( "Handler for .click() called." );
+//   console.log("testBtn")
+//   getTop5()
+// });
+// getNews()*/
+
+//possible code  for dom creation
+//https://medium.com/@tforward/get-html-to-the-dom-fast-with-js-template-literals-insertadjacenthtml-24b8aa4e8807
