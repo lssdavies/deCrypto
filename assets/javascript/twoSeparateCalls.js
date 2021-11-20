@@ -29,7 +29,7 @@ currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 var getTop5 = function () {
   var apiUrl = "https://coinlib.io/api/v1/coinlist?key=c06378ec9fc1b93c&page=1&pref=USD&order=rank_asc";
 
-  var InputValue = document.querySelector("input").value
+  // var InputValue = document.querySelector("input").value
 
   fetch(apiUrl)
     .then(function (response) {
@@ -37,7 +37,7 @@ var getTop5 = function () {
         .then(function (data) {
           console.log(data);
 
-          for (var i = 0; i <= 2; i++) {
+          for (var i = 0; i <= 4; i++) {
             //define Var for cards
             var name = data.coins[i].name
             var symbol = data.coins[i].symbol
@@ -87,7 +87,7 @@ var getTop5 = function () {
             currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase
             currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
 
-            calculate(InputValue, data.coins[i].price)
+            // calculate(InputValue, data.coins[i].price)
 
             // setTimeout(function () {
             //   calculate(price)
@@ -145,7 +145,7 @@ var getNews = function () {
 getNews()
 
 
-//Modal Pop-Up control
+/************* Modal 1:  ABOUT  Pop-Up control ************/
 var aboutPopUp = document.querySelector("#aboutBtn");
 var aboutModalContainer = document.querySelector("#modalContainer1");
 var close = document.querySelector("#closeBtn");
@@ -155,13 +155,12 @@ aboutPopUp.addEventListener("click", function() {
    });
    
 close.addEventListener("click", function() {
-
     aboutModalContainer.classList = "modalContainer";
 
 });
 
 
-// Modal FAQ-PopUp control
+/************* Modal 2:  FAQ  Pop-Up control ************/
 var faqPopUp = document.querySelector("#faqBtn");
 var faqModalContainer = document.querySelector("#modalContainer2");
 var close = document.querySelector("#closeBtn2");
@@ -170,14 +169,12 @@ faqPopUp.addEventListener("click", function() {
     faqModalContainer.classList = "modalContainer open";
    });
 
-
 close.addEventListener("click", function() {
-
     faqModalContainer.classList = "modalContainer";
-
 });
 
-// Modal Glossary-PopUp control
+
+/************* Modal 3: GLOASSARY  Pop-Up control ************/
 var glossPopUp = document.querySelector("#glossBtn");
 var glossModalContainer = document.querySelector("#modalContainer3");
 var close = document.querySelector("#closeBtn3");
@@ -186,9 +183,7 @@ glossPopUp.addEventListener("click", function() {
         glossModalContainer.classList = "modalContainer open";
    });
 
-
 close.addEventListener("click", function() {
-
     glossModalContainer.classList = "modalContainer";
 
 });
@@ -197,18 +192,14 @@ close.addEventListener("click", function() {
 //START LISTENER :  Start App Fetch and Open Modal
 // <!--Modal Pop-Up control-->
 var popUp = document.querySelector("#myBtn");
-var modalContainer = document.querySelector("#modalContainer");
-var close = document.querySelector("#closeBtn");
+var coinDashboard = document.querySelector("#dashboard");
+
 
 popUp.addEventListener("click", function () {
-  modalContainer.classList = "modalContainer open";
+  console.log('clicked')
   getTop5()
 
 });
-
-close.addEventListener("click", function () {
-  modalContainer.classList = "modalContainer";
-
 
 
 
