@@ -93,14 +93,11 @@ function getTop5() {
             }
             currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
 
-            // setTimeout(function () {
-            //   calculate(price)
-            // }, 2000)
-          };
-        })
+          }
     })
+})
 }
-getTop5()
+// getTop5()
 
 
 //    *******INPUT VALIDAITON    ****
@@ -122,14 +119,14 @@ var isValidInput = function (InputValue) {
 
 
 //  we would use  - data.data[i].priceUsd - from the first call for this
-  var calculate = function (InputValue, price) {
-    cryptoAmount = InputValue / price;
-    // return cryptoAmount.toFixed(2);
-    return cryptoAmount;
-  };
+var calculate = function (InputValue, price) {
+  cryptoAmount = InputValue / price;
+  // return cryptoAmount.toFixed(2);
+  return cryptoAmount;
+};
 
 
-  /************* SECOND FETCH CALL:  Fetch News ************/
+/************* SECOND FETCH CALL:  Fetch News ************/
 function getNews() {
 
   var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
@@ -151,19 +148,29 @@ function getNews() {
             var articleImgEl = document.createElement("img")
             var articleImgSrc = data.Data[i].source_info.img
             articleImgEl.src = articleImgSrc
-            articleImgEl.style.width = '10em'
+            // articleImgEl.style.width = '10em'
             // articleImg.setAttribute("src", articleImg)
-            var linkContainer = document.querySelector(".link-container")
-            linkContainer.appendChild(articleImgEl)
+
+           var linkDiv = document.createElement("div")
+           linkDiv.classList = "news-card"
+ 
+             var linkContainer = document.querySelector(".link-container")
+             linkContainer.appendChild(linkDiv)
+
+             linkDiv.appendChild(articleImgEl)
 
 
-            $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
-            // $(".link-container").append(`${articleImgSrc}`)
+             $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
+            //  $(".link-container").append(`${articleImgSrc}`)
           }
         })
     })
 }
-getNews()
+
+ setTimeout(function () { 
+   getNews()
+ }, 2000)
+
 
 
 
@@ -213,14 +220,14 @@ close.addEventListener("click", function () {
 //START LISTENER :  Start App Fetch and Open Modal
 
 // <!--Modal Pop-Up control-->
-// var popUp = document.querySelector("#myBtn");
-// var coinDashboard = document.querySelector("#dashboard");
+var popUp = document.querySelector("#myBtn");
+var coinDashboard = document.querySelector("#dashboard");
 
-// popUp.addEventListener("click", function (event) {
-//   event.preventDefault();
-//   var InputValue = document.querySelector(".input-value").value
-//   getTop5(InputValue)
-// })
+popUp.addEventListener("click", function (event) {
+  event.preventDefault();
+  var InputValue = document.querySelector(".input-value").value
+  getTop5(InputValue)
+})
 
 
 
