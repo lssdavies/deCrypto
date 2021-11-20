@@ -151,14 +151,16 @@ function getNews() {
             var articleImgEl = document.createElement("img")
             var articleImgSrc = data.Data[i].source_info.img
             articleImgEl.src = articleImgSrc
-            articleImgEl.style.width = '10em'
+            //articleImgEl.style.width = '10em'
             // articleImg.setAttribute("src", articleImg)
-            var linkContainer = document.querySelector(".link-container")
-            linkContainer.appendChild(articleImgEl)
+            var linkDiv = document.createElement("div")
+            linkDiv.classList = "news-card"
 
-
-            $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
-            // $(".link-container").append(`${articleImgSrc}`)
+             var linkContainer = document.querySelector(".link-container")
+             linkContainer.appendChild(linkDiv)
+             linkDiv.appendChild(articleImgEl)
+             $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
+            
           }
         })
     })
