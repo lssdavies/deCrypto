@@ -2,6 +2,7 @@ var coinLibKey = "c06378ec9fc1b93c"
 var symbols = ""
 var today = ""
 var price = ""
+var iputValue = document.querySelector(".input-form")
 
 //*   VARIABLES  broken out for creating Coin Cards 
 //We are calling data for the top 5 coins; Each card will have:
@@ -98,8 +99,8 @@ var getTop5 = function () {
 }
 
 //input function card - PURCHASE POWER
-var calculate = function (InputValue, phone) {
-  purchase = InputValue / phone;
+var calculate = function (InputValue, price) {
+  purchase = InputValue / price;
   console.log(price)
 }
 
@@ -135,7 +136,6 @@ var getNews = function () {
             var linkContainer = document.querySelector(".link-container")
             linkContainer.appendChild(articleImgEl)
 
-
             $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
             // $(".link-container").append(`${articleImgSrc}`)
           }
@@ -146,25 +146,30 @@ getNews()
 
 //START LISTENER :  Start App Fetch and Open Modal
 // <!--Modal Pop-Up control-->
-var popUp = document.querySelector("#myBtn");
-var modalContainer = document.querySelector("#modalContainer");
-var close = document.querySelector("#closeBtn");
+// var popUp = document.querySelector("#myBtn");
+// var modalContainer = document.querySelector("#modalContainer");
+// var close = document.querySelector("#closeBtn");
 
-popUp.addEventListener("click", function () {
-  modalContainer.classList = "modalContainer open";
-  getTop5()
+// popUp.addEventListener("click", function () {
+//   modalContainer.classList = "modalContainer open";
+//   getTop5()
 
-});
-close.addEventListener("click", function () {
-  modalContainer.classList = "modalContainer";
+// });
+// close.addEventListener("click", function () {
+//   modalContainer.classList = "modalContainer";
 
-})
-
-
+// })
 
 
 
+var modalStart = function(event) {
+  event.preventDefault()
 
+  modalContainer.classList = "modalContainer open"
+
+}
+
+inputValue.addEventListener("submit", modalStart)
 
 
 //  *************************     Items for possible use later ****************************
