@@ -2,6 +2,7 @@ var coinLibKey = "c06378ec9fc1b93c"
 var symbols = ""
 var today = ""
 var price = ""
+var InputValue = document.querySelector("input").value
 
 
 //*   VARIABLES  broken out for creating Coin Cards 
@@ -26,11 +27,12 @@ currentCoinDataListUl.classList = "list-group coin-list"
 currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
 
+
+
 /*************  FIRST FETCH CALL: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER ************/
-var getTop5 = function () {
+function getTop5() {
   var apiUrl = "https://coinlib.io/api/v1/coinlist?key=c06378ec9fc1b93c&page=1&pref=USD&order=rank_asc";
 
-  // var InputValue = document.querySelector("input").value
 
   fetch(apiUrl)
     .then(function (response) {
@@ -98,6 +100,21 @@ var getTop5 = function () {
     })
 }
 
+
+
+//    *******INPUT VALIDAITON    ****
+var inputValidation = function (InputValue) {
+  if (InputValue == null || InputValue == "" || InputValue == "0") {
+    console.log("null")
+    return null;
+  } else {
+    if (isNaN(InputValue)) {
+      window.alert("Please Enter a Correct Number");
+    }
+  }
+}
+    // } else {
+    // }
 /********** FETCH CALLS WITH VALIDATION   *********/
 // input function card - PURCHASE POWER
 // var calculate = function (InputValue, phone) {
@@ -302,12 +319,10 @@ var getTop5 = function () {
 
 
 /************* SECOND FETCH CALL:  Fetch News ************/
-var getNews = function () {
+function getNews() {
 
-  // var newsUrl = "https://min-api.cryptocompare.com/data/news/feeds"
   var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
 
-  console.log(newsUrl);
 
   fetch(newsUrl)
     .then(function (response) {
@@ -318,9 +333,6 @@ var getNews = function () {
           // console.log(data.Data[i].url)
 
           for (var i = 0; i < 8; i++) {
-            console.log(data.Data[i].title)
-            console.log(data.Data[i].url)
-            // console.log(data.coins[i].name)
 
             var articleTitle = data.Data[i].title
             var articleLink = data.Data[i].url
@@ -345,7 +357,7 @@ getNews()
 
 
 
-
+/**********NAV BAR MODAL POP UPS***************/
 /************* Modal 1:  ABOUT  Pop-Up control ************/
 var aboutPopUp = document.querySelector("#aboutBtn");
 var aboutModalContainer = document.querySelector("#modalContainer1");
@@ -354,7 +366,6 @@ var close = document.querySelector("#closeBtn");
 aboutPopUp.addEventListener("click", function () {
   aboutModalContainer.classList = "modalContainer open";
 });
-
 close.addEventListener("click", function () {
   aboutModalContainer.classList = "modalContainer";
 });
@@ -368,7 +379,6 @@ var close = document.querySelector("#closeBtn2");
 faqPopUp.addEventListener("click", function () {
   faqModalContainer.classList = "modalContainer open";
 });
-
 close.addEventListener("click", function () {
   faqModalContainer.classList = "modalContainer";
 });
@@ -382,7 +392,6 @@ var close = document.querySelector("#closeBtn3");
 glossPopUp.addEventListener("click", function () {
   glossModalContainer.classList = "modalContainer open";
 });
-
 close.addEventListener("click", function () {
   glossModalContainer.classList = "modalContainer";
 });
@@ -398,26 +407,13 @@ close.addEventListener("click", function () {
 var popUp = document.querySelector("#myBtn");
 var coinDashboard = document.querySelector("#dashboard");
 
-popUp.addEventListener("click", function () {
-  console.log('clicked')
+popUp.addEventListener("click", function (event) {
+  event.preventDefault();
+  var InputValue = document.querySelector(".input-value").value
+
+  console.log(InputValue)
   getTop5()
 })
-
-/*********   test for form handlling ***********/
-//     inputForm.addEventListener("submit", function(event) {
-//         event.preventDefault();
-//         console.log("click");
-//         //modalContainer.classList = "modalContainer open";
-//         // getTop5()
-//     });
-//    }
-
-// $("#myBtn").submit(function () {
-//   console.log("clicked")
-//   //getTop5()
-// });
-
-
 
 
 
