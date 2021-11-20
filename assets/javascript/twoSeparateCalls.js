@@ -2,8 +2,8 @@ var coinLibKey = "c06378ec9fc1b93c"
 var symbols = ""
 var today = ""
 var price = ""
+var InputValue = document.querySelector(".input-form").value
     //pull and validation input
-var InputValue = document.querySelector("input").value;
 var inputValidation = function(InputValue) {
         if (InputValue == null || InputValue == "" || InputValue == "0") {
             return null;
@@ -121,7 +121,7 @@ var inputValidation = function(InputValue) {
                                         var market = data.coins[i].market_cap
                                         var percentChange24 = data.coins[i].delta_24h
 
-                                        var purchasePower = calculate(input, parseFlouat(priceRound))
+                                        var purchasePower = calculate(inputV, parseFloat(priceRound))
 
                                         var priceRound = (Math.round(data.coins[i].price * 100) / 100).toLocaleString('en-US', {
                                             style: 'currency',
@@ -212,23 +212,30 @@ var inputValidation = function(InputValue) {
 
         //START LISTENER :  Start App Fetch and Open Modal
         // <!--Modal Pop-Up control-->
-        var popUp = document.querySelector("#myBtn");
-        var modalContainer = document.querySelector("#modalContainer");
+        //var popUp = document.querySelector("#myBtn");
+        // var modalContainer = document.querySelector("#modalContainer");
         var close = document.querySelector("#closeBtn");
 
-        popUp.addEventListener("click", function() {
-            modalContainer.classList = "modalContainer open";
-            getTop5()
 
+        //     inputForm.addEventListener("submit", function(event) {
+        //         event.preventDefault();
+        //         console.log("click");
+        //         //modalContainer.classList = "modalContainer open";
+        //         // getTop5()
+
+        //     });
+        // }
+
+        // // close.addEventListener("click", function() {
+        // //     modalContainer.classList = "modalContainer";
+
+        // // })
+
+
+        $("#myBtn").submit(function() {
+            console.log("clicked")
+                //getTop5()
         });
-
-        close.addEventListener("click", function() {
-            modalContainer.classList = "modalContainer";
-
-        })
-
-
-
 
 
 
