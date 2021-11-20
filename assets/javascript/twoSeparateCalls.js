@@ -4,7 +4,6 @@ var today = ""
 var price = ""
 
 
-
 //*   VARIABLES  broken out for creating Coin Cards 
 //We are calling data for the top 5 coins; Each card will have:
 //Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
@@ -25,7 +24,6 @@ currentCoinDataCardBody.appendChild(currentCoinDataTitle)
 var currentCoinDataListUl = document.createElement("ul")
 currentCoinDataListUl.classList = "list-group coin-list"
 currentCoinDataCardBody.appendChild(currentCoinDataListUl)
-
 
 
 
@@ -93,6 +91,7 @@ function getTop5(InputValue) {
             //purchase
             var currentCoinPurchaseLi = document.createElement("li")
             currentCoinPurchaseLi.classList = "list-group-item purchase-item"
+            
             if (validInput) {
               currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase;
             }
@@ -162,7 +161,6 @@ function getNews() {
             linkContainer.appendChild(linkDiv)
 
             linkDiv.appendChild(articleImgEl)
-
 
             $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
             //  $(".link-container").append(`${articleImgSrc}`)
