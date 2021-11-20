@@ -2,7 +2,8 @@ var coinLibKey = "c06378ec9fc1b93c"
 var symbols = ""
 var today = ""
 var price = ""
-var iputValue = document.querySelector(".input-form")
+// 
+
 
 //*   VARIABLES  broken out for creating Coin Cards 
 //We are calling data for the top 5 coins; Each card will have:
@@ -146,30 +147,30 @@ getNews()
 
 //START LISTENER :  Start App Fetch and Open Modal
 // <!--Modal Pop-Up control-->
-// var popUp = document.querySelector("#myBtn");
-// var modalContainer = document.querySelector("#modalContainer");
-// var close = document.querySelector("#closeBtn");
+var popUp = document.querySelector("#myBtn");
+var modalContainer = document.querySelector("#modalContainer");
+var close = document.querySelector("#closeBtn");
 
-// popUp.addEventListener("click", function () {
-//   modalContainer.classList = "modalContainer open";
-//   getTop5()
+popUp.addEventListener("click", function () {
+  modalContainer.classList = "modalContainer open";
+  getTop5()
 
-// });
-// close.addEventListener("click", function () {
-//   modalContainer.classList = "modalContainer";
+});
+close.addEventListener("click", function () {
+  modalContainer.classList = "modalContainer";
 
-// })
+})
 
 
 
-var modalStart = function(event) {
-  event.preventDefault()
+// var modalStart = function(event) {
+//   event.preventDefault()
 
-  modalContainer.classList = "modalContainer open"
+//   modalContainer.classList = "modalContainer open"
 
-}
+// }
 
-inputValue.addEventListener("submit", modalStart)
+// inputValue.addEventListener("submit", modalStart)
 
 
 //  *************************     Items for possible use later ****************************
