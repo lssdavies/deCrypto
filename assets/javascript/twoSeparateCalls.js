@@ -155,7 +155,6 @@ popUp.addEventListener("click", function () {
   getTop5()
 
 });
-
 close.addEventListener("click", function () {
   modalContainer.classList = "modalContainer";
 
