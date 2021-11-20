@@ -2,11 +2,8 @@ var coinLibKey = "c06378ec9fc1b93c"
 var symbols = ""
 var today = ""
 var price = ""
-
-
+var InputValue = document.querySelector(".input-form").value
 //pull and validation input
-var InputValue = document.querySelector("input").value;
-
 var inputValidation = function (InputValue) {
   if (InputValue == null || InputValue == "" || InputValue == "0") {
     return null;
@@ -14,15 +11,59 @@ var inputValidation = function (InputValue) {
     if (isNaN(InputValue)) {
       window.alert("Please Enter a Correct Number");
     } else {
-      if (parseFloat(InputValue) < 0) {
-        window.alert("Please Enter a Positive Number");
-      } else {
-        return parseFloat(InputValue);
+      for (var i = 0; i <= 2; i++) {
+        //define Var for cards
+        var name = data.coins[i].name
+        var symbol = data.coins[i].symbol
+        var rank = data.coins[i].rank
+        var market = data.coins[i].market_cap
+        var percentChange24 = data.coins[i].delta_24h
+
+        var purchasePower = calculate(input, parseFlouat(priceRound))
+
+        var priceRound = (Math.round(data.coins[i].price * 100) / 100).toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        });
+        // Rank
+        var currentCoinRankLi = document.createElement("li")
+        currentCoinRankLi.classList = "list-group-item rank-item"
+        currentCoinRankLi.textContent = "Rank: " + rank
+        currentCoinDataListUl.appendChild(currentCoinRankLi)
+        // ID - Name - 
+        var currentCoinNameLi = document.createElement("li")
+        currentCoinNameLi.classList = "list-group-item name-item"
+        currentCoinNameLi.textContent = "Name: " + name
+        currentCoinDataListUl.appendChild(currentCoinNameLi)
+        // Symbol
+        var currentCoinSymbolLi = document.createElement("li")
+        currentCoinSymbolLi.classList = "list-group-item symbol-item"
+        currentCoinSymbolLi.textContent = "Trading Symbol: " + symbol
+        currentCoinDataListUl.appendChild(currentCoinSymbolLi)
+        //Price
+        var currentCoinPriceLi = document.createElement("li")
+        currentCoinPriceLi.classList = "list-group-item price-item"
+        currentCoinPriceLi.textContent = "Price (USD): " + priceRound
+        currentCoinDataListUl.appendChild(currentCoinPriceLi)
+        //Market Cap
+        var currentCoinMarketLi = document.createElement("li")
+        currentCoinMarketLi.classList = "list-group-item market-item"
+        currentCoinMarketLi.textContent = "Market Cap USD: " + market
+        currentCoinDataListUl.appendChild(currentCoinMarketLi)
+        //percent Change
+        var coinPercentChangeLi = document.createElement("li")
+        coinPercentChangeLi.classList = "list-group-item market-item"
+        coinPercentChangeLi.textContent = "Percent Change(24 hr): " + percentChange24
+        currentCoinDataListUl.appendChild(coinPercentChangeLi)
+        //purchase
+        var currentCoinPurchaseLi = document.createElement("li")
+        currentCoinPurchaseLi.classList = "list-group-item purchase-item"
+        currentCoinPurchaseLi.textContent = "Purchase Power: " + purchasePower
+        currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
+
       }
     }
   };
-}
-
   //Math
 
   //we would use  - data.data[i].priceUsd - from the first call for this
@@ -126,7 +167,7 @@ var inputValidation = function (InputValue) {
                 var market = data.coins[i].market_cap
                 var percentChange24 = data.coins[i].delta_24h
 
-                var purchasePower = calculate(input, parseFlouat(priceRound))
+                var purchasePower = calculate(inputV, parseFloat(priceRound))
 
                 var priceRound = (Math.round(data.coins[i].price * 100) / 100).toLocaleString('en-US', {
                   style: 'currency',
@@ -174,66 +215,75 @@ var inputValidation = function (InputValue) {
           })
       })
   }
-  // // //Second Fetch Call: GETS NEWS FOR PAGE
-  var getNews = function () {
+}
 
-    // var newsUrl = "https://min-api.cryptocompare.com/data/news/feeds"
-    var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
+// // //Second Fetch Call: GETS NEWS FOR PAGE
+var getNews = function () {
 
-    console.log(newsUrl);
+  // var newsUrl = "https://min-api.cryptocompare.com/data/news/feeds"
+  var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
 
-    fetch(newsUrl)
-      .then(function (response) {
-        response.json()
-          .then(function (data) {
-            //console.log as check then display in main card
-            console.log(data);
-            // console.log(data.Data[i].url)
+  console.log(newsUrl);
 
-            for (var i = 0; i < 8; i++) {
-              console.log(data.Data[i].title)
-              console.log(data.Data[i].url)
-              // console.log(data.coins[i].name)
+  fetch(newsUrl)
+    .then(function (response) {
+      response.json()
+        .then(function (data) {
+          //console.log as check then display in main card
+          console.log(data);
+          // console.log(data.Data[i].url)
 
-              var articleTitle = data.Data[i].title
-              var articleLink = data.Data[i].url
+          for (var i = 0; i < 8; i++) {
+            console.log(data.Data[i].title)
+            console.log(data.Data[i].url)
+            // console.log(data.coins[i].name)
 
-              var articleImgEl = document.createElement("img")
-              var articleImgSrc = data.Data[i].source_info.img
-              articleImgEl.src = articleImgSrc
-              articleImgEl.style.width = '10em'
-              // articleImg.setAttribute("src", articleImg)
-              var linkContainer = document.querySelector(".link-container")
-              linkContainer.appendChild(articleImgEl)
+            var articleTitle = data.Data[i].title
+            var articleLink = data.Data[i].url
 
-
-              $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
-              // $(".link-container").append(`${articleImgSrc}`)
-            }
-          })
-      })
-  }
-  getNews()
-
-  //START LISTENER :  Start App Fetch and Open Modal
-  // <!--Modal Pop-Up control-->
-  var popUp = document.querySelector("#myBtn");
-  var modalContainer = document.querySelector("#modalContainer");
-  var close = document.querySelector("#closeBtn");
-
-  popUp.addEventListener("click", function () {
-    modalContainer.classList = "modalContainer open";
-    getTop5()
-
-  });
-
-  close.addEventListener("click", function () {
-    modalContainer.classList = "modalContainer";
-
-  })
+            var articleImgEl = document.createElement("img")
+            var articleImgSrc = data.Data[i].source_info.img
+            articleImgEl.src = articleImgSrc
+            articleImgEl.style.width = '10em'
+            // articleImg.setAttribute("src", articleImg)
+            var linkContainer = document.querySelector(".link-container")
+            linkContainer.appendChild(articleImgEl)
 
 
+            $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
+            // $(".link-container").append(`${articleImgSrc}`)
+          }
+        })
+    })
+}
+getNews()
 
+//START LISTENER :  Start App Fetch and Open Modal
+// <!--Modal Pop-Up control-->
+//var popUp = document.querySelector("#myBtn");
+// var modalContainer = document.querySelector("#modalContainer");
+var close = document.querySelector("#closeBtn");
+
+
+//     inputForm.addEventListener("submit", function(event) {
+//         event.preventDefault();
+//         console.log("click");
+//         //modalContainer.classList = "modalContainer open";
+//         // getTop5()
+
+//     });
+// }
+
+// // close.addEventListener("click", function() {
+// //     modalContainer.classList = "modalContainer";
+
+// // })
+
+
+$("#myBtn").submit(function () {
+  console.log("clicked")
+  //getTop5()
+});
 
 
 
