@@ -106,3 +106,5 @@ Exchange-traded funds that invest in companies involved in aspects of developmen
 
 SAMPLE Disclaimer from  https://dataoverhaulers.com/purpose-point-of-cryptocurrency/
 Financial Disclaimer: This content is for educational purposes only and is not suitable as financial advice. Opinions and statements expressed herein are those of the author. They do not reflect the views of Data Overhaulers or its owner. Data Overhaulers is not a subsidiary of or owned by any ICOs, blockchain startups, or companies that advertise on our platform. Investors should do their due diligence and meet with a licensed financial advisor before making any investments in any ICOs, blockchain startups, or cryptocurrencies. Please be advised that your investments are at your own risk, and any losses you may incur are your responsibility.
+
+*All content and information on this website is for informational and educational purposes only. Always consult a professional in the area for your particular needs and circumstances prior to making any professional, legal, financial or tax related decisions.
