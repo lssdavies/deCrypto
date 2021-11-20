@@ -20,14 +20,13 @@
       </div>
       <div class="largerResNav">
         <nav>
-          <button class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a href="#home">Home</a></button>
-          <button class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a href="#about">About</a></button>
-          <button class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a href="#faq">FAQ's</a></button>
-          <button class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4"><a href="#glossary">Glossary</a></button>
+          <button id="aboutBtn" class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4">About</button>
+          <button id="faqBtn" class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4">FAQ's</button>
+          <button id="glossBtn"class="border-2 border-pink-400 w-20 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4">Glossary</button>
         </nav>
       </div>
       <!--Created Multiple Div tag to create hamburger menu, currently hidden to to present MVP-->
-      <nav class="navbar-menu">
+      <!-- <nav class="navbar-menu">
         <input type="checkbox" class="toggler">
         <div class="hamburgerMenu"><div></div></div>
         <div class="menu">
@@ -41,7 +40,7 @@
             </div>
           </div>
         </div>
-      </nav>
+      </nav> -->
     
     </header>
     <!--Hero Section-->
@@ -55,16 +54,29 @@
         <div class="min-w-full flex items-center justify-center" >
           <button id="myBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop mb-4">Get Started!</button>
         </div>
-        <div class="modalContainer" id="modalContainer">
+
+        <!-- About Modal -->
+        <div class="modalContainer" id="modalContainer1">
           <div class="modal">
-            <div class="">
-              <h1 class="text-center text-4xl text-purple-900 font-bold p-4">Decrypto Dashboard</h1>
-              <p class="pr-4 pl-4 text-center">Financial Disclaimer: This content is for educational purposes only and is not suitable as financial advice.</p>
-            </div>
+            <h1 class="text-center text-4xl text-purple-900 font-bold" id="about">About Crypto</h1>
+            <p class="text-justify text-purple-900 p-2">What is Crypto?
+              Crypto is short for “cryptocurrency.” Basically, a virtual alternative to government issued money that is meant for secure,  peer-to-peer internet transactions.</p>
+            <p class="text-justify text-purple-900 p-2"> 
+              Similar to exchanging one type of money, say dollars for euros at a bank or money exchange kiosk, you can exchange dollars for - or  “buy” - cryptocurrency “coins” or fractions of coins on the internet and hold them in a digital wallet. Digital currencies are becoming more mainstream. Stores like Whole Foods are beginning to accept crypto as payment and some cryptocurrencies like Crypto.com  offer VisaTM cards.
+            </p>
+            <p class="text-justify text-purple-900 p-2">
+              Bitcoin, the original, and Ethereum are two of the biggest more recognizable names, but there are thousands of different cryptocurrencies put into circulation by private entities,  the values of which are determined by their internet users. Any particular coin is worth what someone is willing to pay for it at any given moment in time. For many, they are an alternative investment. Like stocks, they are considered assets for accounting purposes. 
+            </p>
+              <p class="text-justify text-purple-900 p-2">  
+              Also like stocks, they can be a risky investment! Learn all you can, then decide if crypto is right for you.</p>
+              <!-- Close Modal -->
+              <div class="min-w-full flex items-center justify-center  p-4 m-2">
+                <button id="closeBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop">Close Dashboard</button>  
+              </div>
+          </div>
+                      
             <!--Div container to store dynamically generated html from js file-->
-            <div class="dashboard min-w-full flex items-center justify-center  p-4 m-2" id="dashboard">
-              <div class="card-container">
-                <div class="card-body">
+            
                   <!-- <h2 class="card-title">BitCoin</h2>
                   <ul class="group-item">
                     <li class="list-group-item">Price: </li>
@@ -80,30 +92,24 @@
           </div>
             </div>
           </div>
-            <div class="min-w-full flex items-center justify-center  p-4 m-2">
-              <button id="closeBtn" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop">Close Dashboard</button>  
-            </div>
+          
           </div>
         </div>
       </div>    
     </main>
     <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
       <div class="min-w-full p-4 bg-pink-500 rounded">
-        <h1 class="text-center text-4xl text-purple-900 font-bold" id="about">About Crypto</h1>
-        <p class="text-justify text-purple-900 p-2">What is Crypto?
-          Crypto is short for “cryptocurrency.” Basically, a virtual alternative to government issued money that is meant for secure,  peer-to-peer internet transactions.</p>
-        <p class="text-justify text-purple-900 p-2"> 
-          Similar to exchanging one type of money, say dollars for euros at a bank or money exchange kiosk, you can exchange dollars for - or  “buy” - cryptocurrency “coins” or fractions of coins on the internet and hold them in a digital wallet. Digital currencies are becoming more mainstream. Stores like Whole Foods are beginning to accept crypto as payment and some cryptocurrencies like Crypto.com  offer VisaTM cards.
-        </p>
-        <p class="text-justify text-purple-900 p-2">
-          Bitcoin, the original, and Ethereum are two of the biggest more recognizable names, but there are thousands of different cryptocurrencies put into circulation by private entities,  the values of which are determined by their internet users. Any particular coin is worth what someone is willing to pay for it at any given moment in time. For many, they are an alternative investment. Like stocks, they are considered assets for accounting purposes. 
-        </p>
-          <p class="text-justify text-purple-900 p-2">  
-          Also like stocks, they can be a risky investment! Learn all you can, then decide if crypto is right for you.</p>
+        <div class="dashboard min-w-full flex items-center justify-center  p-4 m-2" id="dashboard">
+          <div class="card-container">
+            <div class="card-body">
+            </div>
+          </div>
+        </div>  
       </div>
     </section>
     <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
-      <div class="min-w-full p-4 bg-white rounded" id="faq">
+      <div class="modalContainer" id="modalContainer2">
+        <div class="modal">
         <h1 class="text-center text-4xl text-purple-900 font-bold">FAQ's</h1>
         <p class="text-justify text-purple-900 p-2">What is blockchain technology?
           All cryptocurrency transactions are stored in groups - or “blocks. When a block is full, it is closed then linked - or chained - to the previously filled block using cryptography. This process creates a timeline of transactional events and data that cannot be altered. In the case of cryptocurrency, this unchangeable electronic ledger is open to other cryptocurrency users and stored on computers within that currency’s network - anyone who uses that particular coin has a copy of this digital journal. The accuracy of these transactions is consistently being verified by this enormous amount of computing power. It is this confirmed, immutable list that enables secure transactions to be made without using a bank or other verifier.  In this way there is no centralized ‘keeper of the books’. Instead, all users control all of the data.
@@ -141,10 +147,14 @@
           Is Cryptocurrency legal in the USA?
           According to Decoding Crypto: Are there regulations in the US for Cryptocurrency on nasdaq.com by John Hyatt, on Aug 19, 2021, cryptocurrencies do not fit perfectly wrapped with little bows in the US regulatory frameworks, but they are recognized. Securities and Exchange commission will apply SEC regulations, Commodities Futures Trading Commission classified some cryptocurrencies as commodities with some derivatives like futures,  traded on public exchanges, and the Treasury department created a Tax Plan with reference to cryptocurrency.
         </p>
+        <div class="min-w-full flex items-center justify-center  p-4 m-2">
+          <button id="closeBtn2" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop">Close Dashboard</button>  
+        </div>
       </div>
     </section>
     <section class="sectionBorder flex pt-0 pr-4 pb-4 pl-4">
-      <div class="min-w-full p-4 bg-green-400 rounded" id="glossary">
+      <div class="modalContainer" id="modalContainer3">
+        <div class="modal">
         <h1 class="text-center text-4xl text-purple-900 font-bold">Glossary</h1>
         <p class="text-justify text-purple-900 p-2">
           Cryptocurrency:
@@ -200,6 +210,9 @@
           Bitcoin
           First and probably most name-recognized form of cryptocurrency 
           </p>
+          <div class="min-w-full flex items-center justify-center  p-4 m-2">
+            <button id="closeBtn3" class="border-2 border-pink-400 bg-purple-900 text-white rounded-lg p-2 shadow-md hover:bg-pink-400 hover:text-purple-900 hover:border-purple-900 drop">Close Dashboard</button>  
+          </div>
       </div>
     </section>
     
