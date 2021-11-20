@@ -44,8 +44,7 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    
-    
+
 }
 
 .largerResNav  nav button {
@@ -245,11 +244,18 @@ header {
     height: 90vh;
     width: 85vw;
     max-width: 100%;
+    overflow-y: auto;
     border-radius: 1rem;
     box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
 }
 
 /*Media Queries*/
+@media screen and (min-width: 400px)    {
+    .header {
+        flex-direction: column;
+    }
+}
+
 @media screen and (min-width: 481px)    {
     .hero   {
         background-image: url("../images/heroImage3.png");
@@ -295,7 +301,7 @@ header {
 
 }
 .card-body h2{
-    margin: ;
+    margin: 0;
     padding: .5em;
     background-color: var(--secondYellow);
     font-weight: bold;
