@@ -144,6 +144,56 @@ var getNews = function () {
 }
 getNews()
 
+
+//Modal Pop-Up control
+var aboutPopUp = document.querySelector("#aboutBtn");
+var aboutModalContainer = document.querySelector("#modalContainer1");
+var close = document.querySelector("#closeBtn");
+
+aboutPopUp.addEventListener("click", function() {
+    aboutModalContainer.classList = "modalContainer open";
+   });
+   
+close.addEventListener("click", function() {
+
+    aboutModalContainer.classList = "modalContainer";
+
+});
+
+
+// Modal FAQ-PopUp control
+var faqPopUp = document.querySelector("#faqBtn");
+var faqModalContainer = document.querySelector("#modalContainer2");
+var close = document.querySelector("#closeBtn2");
+
+faqPopUp.addEventListener("click", function() {
+    faqModalContainer.classList = "modalContainer open";
+   });
+
+
+close.addEventListener("click", function() {
+
+    faqModalContainer.classList = "modalContainer";
+
+});
+
+// Modal Glossary-PopUp control
+var glossPopUp = document.querySelector("#glossBtn");
+var glossModalContainer = document.querySelector("#modalContainer3");
+var close = document.querySelector("#closeBtn3");
+
+glossPopUp.addEventListener("click", function() {
+        glossModalContainer.classList = "modalContainer open";
+   });
+
+
+close.addEventListener("click", function() {
+
+    glossModalContainer.classList = "modalContainer";
+
+});
+
+
 //START LISTENER :  Start App Fetch and Open Modal
 // <!--Modal Pop-Up control-->
 var popUp = document.querySelector("#myBtn");
@@ -159,7 +209,7 @@ popUp.addEventListener("click", function () {
 close.addEventListener("click", function () {
   modalContainer.classList = "modalContainer";
 
-})
+
 
 
 
