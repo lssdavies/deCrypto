@@ -2,7 +2,7 @@ var coinLibKey = "c06378ec9fc1b93c"
 var symbols = ""
 var today = ""
 var price = ""
-var InputValue = document.querySelector("input").value
+
 
 
 //*   VARIABLES  broken out for creating Coin Cards 
@@ -30,9 +30,10 @@ currentCoinDataCardBody.appendChild(currentCoinDataListUl)
 
 
 /*************  FIRST FETCH CALL: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER ************/
-function getTop5() {
+function getTop5(InputValue) {
   var apiUrl = "https://coinlib.io/api/v1/coinlist?key=c06378ec9fc1b93c&page=1&pref=USD&order=rank_asc";
 
+  const validInput = isValidInput(InputValue);
 
   fetch(apiUrl)
     .then(function (response) {
@@ -51,8 +52,8 @@ function getTop5() {
               style: 'currency',
               currency: 'USD',
             });
-            var purchase = 100 / data.coins[i].price
 
+            const purchase = calculate(InputValue, data.coins[i].price);
 
             // Rank
             var currentCoinRankLi = document.createElement("li")
@@ -87,10 +88,10 @@ function getTop5() {
             //purchase
             var currentCoinPurchaseLi = document.createElement("li")
             currentCoinPurchaseLi.classList = "list-group-item purchase-item"
-            currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase
+            if (validInput) {
+              currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase;
+            }
             currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
-
-            // calculate(InputValue, data.coins[i].price)
 
             // setTimeout(function () {
             //   calculate(price)
@@ -103,18 +104,145 @@ function getTop5() {
 
 
 //    *******INPUT VALIDAITON    ****
-var inputValidation = function (InputValue) {
-  if (InputValue == null || InputValue == "" || InputValue == "0") {
-    console.log("null")
-    return null;
+var isValidInput = function (InputValue) {
+  if (InputValue == null || InputValue == "") {
+    return false;
   } else {
     if (isNaN(InputValue)) {
-      window.alert("Please Enter a Correct Number");
+      // window.alert("Please Enter a Correct Number");
+      return false;
+    }
+    if (InputValue < 0) {
+      // window.alert("Please enter a positive number");
+      return false;
     }
   }
+  return true;
 }
-    // } else {
-    // }
+
+
+//  we would use  - data.data[i].priceUsd - from the first call for this
+  var calculate = function (InputValue, price) {
+    cryptoAmount = InputValue / price;
+    // return cryptoAmount.toFixed(2);
+    return cryptoAmount;
+  };
+
+
+  /************* SECOND FETCH CALL:  Fetch News ************/
+function getNews() {
+
+  var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
+
+
+  fetch(newsUrl)
+    .then(function (response) {
+      response.json()
+        .then(function (data) {
+          //console.log as check then display in main card
+          console.log(data);
+          // console.log(data.Data[i].url)
+
+          for (var i = 0; i < 8; i++) {
+
+            var articleTitle = data.Data[i].title
+            var articleLink = data.Data[i].url
+
+            var articleImgEl = document.createElement("img")
+            var articleImgSrc = data.Data[i].source_info.img
+            articleImgEl.src = articleImgSrc
+            articleImgEl.style.width = '10em'
+            // articleImg.setAttribute("src", articleImg)
+            var linkContainer = document.querySelector(".link-container")
+            linkContainer.appendChild(articleImgEl)
+
+
+            $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
+            // $(".link-container").append(`${articleImgSrc}`)
+          }
+        })
+    })
+}
+getNews()
+
+
+
+
+/**********NAV BAR MODAL POP UPS***************/
+/************* Modal 1:  ABOUT  Pop-Up control ************/
+var aboutPopUp = document.querySelector("#aboutBtn");
+var aboutModalContainer = document.querySelector("#modalContainer1");
+var close = document.querySelector("#closeBtn");
+
+aboutPopUp.addEventListener("click", function () {
+  aboutModalContainer.classList = "modalContainer open";
+});
+close.addEventListener("click", function () {
+  aboutModalContainer.classList = "modalContainer";
+});
+
+
+/************* Modal 2:  FAQ  Pop-Up control ************/
+var faqPopUp = document.querySelector("#faqBtn");
+var faqModalContainer = document.querySelector("#modalContainer2");
+var close = document.querySelector("#closeBtn2");
+
+faqPopUp.addEventListener("click", function () {
+  faqModalContainer.classList = "modalContainer open";
+});
+close.addEventListener("click", function () {
+  faqModalContainer.classList = "modalContainer";
+});
+
+
+/************* Modal 3: GLOASSARY  Pop-Up control ************/
+var glossPopUp = document.querySelector("#glossBtn");
+var glossModalContainer = document.querySelector("#modalContainer3");
+var close = document.querySelector("#closeBtn3");
+
+glossPopUp.addEventListener("click", function () {
+  glossModalContainer.classList = "modalContainer open";
+});
+close.addEventListener("click", function () {
+  glossModalContainer.classList = "modalContainer";
+});
+
+
+
+
+//START LISTENER :  Start App Fetch and Open Modal
+
+// <!--Modal Pop-Up control-->
+var popUp = document.querySelector("#myBtn");
+var coinDashboard = document.querySelector("#dashboard");
+
+popUp.addEventListener("click", function (event) {
+  event.preventDefault();
+  var InputValue = document.querySelector(".input-value").value
+  getTop5(InputValue)
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //  *************************     Items for possible use later ****************************
+
+
+
+
+
+
+
+
 /********** FETCH CALLS WITH VALIDATION   *********/
 // input function card - PURCHASE POWER
 // var calculate = function (InputValue, phone) {
@@ -188,11 +316,6 @@ var inputValidation = function (InputValue) {
 //   };
 //   //Math
 
-//   //we would use  - data.data[i].priceUsd - from the first call for this
-//   var calculate = function (InputValue, CrptoPrice) {
-//     cryptoAmount = InputValue / CrptoPrice;
-//     return cryptoAmount.toFixed(2);
-//   };
 
 
 
@@ -318,102 +441,6 @@ var inputValidation = function (InputValue) {
 // }
 
 
-/************* SECOND FETCH CALL:  Fetch News ************/
-function getNews() {
-
-  var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
-
-
-  fetch(newsUrl)
-    .then(function (response) {
-      response.json()
-        .then(function (data) {
-          //console.log as check then display in main card
-          console.log(data);
-          // console.log(data.Data[i].url)
-
-          for (var i = 0; i < 8; i++) {
-
-            var articleTitle = data.Data[i].title
-            var articleLink = data.Data[i].url
-
-            var articleImgEl = document.createElement("img")
-            var articleImgSrc = data.Data[i].source_info.img
-            articleImgEl.src = articleImgSrc
-            articleImgEl.style.width = '10em'
-            // articleImg.setAttribute("src", articleImg)
-            var linkContainer = document.querySelector(".link-container")
-            linkContainer.appendChild(articleImgEl)
-
-
-            $(".link-container").append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
-            // $(".link-container").append(`${articleImgSrc}`)
-          }
-        })
-    })
-}
-getNews()
-
-
-
-
-/**********NAV BAR MODAL POP UPS***************/
-/************* Modal 1:  ABOUT  Pop-Up control ************/
-var aboutPopUp = document.querySelector("#aboutBtn");
-var aboutModalContainer = document.querySelector("#modalContainer1");
-var close = document.querySelector("#closeBtn");
-
-aboutPopUp.addEventListener("click", function () {
-  aboutModalContainer.classList = "modalContainer open";
-});
-close.addEventListener("click", function () {
-  aboutModalContainer.classList = "modalContainer";
-});
-
-
-/************* Modal 2:  FAQ  Pop-Up control ************/
-var faqPopUp = document.querySelector("#faqBtn");
-var faqModalContainer = document.querySelector("#modalContainer2");
-var close = document.querySelector("#closeBtn2");
-
-faqPopUp.addEventListener("click", function () {
-  faqModalContainer.classList = "modalContainer open";
-});
-close.addEventListener("click", function () {
-  faqModalContainer.classList = "modalContainer";
-});
-
-
-/************* Modal 3: GLOASSARY  Pop-Up control ************/
-var glossPopUp = document.querySelector("#glossBtn");
-var glossModalContainer = document.querySelector("#modalContainer3");
-var close = document.querySelector("#closeBtn3");
-
-glossPopUp.addEventListener("click", function () {
-  glossModalContainer.classList = "modalContainer open";
-});
-close.addEventListener("click", function () {
-  glossModalContainer.classList = "modalContainer";
-});
-
-
-
-
-
-
-//START LISTENER :  Start App Fetch and Open Modal
-
-// <!--Modal Pop-Up control-->
-var popUp = document.querySelector("#myBtn");
-var coinDashboard = document.querySelector("#dashboard");
-
-popUp.addEventListener("click", function (event) {
-  event.preventDefault();
-  var InputValue = document.querySelector(".input-value").value
-
-  console.log(InputValue)
-  getTop5()
-})
 
 
 
@@ -428,7 +455,7 @@ popUp.addEventListener("click", function (event) {
 
 
 
-        //  *************************     Items for possible use later ****************************
+
 
         //News DOM Creation
         // News Container
