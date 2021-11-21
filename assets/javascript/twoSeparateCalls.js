@@ -3,25 +3,86 @@ var symbols = ""
 var today = ""
 var price = ""
 var arrayinloop = [];
+var InputValue = document.querySelector(".input-value").value
 
 var savecripto = function() {
-    localStorage.setItem("cripto", JSON.stringify(arrayinloop));
-}
+        localStorage.setItem("cripto", JSON.stringify(arrayinloop));
+    }
+    // var createList = function(r, n, s, m, percent, price) {
+
+//     //Ul
+//     var currentCoinDataListUl = document.createElement("ul")
+//     currentCoinDataListUl.classList = "list-group coin-list"
+//     currentCoinDataCardBody.appendChild(currentCoinDataListUl)
+
+//     // Rank
+//     var currentCoinRankLi = document.createElement("li")
+//     currentCoinRankLi.classList = "list-group-item rank-item"
+//     currentCoinRankLi.textContent = "Rank: " + rank
+//     currentCoinDataListUl.appendChild(currentCoinRankLi)
+
+//     // ID - Name - 
+//     var currentCoinNameLi = document.createElement("li")
+//     currentCoinNameLi.classList = "list-group-item name-item"
+//     currentCoinNameLi.textContent = "Name: " + name
+//     currentCoinDataListUl.appendChild(currentCoinNameLi)
+
+
+//     // Symbol
+//     var currentCoinSymbolLi = document.createElement("li")
+//     currentCoinSymbolLi.classList = "list-group-item symbol-item"
+//     currentCoinSymbolLi.textContent = "Trading Symbol: " + symbol
+//     currentCoinDataListUl.appendChild(currentCoinSymbolLi)
+
+//     //Price
+//     var currentCoinPriceLi = document.createElement("li")
+//     currentCoinPriceLi.classList = "list-group-item price-item"
+//     currentCoinPriceLi.textContent = "Price (USD): " + priceRound
+//     currentCoinDataListUl.appendChild(currentCoinPriceLi)
+
+//     //Market Cap
+//     var currentCoinMarketLi = document.createElement("li")
+//     currentCoinMarketLi.classList = "list-group-item market-item"
+//     currentCoinMarketLi.textContent = "Market Cap USD: " + marketRound
+//     currentCoinDataListUl.appendChild(currentCoinMarketLi)
+
+//     //percent Change
+//     var coinPercentChangeLi = document.createElement("li")
+//     coinPercentChangeLi.classList = "list-group-item market-item"
+//     coinPercentChangeLi.textContent = "Percent Change(24 hr): " + percentChange24
+//     currentCoinDataListUl.appendChild(coinPercentChangeLi)
+
+// //purchase
+// var currentCoinPurchaseLi = document.createElement("li")
+// currentCoinPurchaseLi.classList = "list-group-item purchase-item"
+
+// if (validInput) {
+//     currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase;
+// }
+// currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
+//}
 var loadCripto = function() {
-        var savedCripto = localStorage.getItem("arrayinloop")
+        var savedCripto = localStorage.getItem("cripto")
         if (!savedCripto) {
             return false
         }
+
         savedCripto = JSON.parse(savedCripto)
+            // console.log(savedCripto)
         for (var i = 0; i < savedCripto.length; i++) {
 
-            var name = arrayinloop[i].Name
-            var symbol = arrayinloop[i].Symbol
-            var rank = arrayinloop[i].Rank
-            var market = arrayinloop[i].Market_cap
-            var marketRound = arrayinloop[i].Market_cap
-            var percentChange24 = arrayinloop[i].PercentChange24
-            var priceRound = arrayinloop[i].Price
+            const validInput = isValidInput(InputValue);
+
+            var name = savedCripto[i].Name
+                // console.log(name)
+            var symbol = savedCripto[i].Symbol
+            var rank = savedCripto[i].Rank
+                // var marketRound = savedCripto[i].Market_cap
+            var percentChange24 = savedCripto[i].PercentChange24
+            var priceRound = savedCripto[i].Price
+            var purchase = savedCripto[i].Purchase
+                //createList(rank, name, symbol, marketRound, percentChange24, priceRound, purchase);
+
             var currentCoinDataListUl = document.createElement("ul")
             currentCoinDataListUl.classList = "list-group coin-list"
             currentCoinDataCardBody.appendChild(currentCoinDataListUl)
@@ -51,11 +112,11 @@ var loadCripto = function() {
             currentCoinPriceLi.textContent = "Price (USD): " + priceRound
             currentCoinDataListUl.appendChild(currentCoinPriceLi)
 
-            //Market Cap
-            var currentCoinMarketLi = document.createElement("li")
-            currentCoinMarketLi.classList = "list-group-item market-item"
-            currentCoinMarketLi.textContent = "Market Cap USD: " + marketRound
-            currentCoinDataListUl.appendChild(currentCoinMarketLi)
+            // //Market Cap
+            // var currentCoinMarketLi = document.createElement("li")
+            // currentCoinMarketLi.classList = "list-group-item market-item"
+            // currentCoinMarketLi.textContent = "Market Cap USD: " + marketRound
+            // currentCoinDataListUl.appendChild(currentCoinMarketLi)
 
             //percent Change
             var coinPercentChangeLi = document.createElement("li")
@@ -71,9 +132,8 @@ var loadCripto = function() {
                 currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase;
             }
             currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
-
-
         }
+
 
     }
     //*   VARIABLES  broken out for creating Coin Cards 
@@ -131,8 +191,8 @@ function getTop5(InputValue) {
 
                         const purchase = calculate(InputValue, data.coins[i].price);
                         // //card-body
-                        // var currentCoinDataCardBody = document.createElement("div")
-                        // dashboard.appendChild(currentCoinDataCardBody)
+                        var currentCoinDataCardBody = document.createElement("div")
+                        dashboard.appendChild(currentCoinDataCardBody)
 
                         //Ul
                         var currentCoinDataListUl = document.createElement("ul")
@@ -176,7 +236,7 @@ function getTop5(InputValue) {
                         coinPercentChangeLi.textContent = "Percent Change(24 hr): " + percentChange24
                         currentCoinDataListUl.appendChild(coinPercentChangeLi)
 
-                        //purchase
+                        // purchase
                         var currentCoinPurchaseLi = document.createElement("li")
                         currentCoinPurchaseLi.classList = "list-group-item purchase-item"
 
@@ -189,9 +249,10 @@ function getTop5(InputValue) {
                             Rank: rank,
                             Name: name,
                             Symbol: symbol,
-                            Price: price,
                             MarketCap: marketRound,
                             PercentChange24: percentChange24,
+                            PriceRound: priceRound,
+                            Purchase: purchase,
                         }
                         arrayinloop[i] = coin
                     }
@@ -333,7 +394,6 @@ close.addEventListener("click", function() {
 
 $("#myBtn").one('click', function(event) {
     event.preventDefault();
-    var InputValue = document.querySelector(".input-value").value
     getTop5(InputValue)
 
 })
