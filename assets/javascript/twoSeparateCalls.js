@@ -2,11 +2,14 @@ var coinLibKey = "c06378ec9fc1b93c"
 var symbols = ""
 var today = ""
 var price = ""
+var arrayinloop = [];
 
-
-//*   VARIABLES  broken out for creating Coin Cards 
-//We are calling data for the top 5 coins; Each card will have:
-//Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
+var savecripto = function() {
+        localStorage.setItem("cripto", JSON.stringify(arrayinloop));
+    }
+    //*   VARIABLES  broken out for creating Coin Cards 
+    //We are calling data for the top 5 coins; Each card will have:
+    //Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
 var currentCoinDataCard = document.createElement("div")
     //card
 var dashboard = document.querySelector(".card-container")
@@ -72,41 +75,38 @@ function getTop5(InputValue) {
                         currentCoinRankLi.classList = "list-group-item rank-item"
                         currentCoinRankLi.textContent = "Rank: " + rank
                         currentCoinDataListUl.appendChild(currentCoinRankLi)
-                        localStorage.setItem('rank', JSON.stringify(rank));
+
                         // ID - Name - 
                         var currentCoinNameLi = document.createElement("li")
                         currentCoinNameLi.classList = "list-group-item name-item"
                         currentCoinNameLi.textContent = "Name: " + name
                         currentCoinDataListUl.appendChild(currentCoinNameLi)
-                        localStorage.setItem('name', JSON.stringify(name));
+
 
                         // Symbol
                         var currentCoinSymbolLi = document.createElement("li")
                         currentCoinSymbolLi.classList = "list-group-item symbol-item"
                         currentCoinSymbolLi.textContent = "Trading Symbol: " + symbol
                         currentCoinDataListUl.appendChild(currentCoinSymbolLi)
-                        localStorage.setItem('symbol', JSON.stringify(symbol));
 
                         //Price
                         var currentCoinPriceLi = document.createElement("li")
                         currentCoinPriceLi.classList = "list-group-item price-item"
                         currentCoinPriceLi.textContent = "Price (USD): " + priceRound
                         currentCoinDataListUl.appendChild(currentCoinPriceLi)
-                        localStorage.setItem('priceRound', JSON.stringify(priceRound));
 
                         //Market Cap
                         var currentCoinMarketLi = document.createElement("li")
                         currentCoinMarketLi.classList = "list-group-item market-item"
                         currentCoinMarketLi.textContent = "Market Cap USD: " + marketRound
                         currentCoinDataListUl.appendChild(currentCoinMarketLi)
-                        localStorage.setItem('marketRound', JSON.stringify(marketRound));
 
                         //percent Change
                         var coinPercentChangeLi = document.createElement("li")
                         coinPercentChangeLi.classList = "list-group-item market-item"
                         coinPercentChangeLi.textContent = "Percent Change(24 hr): " + percentChange24
                         currentCoinDataListUl.appendChild(coinPercentChangeLi)
-                        localStorage.setItem('percentChange24', JSON.stringify(percentChange24));
+
                         //purchase
                         var currentCoinPurchaseLi = document.createElement("li")
                         currentCoinPurchaseLi.classList = "list-group-item purchase-item"
@@ -115,9 +115,26 @@ function getTop5(InputValue) {
                             currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase;
                         }
                         currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
-                        localStorage.setItem('purchasePower', JSON.stringify(purchase));
+
+                        var coin = {
+                            Rank: rank,
+                            Name: name,
+                            Symbol: symbol,
+                            Price: price,
+                            MarketCap: marketRound,
+                            PercentChange24: percentChange24,
+                        }
+                        arrayinloop[i] = coin
                     }
+
+
+                    console.log(arrayinloop)
+
+
+                    savecripto()
+
                 })
+
         })
 }
 // getTop5()
@@ -146,7 +163,12 @@ var calculate = function(InputValue, price) {
     cryptoAmount = InputValue / price;
     // return cryptoAmount.toFixed(2);
     return cryptoAmount;
-};
+}
+var savecripto = function() {
+    localStorage.setItem("cripto", JSON.stringify(arrayinloop));
+}
+
+
 
 
 /************* SECOND FETCH CALL:  Fetch News ************/
@@ -233,21 +255,18 @@ glossPopUp.addEventListener("click", function() {
 close.addEventListener("click", function() {
     glossModalContainer.classList = "modalContainer";
 });
-
-
+//save function
 
 
 //START LISTENER :  Start App Fetch and Open Modal
 
 // <!--Modal Pop-Up control-->
-//var popUp = document.querySelector("#myBtn");
-//var coinDashboard = document.querySelector("#dashboard");
 
 $("#myBtn").one('click', function(event) {
-    // popUp.addEventListener("click", function(event) {
     event.preventDefault();
     var InputValue = document.querySelector(".input-value").value
     getTop5(InputValue)
+
 })
 
 
