@@ -47,7 +47,7 @@ var inputValidation = function(InputValue) {
 
         // save function
         var savecripto = function() {
-                localStorage.setItem("tasks", JSON.stringify(cripto));
+                localStorage.setItem("cripto", JSON.stringify(cripto));
             }
             // modal was triggered
         $("#input-box").on("show.bs.modal", function() {
