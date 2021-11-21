@@ -160,7 +160,7 @@ header {
 .rank-item {
     margin: 0;
     padding: .5em;
-    background-color: var(--secondYellow);
+    background-color: var(--additionalColor);
     font-weight: bold;
     border-top-right-radius: .75em;
     border-top-left-radius: .75em;
