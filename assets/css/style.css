@@ -106,9 +106,12 @@ header {
 }
 
 /*Media Queries*/
-@media screen and (min-width: 400px)    {
-    .header {
+@media screen and (max-width: 390px)    {
+    header {
+        display: flex;
         flex-direction: column;
+        margin: 0;
+        padding: 5px;
     }
 }
 
