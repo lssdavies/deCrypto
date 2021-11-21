@@ -1,8 +1,10 @@
-var coinLibKey = "c06378ec9fc1b93c"
+//var coinLibKey = "c06378ec9fc1b93c"
+var coinLibKey = "d47e0f39792a9fa3"
 var symbols = ""
 var today = ""
 var price = ""
 var arrayinloop = [];
+
 
 var savecripto = function() {
     localStorage.setItem("cripto", JSON.stringify(arrayinloop));
@@ -22,9 +24,56 @@ var loadCripto = function() {
             var marketRound = arrayinloop[i].Market_cap
             var percentChange24 = arrayinloop[i].PercentChange24
             var priceRound = arrayinloop[i].Price
+
+//*   VARIABLES  broken out for creating Coin Cards 
+//We are calling data for the top 5 coins; Each card will have:
+//Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
+
+var dashboard = document.querySelector("#dashboard")
+
+
+/*************  FIRST FETCH CALL: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER ************/
+function getTop5(InputValue) {
+  var apiUrl = "https://coinlib.io/api/v1/coinlist?key=d47e0f39792a9fa3&page=1&pref=USD&order=rank_asc";
+
+  const validInput = isValidInput(InputValue);
+
+  fetch(apiUrl)
+    .then(function (response) {
+      return response.json()
+        .then(function (data) {
+          console.log(data);
+
+          for (var i = 0; i <= 4; i++) {
+            //define Var for cards
+            var name = data.coins[i].name
+            var symbol = data.coins[i].symbol
+            var rank = data.coins[i].rank
+            var market = data.coins[i].market_cap
+            var marketRound = (Math.round(data.coins[i].market_cap * 1) / 1).toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            });
+
+            var percentChange24 = data.coins[i].delta_24h
+            var priceRound = (Math.round(data.coins[i].price * 100) / 100).toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            });
+
+            const purchase = calculate(InputValue, data.coins[i].price);
+
+            //card-body
+            var cardContainer = document.createElement("div")
+            cardContainer.classList = "card-container";
+            dashboard.appendChild(cardContainer)
+
+   
+            //Ul
             var currentCoinDataListUl = document.createElement("ul")
             currentCoinDataListUl.classList = "list-group coin-list"
-            currentCoinDataCardBody.appendChild(currentCoinDataListUl)
+            cardContainer.appendChild(currentCoinDataListUl)
+
 
             // Rank
             var currentCoinRankLi = document.createElement("li")
@@ -35,14 +84,14 @@ var loadCripto = function() {
             // ID - Name - 
             var currentCoinNameLi = document.createElement("li")
             currentCoinNameLi.classList = "list-group-item name-item"
-            currentCoinNameLi.textContent = "Name: " + name
+            currentCoinNameLi.textContent = name
             currentCoinDataListUl.appendChild(currentCoinNameLi)
 
 
             // Symbol
             var currentCoinSymbolLi = document.createElement("li")
             currentCoinSymbolLi.classList = "list-group-item symbol-item"
-            currentCoinSymbolLi.textContent = "Trading Symbol: " + symbol
+            currentCoinSymbolLi.textContent = "Symbol: " + symbol
             currentCoinDataListUl.appendChild(currentCoinSymbolLi)
 
             //Price
@@ -51,11 +100,11 @@ var loadCripto = function() {
             currentCoinPriceLi.textContent = "Price (USD): " + priceRound
             currentCoinDataListUl.appendChild(currentCoinPriceLi)
 
-            //Market Cap
-            var currentCoinMarketLi = document.createElement("li")
-            currentCoinMarketLi.classList = "list-group-item market-item"
-            currentCoinMarketLi.textContent = "Market Cap USD: " + marketRound
-            currentCoinDataListUl.appendChild(currentCoinMarketLi)
+            // //Market Cap
+            // var currentCoinMarketLi = document.createElement("li")
+            // currentCoinMarketLi.classList = "list-group-item market-item"
+            // currentCoinMarketLi.textContent = "Market Cap USD: " + marketRound
+            // currentCoinDataListUl.appendChild(currentCoinMarketLi)
 
             //percent Change
             var coinPercentChangeLi = document.createElement("li")
@@ -71,11 +120,10 @@ var loadCripto = function() {
                 currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase;
             }
             currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
-
-
         }
-
     }
+              
+              
     //*   VARIABLES  broken out for creating Coin Cards 
     //We are calling data for the top 5 coins; Each card will have:
     //Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
@@ -330,25 +378,21 @@ close.addEventListener("click", function() {
 //START LISTENER :  Start App Fetch and Open Modal
 
 // <!--Modal Pop-Up control-->
-
 $("#myBtn").one('click', function(event) {
     event.preventDefault();
     var InputValue = document.querySelector(".input-value").value
     getTop5(InputValue)
-
 })
 loadCripto();
 
 
 
+// var popUp = document.querySelector("#myBtn");
+// //var coinDashboard = document.querySelector("#dashboard");
 
+// popUp.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   var InputValue = document.querySelector(".input-value").value
+//   getTop5(InputValue)
+// })
 
-
-
-
-
-
-
-
-
-//  *************************     Items for possible use later ****************************

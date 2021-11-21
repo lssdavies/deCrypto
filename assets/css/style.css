@@ -44,6 +44,7 @@ header {
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 1;
 
 }
 
@@ -106,11 +107,6 @@ header {
 }
 
 /*Media Queries*/
-@media screen and (min-width: 400px)    {
-    .header {
-        flex-direction: column;
-    }
-}
 
 @media screen and (min-width: 481px)    {
     .hero   {
@@ -137,57 +133,89 @@ header {
 }
 
 /*Dynamicall Generated HTMl*/
-.card-container {
+#dashboard  {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
+    
 }
+/* .card-container {
+ 
+}  */
 
-.card-body   {
+.list-group  {
     border: .2em solid var(--primaryColor);
-    border-radius: .5em;
-    /* box-shadow: 4px 4px 5px rgba(0,0,0,0.3); */
-    padding: 0;
-    margin: 1em;
-    min-width: 20%;
+    background-color: white;
+    border-radius: 1em;
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
+    width: 10em;
+    height: 15em;
+    /* padding-top: 2em; */
+    margin: 0 1em;
     text-align: center;
     
 
 }
-.card-body h2{
+.rank-item {
     margin: 0;
     padding: .5em;
-    background-color: var(--secondYellow);
+    background-color: var(--additionalColor);
     font-weight: bold;
-    /*border-top-right-radius: .5em;
-    border-top-left-radius: .5em;*/
+    border-top-right-radius: .75em;
+    border-top-left-radius: .75em;
 }
 
-/*New Section Styling*/
+/*News Section Styling*/
 
 .link-container {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    padding-bottom: 4em;
 }
 .news-card  {
-    width: 15em;
-    height: 15em;
+    width: 15rem;
+    height: 15rem;
+    margin: 1rem 5rem;
+    
 }
 
 .news-card img{
     height: 10em;
     border-radius: 1em;
     box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
-    margin-top: 4em;
+    margin-top: 1em;
+    margin-left: auto;
+    margin-bottom: 0.5em;
+    margin-right: auto;
     border: 2px solid var(--accentColor);
+    
 }
 
 .news-card a   {
-    
+    margin-bottom: 0.5em;
     margin-top: 0.5em;
     color: var(--primaryColor);
+    text-align: center;
+}
+
+/*Form Styling*/
+.form   {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form .input-value  {
+    border: 2px solid var(--accentColor);
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.form button    {
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
 }
