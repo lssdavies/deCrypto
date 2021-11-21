@@ -8,13 +8,11 @@ var savecripto = function() {
     localStorage.setItem("cripto", JSON.stringify(arrayinloop));
 }
 var loadCripto = function() {
-        var savedCripto = savecripto()
+        var savedCripto = localStorage.getItem("arrayinloop")
         if (!savedCripto) {
             return false
         }
         savedCripto = JSON.parse(savedCripto)
-
-        const validInput = isValidInput(InputValue);
         for (var i = 0; i < savedCripto.length; i++) {
 
             var name = arrayinloop[i].Name
@@ -22,8 +20,6 @@ var loadCripto = function() {
             var rank = arrayinloop[i].Rank
             var market = arrayinloop[i].Market_cap
             var marketRound = arrayinloop[i].Market_cap
-
-
             var percentChange24 = arrayinloop[i].PercentChange24
             var priceRound = arrayinloop[i].Price
             var currentCoinDataListUl = document.createElement("ul")
