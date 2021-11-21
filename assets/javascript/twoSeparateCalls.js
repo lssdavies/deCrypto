@@ -8,25 +8,8 @@ var price = ""
 //*   VARIABLES  broken out for creating Coin Cards 
 //We are calling data for the top 5 coins; Each card will have:
 //Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
-//Title
-//var currentCoinDataTitle = document.createElement("h2")
-//currentCoinDataTitle.classList = "card-title"
-//currentCoinDataTitle.innerHTML = "Top 5 Coins"
-
-// var currentCoinDataCard = document.createElement("div")
-// //card
 
 var dashboard = document.querySelector("#dashboard")
-// //card-body
-// var currentCoinDataCardBody = document.createElement("div")
-// dashboard.appendChild(currentCoinDataCardBody)
-
-// dashboard.appendChild(currentCoinDataTitle)
-// //Ul
-// var currentCoinDataListUl = document.createElement("ul")
-// currentCoinDataListUl.classList = "list-group coin-list"
-// currentCoinDataCardBody.appendChild(currentCoinDataListUl)
-
 
 
 /*************  FIRST FETCH CALL: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER ************/
@@ -40,8 +23,7 @@ function getTop5(InputValue) {
       return response.json()
         .then(function (data) {
           console.log(data);
-          
-          //dashboard.appendChild(currentCoinDataTitle)
+
           for (var i = 0; i <= 4; i++) {
             //define Var for cards
             var name = data.coins[i].name
@@ -60,15 +42,19 @@ function getTop5(InputValue) {
             });
 
             const purchase = calculate(InputValue, data.coins[i].price);
+
             //card-body
             var cardContainer = document.createElement("div")
             cardContainer.classList = "card-container";
             dashboard.appendChild(cardContainer)
+
    
             //Ul
             var currentCoinDataListUl = document.createElement("ul")
             currentCoinDataListUl.classList = "list-group coin-list"
+
             cardContainer.appendChild(currentCoinDataListUl)
+
 
             // Rank
             var currentCoinRankLi = document.createElement("li")
