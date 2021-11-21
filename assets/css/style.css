@@ -136,7 +136,7 @@ header {
 #dashboard  {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     
 }
@@ -147,7 +147,7 @@ header {
 .list-group  {
     border: .2em solid var(--primaryColor);
     background-color: white;
-    border-radius: .75em;
+    border-radius: 1em;
     box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
     width: 10em;
     height: 15em;
@@ -162,8 +162,8 @@ header {
     padding: .5em;
     background-color: var(--secondYellow);
     font-weight: bold;
-    border-top-right-radius: .5em;
-    border-top-left-radius: .5em;
+    border-top-right-radius: .75em;
+    border-top-left-radius: .75em;
 }
 
 /*News Section Styling*/
@@ -187,14 +187,18 @@ header {
     border-radius: 1em;
     box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
     margin-top: 1em;
+    margin-left: auto;
     margin-bottom: 0.5em;
+    margin-right: auto;
     border: 2px solid var(--accentColor);
+    
 }
 
 .news-card a   {
     margin-bottom: 0.5em;
     margin-top: 0.5em;
     color: var(--primaryColor);
+    text-align: center;
 }
 
 /*Form Styling*/
