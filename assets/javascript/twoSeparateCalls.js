@@ -98,7 +98,7 @@ function getTop5(InputValue) {
             //percent Change
             var coinPercentChangeLi = document.createElement("li")
             coinPercentChangeLi.classList = "list-group-item market-item"
-            coinPercentChangeLi.textContent = "Percent Change(24 hr): " + percentChange24
+            coinPercentChangeLi.textContent = "% Change(24 hr): " + percentChange24
             currentCoinDataListUl.appendChild(coinPercentChangeLi)
             //purchase
             var currentCoinPurchaseLi = document.createElement("li")
