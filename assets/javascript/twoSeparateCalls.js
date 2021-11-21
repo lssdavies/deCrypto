@@ -152,7 +152,7 @@ function getTop5(InputValue) {
 
 
             function getIcons(iconSymbolArr) {
-              var apiUrl = "https://min-api.cryptocompare.com/data/all/coinlistc";
+              var apiUrl = "https://min-api.cryptocompare.com/data/all/coinlist?fsym=" +;
             
               const validInput = isValidInput(InputValue);
             
@@ -213,7 +213,7 @@ function getTop5(InputValue) {
           }
 
           console.log(arrayinloop)
-          savecripto()
+          // savecripto()
         })
     })
 })
