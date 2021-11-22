@@ -23,15 +23,20 @@
 
 **GIVEN** a Cryptocurrency information dashboard
 
-**WHEN**  I  enter a US Dollar amount
+**WHEN**  I  enter a valid US Dollar amount
 
 **THEN** I am presented with top 5 cryptocurrency names, symbols, prices (USD), and percent changes in last 24 hours.
+
+**WHEN** I enter an invalid US Dollar amount
+
+**THEN** Purchasing Power does not display or is equal to zero.
 
 **WHEN** I click on About Button
 
 **THEN** I am  presented with basic facts about cryptocurrency
 
 **WHEN** I click on FAQs Button
+
 **THEN** I am  presented with answers to commonly asked  cryptocurrency questions
 
 **WHEN** I click on Glossary Button
@@ -44,10 +49,11 @@
 
 
 ## deCrypto URL
-***
 Decrypt crypto at *[deCrypto](https://lssdavies.github.io/deCrypto/)*
 
 &nbsp;
+
+
 
 ## Contributors
 ***
