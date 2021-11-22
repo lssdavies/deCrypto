@@ -154,28 +154,37 @@ header {
     border-radius: 1em;
     box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
     width: 15em;
-    height: 15em;
-    /* padding-top: 2em; */
+    height: 20em;
     margin: 2em 1em;
     text-align: center;
     
 
 }
+
 .rank-item {
     margin: 0;
-    padding: .5em;
+    padding: .2em 0;
     background-color: var(--additionalColor);
     font-weight: bold;
     border-top-right-radius: .75em;
     border-top-left-radius: .75em;
 }
+
+.coin-icon img {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: .5em;
+}
+
 .name-item  {
-    margin: 0;
-    padding: .75em;
+    margin-top: 0;
+    padding: .25em;
     font-weight: bold;
+    font-size: 2em;
     color: var(--primaryColor);
-    border-top-right-radius: .75em;
-    border-top-left-radius: .75em;
+    
 }
 
 /*News Section Styling*/
