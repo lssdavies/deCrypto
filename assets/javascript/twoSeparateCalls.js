@@ -340,6 +340,8 @@ close.addEventListener("click", function() {
 var text = document.querySelector("#introP")
 $("#myBtn").one('click', function(event) {
     event.preventDefault();
+    var InputValue = document.querySelector(".input-value").value
+
     $("#dollar-input").hide();
     getTop5(InputValue);
     text.textContent = "If you want to put Another Amount please press the button again"
