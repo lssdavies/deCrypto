@@ -113,7 +113,7 @@ var loadCripto = function() {
             var purchase = savedCripto[i].Purchase
                 //createList(rank, name, symbol, marketRound, percentChange24, priceRound, purchase);
 
-=======
+
 //     //purchase
 //     var currentCoinPurchaseLi = document.createElement("li")
 //     currentCoinPurchaseLi.classList = "list-group-item purchase-item"
