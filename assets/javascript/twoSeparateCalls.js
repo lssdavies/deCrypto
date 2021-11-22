@@ -1,31 +1,62 @@
 //var coinLibKey = "c06378ec9fc1b93c"
 var coinLibKey = "d47e0f39792a9fa3"
 var symbols = ""
-var today = ""
+//var today = ""
 var price = ""
 var arrayinloop = [];
 
 
+
+//var InputValue = document.querySelector(".input-value").value
+
 var savecripto = function () {
   localStorage.setItem("cripto", JSON.stringify(arrayinloop));
 }
-var loadCripto = function () {
-  var savedCripto = localStorage.getItem("arrayinloop")
-  if (!savedCripto) {
-    return false
-  }
-  savedCripto = JSON.parse(savedCripto)
-  for (var i = 0; i < savedCripto.length; i++) {
+// // var createList = function(r, n, s, m, percent, price) {
 
-    var name = arrayinloop[i].Name
-    var symbol = arrayinloop[i].Symbol
-    var rank = arrayinloop[i].Rank
-    var market = arrayinloop[i].Market_cap
-    var marketRound = arrayinloop[i].Market_cap
-    var percentChange24 = arrayinloop[i].PercentChange24
-    var priceRound = arrayinloop[i].Price
-  }
+// var arrayinloop = []
+
+var savecripto = function () {
+  localStorage.setItem("cripto", JSON.stringify(arrayinloop));
 }
+
+
+// var dashboard = document.querySelector("#dashboard")
+
+// // var loadCripto = function () {
+// //   var savedCripto = localStorage.getItem("arrayinloop")
+// //   if (!savedCripto) {
+// //     return false
+// //   }
+// //   savedCripto = JSON.parse(savedCripto)
+// //   for (var i = 0; i < savedCripto.length; i++) {
+// var loadCripto = function () {
+//   var savedCripto = localStorage.getItem("cripto")
+//   if (!savedCripto) {
+//     return false
+//   }
+
+//   savedCripto = JSON.parse(savedCripto)
+//   // console.log(savedCripto)
+//   for (var i = 0; i < savedCripto.length; i++) {
+
+//     const validInput = isValidInput(InputValue);
+
+//     var name = savedCripto[i].Name
+//     // console.log(name)
+//     var symbol = savedCripto[i].Symbol
+//     var rank = savedCripto[i].Rank
+//     // var marketRound = savedCripto[i].Market_cap
+//     var percentChange24 = savedCripto[i].PercentChange24
+//     var priceRound = savedCripto[i].Price
+//     var purchase = savedCripto[i].Purchase
+//     //createList(rank, name, symbol, marketRound, percentChange24, priceRound, purchase);
+//   }
+// }
+
+//     //purchase
+//     var currentCoinPurchaseLi = document.createElement("li")
+//     currentCoinPurchaseLi.classList = "list-group-item purchase-item"
 
 
 //*   VARIABLES  broken out for creating Coin Cards 
@@ -138,148 +169,139 @@ var dashboard = document.querySelector("#dashboard")
               }
               arrayinloop[i] = coin
             }
-
-
             console.log(arrayinloop)
-
 
             savecripto()
 
+
           })
-
-      })
-  }
-  // getTop5()
+    })
+}
 
 
-  //    *******INPUT VALIDAITON    ****
-  var isValidInput = function (InputValue) {
-    if (InputValue == null || InputValue == "") {
+//    ******* INPUT VALIDATION    ****
+var isValidInput = function (InputValue) {
+  if (InputValue == null || InputValue == "") {
+    return false;
+  } else {
+    if (isNaN(InputValue)) {
+      // window.alert("Please Enter a Correct Number");
       return false;
-    } else {
-      if (isNaN(InputValue)) {
-        // window.alert("Please Enter a Correct Number");
-        return false;
-      }
-      if (InputValue < 0) {
-        // window.alert("Please enter a positive number");
-        return false;
-      }
     }
-    return true;
+    if (InputValue < 0) {
+      // window.alert("Please enter a positive number");
+      return false;
+    }
   }
+  return true;
+}
 
 
-  //  we would use  - data.data[i].priceUsd - from the first call for this
-  var calculate = function (InputValue, price) {
-    cryptoAmount = InputValue / price;
-    // return cryptoAmount.toFixed(2);
-    return cryptoAmount;
-  }
-  var savecripto = function () {
-    localStorage.setItem("cripto", JSON.stringify(arrayinloop));
-  }
+//  we would use  - data.data[i].priceUsd - from the first call for this
+var calculate = function (InputValue, price) {
+  cryptoAmount = InputValue / price;
+  // return cryptoAmount.toFixed(2);
+  return cryptoAmount;
+}
+var savecripto = function () {
+  localStorage.setItem("cripto", JSON.stringify(arrayinloop));
+}
 
 
+/************* SECOND FETCH CALL:  Fetch News ************/
+function getNews() {
+
+  var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
+
+  fetch(newsUrl)
+    .then(function (response) {
+      response.json()
+        .then(function (data) {
+          //console.log as check then display in main card
+          console.log(data);
+          // console.log(data.Data[i].url)
+
+          for (var i = 0; i < 8; i++) {
+
+            var articleTitle = data.Data[i].title
+            var articleLink = data.Data[i].url
+
+            var articleImgEl = document.createElement("img")
+            var articleImgSrc = data.Data[i].source_info.img
+            articleImgEl.src = articleImgSrc
+
+            //articleImgEl.style.width = '10em'
+            // articleImg.setAttribute("src", articleImg)
+            var linkDiv = document.createElement("div")
+            linkDiv.classList = "news-card"
+
+            var linkContainer = document.querySelector(".link-container")
+            linkContainer.appendChild(linkDiv)
+            linkDiv.appendChild(articleImgEl)
+            $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
 
 
-  /************* SECOND FETCH CALL:  Fetch News ************/
-  function getNews() {
+          }
+        })
+    })
+}
 
-    var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
-
-
-    fetch(newsUrl)
-      .then(function (response) {
-        response.json()
-          .then(function (data) {
-            //console.log as check then display in main card
-            console.log(data);
-            // console.log(data.Data[i].url)
-
-            for (var i = 0; i < 8; i++) {
-
-              var articleTitle = data.Data[i].title
-              var articleLink = data.Data[i].url
-
-              var articleImgEl = document.createElement("img")
-              var articleImgSrc = data.Data[i].source_info.img
-              articleImgEl.src = articleImgSrc
-
-              //articleImgEl.style.width = '10em'
-              // articleImg.setAttribute("src", articleImg)
-              var linkDiv = document.createElement("div")
-              linkDiv.classList = "news-card"
-
-              var linkContainer = document.querySelector(".link-container")
-              linkContainer.appendChild(linkDiv)
-              linkDiv.appendChild(articleImgEl)
-              $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
+setTimeout(function () {
+  getNews()
+}, 500)
 
 
+/**********NAV BAR MODAL POP UPS***************/
 
-            }
-          })
-      })
-  }
+/************* Modal 1:  ABOUT  Pop-Up control ************/
+var aboutPopUp = document.querySelector("#aboutBtn");
+var aboutModalContainer = document.querySelector("#modalContainer1");
+var close = document.querySelector("#closeBtn");
 
-  setTimeout(function () {
-    getNews()
-  }, 1000)
-
-
-
-
-
-  /**********NAV BAR MODAL POP UPS***************/
-  /************* Modal 1:  ABOUT  Pop-Up control ************/
-  var aboutPopUp = document.querySelector("#aboutBtn");
-  var aboutModalContainer = document.querySelector("#modalContainer1");
-  var close = document.querySelector("#closeBtn");
-
-  aboutPopUp.addEventListener("click", function () {
-    aboutModalContainer.classList = "modalContainer open";
-  });
-  close.addEventListener("click", function () {
-    aboutModalContainer.classList = "modalContainer";
-  });
+aboutPopUp.addEventListener("click", function () {
+  aboutModalContainer.classList = "modalContainer open";
+});
+close.addEventListener("click", function () {
+  aboutModalContainer.classList = "modalContainer";
+});
 
 
-  /************* Modal 2:  FAQ  Pop-Up control ************/
-  var faqPopUp = document.querySelector("#faqBtn");
-  var faqModalContainer = document.querySelector("#modalContainer2");
-  var close = document.querySelector("#closeBtn2");
+/************* Modal 2:  FAQ  Pop-Up control ************/
+var faqPopUp = document.querySelector("#faqBtn");
+var faqModalContainer = document.querySelector("#modalContainer2");
+var close = document.querySelector("#closeBtn2");
 
-  faqPopUp.addEventListener("click", function () {
-    faqModalContainer.classList = "modalContainer open";
-  });
-  close.addEventListener("click", function () {
-    faqModalContainer.classList = "modalContainer";
-  });
-  /************* Modal 3: GLOASSARY  Pop-Up control ************/
-  var glossPopUp = document.querySelector("#glossBtn");
-  var glossModalContainer = document.querySelector("#modalContainer3");
-  var close = document.querySelector("#closeBtn3");
+faqPopUp.addEventListener("click", function () {
+  faqModalContainer.classList = "modalContainer open";
+});
+close.addEventListener("click", function () {
+  faqModalContainer.classList = "modalContainer";
+});
 
-  glossPopUp.addEventListener("click", function () {
-    glossModalContainer.classList = "modalContainer open";
-  });
-  close.addEventListener("click", function () {
-    glossModalContainer.classList = "modalContainer";
-  });
-  //save function
+/************* Modal 3: GLOASSARY  Pop-Up control ************/
+var glossPopUp = document.querySelector("#glossBtn");
+var glossModalContainer = document.querySelector("#modalContainer3");
+var close = document.querySelector("#closeBtn3");
+
+glossPopUp.addEventListener("click", function () {
+  glossModalContainer.classList = "modalContainer open";
+});
+close.addEventListener("click", function () {
+  glossModalContainer.classList = "modalContainer";
+});
+//save function
 
 
-  //START LISTENER :  Start App Fetch and Open Modal
+//START LISTENER :  Start App Fetch and Open Modal
+// <!--Modal Pop-Up control-->
 
-  // <!--Modal Pop-Up control-->
-  $("#myBtn").one('click', function (event) {
-    event.preventDefault();
-    var InputValue = document.querySelector(".input-value").value
-    getTop5(InputValue)
-  })
-  loadCripto();
 
+$("#myBtn").one('click', function (event) {
+  event.preventDefault();
+  var InputValue = document.querySelector(".input-value").value
+  getTop5(InputValue)
+})
+loadCripto();
 
 
 // var popUp = document.querySelector("#myBtn");
@@ -290,4 +312,4 @@ var dashboard = document.querySelector("#dashboard")
 //   var InputValue = document.querySelector(".input-value").value
 //   getTop5(InputValue)
 // })
-
+              
