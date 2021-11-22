@@ -191,7 +191,7 @@ function getTop5(InputValue) {
               Rank: rank,
               Name: name,
               Symbol: symbol,
-              Price: price,
+              Price: priceRound,
               MarketCap: marketRound,
               PercentChange24: percentChange24,
               Purchase: purchase,
