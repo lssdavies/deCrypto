@@ -89,6 +89,8 @@ Mohammad Jwair
   - api.coincap.io
   - coinlib.io/api
   - cryptoicon.api
+  - googleapis
+  - gstatic
 
 &nbsp;
 
