@@ -9,16 +9,8 @@ var InputValue = document.querySelector(".input-value").value
 var savecripto = function () {
   localStorage.setItem("cripto", JSON.stringify(arrayinloop));
 }
-// // var createList = function(r, n, s, m, percent, price) {
 
-// var arrayinloop = []
-
-var savecripto = function () {
-  localStorage.setItem("cripto", JSON.stringify(arrayinloop));
-}
-
-
-// var dashboard = document.querySelector("#dashboard")
+var dashboard = document.querySelector("#dashboard")
 
 var loadCripto = function () {
   var savedCripto = localStorage.getItem("cripto")
@@ -103,14 +95,9 @@ var loadCripto = function () {
 }
 
 
-
-
-var dashboard = document.querySelector("#dashboard")
-
-
 /*************  FIRST FETCH CALL: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER ************/
 function getTop5(InputValue) {
-  var apiUrl = "https://coinlib.io/api/v1/coinlist?key=d47e0f39792a9fa3&page=1&pref=USD&order=rank_asc";
+  var apiUrl = "https://coinlib.io/api/v1/coinlist?key=c06378ec9fc1b93c&page=1&pref=USD&order=rank_asc";
 
   const validInput = isValidInput(InputValue);
 
@@ -120,7 +107,6 @@ function getTop5(InputValue) {
         .then(function (data) {
           console.log(data);
 
-          // dashboard.appendChild(currentCoinDataTitle)
           for (var i = 0; i <= 4; i++) {
             //define Var for cards
             var name = data.coins[i].name
@@ -165,7 +151,6 @@ function getTop5(InputValue) {
             iconEl.innerHTML = "<img src='https://cryptoicon-api.vercel.app/api/icon/" + symbolLower + "'>"
             console.log(iconEl.innerHTML)
 
-
             // ID - Name - 
             var currentCoinNameLi = document.createElement("li")
             currentCoinNameLi.classList = "list-group-item name-item"
@@ -181,18 +166,19 @@ function getTop5(InputValue) {
             currentCoinPriceLi.classList = "list-group-item price-item"
             currentCoinPriceLi.textContent = "Price (USD): " + priceRound
             currentCoinDataListUl.appendChild(currentCoinPriceLi)
-            //Market Cap
+            //Market Cap - may use this data point later
             // var currentCoinMarketLi = document.createElement("li")
             // currentCoinMarketLi.classList = "list-group-item market-item"
             // currentCoinMarketLi.textContent = "Market Cap USD: " + marketRound
             // currentCoinDataListUl.appendChild(currentCoinMarketLi)
-            //percent Change
+
+            //Percent Change
             var coinPercentChangeLi = document.createElement("li")
             coinPercentChangeLi.classList = "list-group-item market-item"
             coinPercentChangeLi.textContent = "% Change (24 hr): " + percentChange24
             currentCoinDataListUl.appendChild(coinPercentChangeLi)
 
-            //purchase
+            //Purchase
             var currentCoinPurchaseLi = document.createElement("li")
             currentCoinPurchaseLi.classList = "list-group-item purchase-item"
 
@@ -215,8 +201,6 @@ function getTop5(InputValue) {
           console.log(arrayinloop)
 
           savecripto()
-
-
         })
     })
 }
@@ -246,9 +230,18 @@ var calculate = function (InputValue, price) {
   // return cryptoAmount.toFixed(2);
   return cryptoAmount;
 }
+
 var savecripto = function () {
   localStorage.setItem("cripto", JSON.stringify(arrayinloop));
 }
+
+function clearCoinCards() {
+  while (dashboard.firstChild) {
+    dashboard.removeChild(dashboard.firstChild);
+  };
+}
+
+
 
 
 /************* SECOND FETCH CALL:  Fetch News ************/
@@ -348,6 +341,8 @@ $("#myBtn").one('click', function (event) {
   $("#dollar-input").hide();
   getTop5(InputValue);
   text.textContent = "If you want to put Another Amount please press the button again"
+  clearCoinCards()
+  
 })
 loadCripto();
 
