@@ -121,13 +121,20 @@ Mohammad Jwair
 - Live market data - possible scroll effect
 - Color coded data point text - green for increase red for decrease for example
 - Possible linked pages for FAQs & buttons for individual glossary terms
+
 &nbsp;
 
 
 
 ### Resource Licensing
 ***
+
+####  Coinlib API link: *[coinlib.io](https://coinlib.io/apidocs/)*
+License:
+You can use our API under a Creative Commons Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0) license. Please make sure you credit us with a link if you use our API on your website or app.
+
 &nbsp;
+
 
 ### Resources used or was inspired by...
 ***
@@ -142,7 +149,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/WebSocket  needed for continous
 WHITESPACES
 https://stackoverflow.com/questions/20668872/remove-whitespace-only-array-elements
 
-#### ABOUT FAQ KEY TERMS References
+#### ABOUT FAQ KEY TERMS APIs References
 https://www.banks.com/investing/crypto-banks/
 
 https://www.banks.com/articles/investing/

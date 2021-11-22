@@ -166,7 +166,7 @@ function getTop5(InputValue) {
             currentCoinPriceLi.classList = "list-group-item price-item"
             currentCoinPriceLi.textContent = "Price (USD): " + priceRound
             currentCoinDataListUl.appendChild(currentCoinPriceLi)
-            //Market Cap - may use this data point later
+            //*** Market Cap - may use this data point later ***/
             // var currentCoinMarketLi = document.createElement("li")
             // currentCoinMarketLi.classList = "list-group-item market-item"
             // currentCoinMarketLi.textContent = "Market Cap USD: " + marketRound
@@ -247,7 +247,7 @@ function clearCoinCards() {
 /************* SECOND FETCH CALL:  Fetch News ************/
 function getNews() {
 
-  var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
+  var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&extraParams=decrypto&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
 
   fetch(newsUrl)
     .then(function (response) {
