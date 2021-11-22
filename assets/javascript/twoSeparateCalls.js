@@ -104,6 +104,7 @@ var loadCripto = function () {
 
 
 
+
 var dashboard = document.querySelector("#dashboard")
 
 
