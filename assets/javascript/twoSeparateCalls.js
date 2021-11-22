@@ -10,6 +10,9 @@ var arrayinloop = []
 var savecripto = function () {
   localStorage.setItem("cripto", JSON.stringify(arrayinloop));
 }
+
+
+
 // var loadCripto = function () {
 //   var savedCripto = localStorage.getItem("arrayinloop")
 //   if (!savedCripto) {
@@ -76,8 +79,25 @@ var savecripto = function () {
 //     currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
 //   }
 // }
+}
 
+var loadCripto = function () {
+  var savedCripto = localStorage.getItem("arrayinloop")
+  if (!savedCripto) {
+    return false
+  }
+  savedCripto = JSON.parse(savedCripto)
+  for (var i = 0; i < savedCripto.length; i++) {
 
+    var name = arrayinloop[i].Name
+    var symbol = arrayinloop[i].Symbol
+    var rank = arrayinloop[i].Rank
+    var market = arrayinloop[i].Market_cap
+    var marketRound = arrayinloop[i].Market_cap
+    var percentChange24 = arrayinloop[i].PercentChange24
+    var priceRound = arrayinloop[i].Price
+  }
+}
 
 
 /*************  FIRST FETCH CALL: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER ************/
@@ -113,7 +133,6 @@ function getTop5(InputValue) {
             });
 
             const purchase = calculate(InputValue, data.coins[i].price);
-
 
             //card-body
             var cardContainer = document.createElement("div")
@@ -200,20 +219,6 @@ function getTop5(InputValue) {
 // var dashboard = document.querySelector(".card-container")
 // dashboard.classList = "card-container";
 // dashboard.appendChild(currentCoinDataCard)
-// //card-body
-// var currentCoinDataCardBody = document.createElement("div")
-// dashboard.appendChild(currentCoinDataCardBody)
-// //Title
-// var currentCoinDataTitle = document.createElement("h2")
-// currentCoinDataTitle.classList = "card-title"
-// currentCoinDataTitle.innerHTML = "Top 5 Coins"
-// dashboard.appendChild(currentCoinDataTitle)
-// //Ul
-// var currentCoinDataListUl = document.createElement("ul")
-// currentCoinDataListUl.classList = "list-group coin-list"
-// currentCoinDataCardBody.appendChild(currentCoinDataListUl)
-
-
 
 //    *******INPUT VALIDAITON    ****
 var isValidInput = function (InputValue) {
@@ -233,21 +238,20 @@ var isValidInput = function (InputValue) {
 }
 
 
-//  we would use  - data.data[i].priceUsd - from the first call for this
-var calculate = function (InputValue, price) {
-  cryptoAmount = InputValue / price;
-  // return cryptoAmount.toFixed(2);
-  return cryptoAmount;
-}
-// var savecripto = function () {
-//   localStorage.setItem("cripto", JSON.stringify(arrayinloop));
-// }
+  //  we would use  - data.data[i].priceUsd - from the first call for this
+  var calculate = function (InputValue, price) {
+    cryptoAmount = InputValue / price;
+    // return cryptoAmount.toFixed(2);
+    return cryptoAmount;
+  }
+  var savecripto = function () {
+    localStorage.setItem("cripto", JSON.stringify(arrayinloop));
+  }
 
-/************* SECOND FETCH CALL:  Fetch News ************/
-function getNews() {
+  /************* SECOND FETCH CALL:  Fetch News ************/
+  function getNews() {
 
   var newsUrl = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&categories=Market,trading&excludeCategories=Asia&sortOrder=popular&page=1&items$top=10&api_key=2bca4c4c3a2b4a0f3b91b3b8b668b8c2951f5d39944fa806eeabf1804ed13eca"
-
 
   fetch(newsUrl)
     .then(function (response) {
@@ -269,13 +273,13 @@ function getNews() {
             //articleImgEl.style.width = '10em'
             // articleImg.setAttribute("src", articleImg)
             var linkDiv = document.createElement("div")
-            linkDiv.classList = "news-card"
+            linkDiv.classList = "news-card"     
 
             var linkContainer = document.querySelector(".link-container")
             linkContainer.appendChild(linkDiv)
             linkDiv.appendChild(articleImgEl)
-
             $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
+
 
           }
         })
@@ -285,9 +289,6 @@ function getNews() {
 setTimeout(function () {
   getNews()
 }, 500)
-
-
-
 
 
 /**********NAV BAR MODAL POP UPS***************/
@@ -305,10 +306,10 @@ close.addEventListener("click", function () {
 });
 
 
-/************* Modal 2:  FAQ  Pop-Up control ************/
-var faqPopUp = document.querySelector("#faqBtn");
-var faqModalContainer = document.querySelector("#modalContainer2");
-var close = document.querySelector("#closeBtn2");
+  /************* Modal 2:  FAQ  Pop-Up control ************/
+  var faqPopUp = document.querySelector("#faqBtn");
+  var faqModalContainer = document.querySelector("#modalContainer2");
+  var close = document.querySelector("#closeBtn2");
 
 faqPopUp.addEventListener("click", function () {
   faqModalContainer.classList = "modalContainer open";
@@ -316,7 +317,6 @@ faqPopUp.addEventListener("click", function () {
 close.addEventListener("click", function () {
   faqModalContainer.classList = "modalContainer";
 });
-
 
 /************* Modal 3: GLOASSARY  Pop-Up control ************/
 var glossPopUp = document.querySelector("#glossBtn");
@@ -332,13 +332,7 @@ close.addEventListener("click", function () {
 //save function
 
 
-
-
-
-
-
 //START LISTENER :  Start App Fetch and Open Modal
-
 // <!--Modal Pop-Up control-->
 
 $("#myBtn").one('click', function (event) {
@@ -346,9 +340,8 @@ $("#myBtn").one('click', function (event) {
   var InputValue = document.querySelector(".input-value").value
   getTop5(InputValue)
 })
-
-
 // loadCripto();
+
 
 
 

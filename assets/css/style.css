@@ -88,22 +88,28 @@ header {
     
 }
 
-/*open and close modal*/
+/*open and close modal and styling*/
 .open   {
     opacity: 1;
     transform: scale(1);
-   pointer-events: auto;
+    pointer-events: auto;
 }
 
 .modal  {
     background-color: whitesmoke;
     margin: 0 auto;
     height: 90vh;
-    width: 85vw;
-    max-width: 100%;
+    width: 50vw;
+    /* max-width: 100%; */
     overflow-y: auto;
-    border-radius: 1rem;
+    border-radius: 2rem;
     box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+}
+.modal h1, .modal h2 {
+    text-shadow: 6px 6px 6px rgba(0,0,0,0.3);;
+}
+.modalButton    {
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
 }
 
 /*Media Queries*/
@@ -140,19 +146,17 @@ header {
     align-items: center;
     
 }
-/* .card-container {
- 
-}  */
+
 
 .list-group  {
     border: .2em solid var(--primaryColor);
     background-color: white;
     border-radius: 1em;
     box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
-    width: 10em;
+    width: 15em;
     height: 15em;
     /* padding-top: 2em; */
-    margin: 0 1em;
+    margin: 2em 1em;
     text-align: center;
     
 
@@ -162,6 +166,14 @@ header {
     padding: .5em;
     background-color: var(--additionalColor);
     font-weight: bold;
+    border-top-right-radius: .75em;
+    border-top-left-radius: .75em;
+}
+.name-item  {
+    margin: 0;
+    padding: .75em;
+    font-weight: bold;
+    color: var(--primaryColor);
     border-top-right-radius: .75em;
     border-top-left-radius: .75em;
 }
