@@ -1,10 +1,10 @@
-var coinLibKey = "c06378ec9fc1b93c"
+//var coinLibKey = "c06378ec9fc1b93c"
+var coinLibKey = "d47e0f39792a9fa3"
 var symbols = ""
 var today = ""
 var price = ""
 var iconSymbolArr = []
 var arrayinloop = []
-
 
 
 var savecripto = function () {
@@ -78,25 +78,12 @@ var savecripto = function () {
 // }
 
 
-//*   VARIABLES  broken out for creating Coin Cards 
-//We are calling data for the top 5 coins; Each card will have:
-//Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
-var currentCoinDataCard = document.createElement("div")
-//card
-var dashboard = document.querySelector(".card-container")
-dashboard.classList = "card-container";
-dashboard.appendChild(currentCoinDataCard)
-//card-body
-var currentCoinDataCardBody = document.createElement("div")
-dashboard.appendChild(currentCoinDataCardBody)
-
-
-
 
 
 /*************  FIRST FETCH CALL: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER ************/
 function getTop5(InputValue) {
   var apiUrl = "https://coinlib.io/api/v1/coinlist?key=c06378ec9fc1b93c&page=1&pref=USD&order=rank_asc";
+  var apiUrl = "https://coinlib.io/api/v1/coinlist?key=d47e0f39792a9fa3&page=1&pref=USD&order=rank_asc";
 
   const validInput = isValidInput(InputValue);
 
@@ -115,7 +102,6 @@ function getTop5(InputValue) {
             var symbolLower = symbol.toLowerCase()
             console.log(symbolLower)
             var rank = data.coins[i].rank
-            var market = data.coins[i].market_cap
             var marketRound = (Math.round(data.coins[i].market_cap * 1) / 1).toLocaleString('en-US', {
               style: 'currency',
               currency: 'USD',
@@ -125,52 +111,39 @@ function getTop5(InputValue) {
               style: 'currency',
               currency: 'USD',
             });
+
             const purchase = calculate(InputValue, data.coins[i].price);
 
+
+            //card-body
+            var cardContainer = document.createElement("div")
+            cardContainer.classList = "card-container";
+            dashboard.appendChild(cardContainer)
             //Ul
             var currentCoinDataListUl = document.createElement("ul")
             currentCoinDataListUl.classList = "list-group coin-list"
-            currentCoinDataCardBody.appendChild(currentCoinDataListUl)
+            cardContainer.appendChild(currentCoinDataListUl)
             // Rank
             var currentCoinRankLi = document.createElement("li")
             currentCoinRankLi.classList = "list-group-item rank-item"
             currentCoinRankLi.textContent = "Rank: " + rank
             currentCoinDataListUl.appendChild(currentCoinRankLi)
 
-
-
             // Icons
             var iconContainer = document.createElement("div")
-            // iconContainer.setAttribute("id", "icon-container")
+            iconContainer.setAttribute("id", "icon-container")
             var iconEl = document.createElement("i")
-            // iconEl.classList = "coin-icon"
+            iconEl.classList = "coin-icon"
             currentCoinDataListUl.appendChild(iconContainer)
             iconContainer.appendChild(iconEl)
-            iconEl.innerHTML = "<img src='https://cryptoicon-api.vercel.app/api/icon/?fsym=" + symbolLower + ">"
-    
+            iconEl.innerHTML = "<img src='https://cryptoicon-api.vercel.app/api/icon/" + symbolLower + "'>"
+            console.log(iconEl.innerHTML)
 
-
-
-            function getIcons(iconSymbolArr) {
-              var apiUrl = "https://min-api.cryptocompare.com/data/all/coinlist?fsym=" +;
-            
-              const validInput = isValidInput(InputValue);
-            
-              fetch(apiUrl)
-                .then(function (response) {
-                  return response.json()
-                    .then(function (data) {
-                      console.log(data);
-
-
-
-            // // iconEl.innerHTML =  "<img src='https://api.coinicons.net/icon/" + symbol + "/32x32' />"
-            // currentIcon.innerHTML = "<img src='http://openweathermap.org/img/wn/" + iconCode + "@2x.png' width = '40px'>";
 
             // ID - Name - 
             var currentCoinNameLi = document.createElement("li")
             currentCoinNameLi.classList = "list-group-item name-item"
-            currentCoinNameLi.textContent = "Name: " + name
+            currentCoinNameLi.textContent = name
             currentCoinDataListUl.appendChild(currentCoinNameLi)
             // Symbol
             var currentCoinSymbolLi = document.createElement("li")
@@ -182,15 +155,16 @@ function getTop5(InputValue) {
             currentCoinPriceLi.classList = "list-group-item price-item"
             currentCoinPriceLi.textContent = "Price (USD): " + priceRound
             currentCoinDataListUl.appendChild(currentCoinPriceLi)
-            //Market Cap
-            var currentCoinMarketLi = document.createElement("li")
-            currentCoinMarketLi.classList = "list-group-item market-item"
-            currentCoinMarketLi.textContent = "Market Cap USD: " + marketRound
-            currentCoinDataListUl.appendChild(currentCoinMarketLi)
+            // //Market Cap
+            // var currentCoinMarketLi = document.createElement("li")
+            // currentCoinMarketLi.classList = "list-group-item market-item"
+            // currentCoinMarketLi.textContent = "Market Cap USD: " + marketRound
+            // currentCoinDataListUl.appendChild(currentCoinMarketLi)
+
             //percent Change
             var coinPercentChangeLi = document.createElement("li")
             coinPercentChangeLi.classList = "list-group-item market-item"
-            coinPercentChangeLi.textContent = "Percent Change(24 hr): " + percentChange24
+            coinPercentChangeLi.textContent = "% Change(24 hr): " + percentChange24
             currentCoinDataListUl.appendChild(coinPercentChangeLi)
             //purchase
             var currentCoinPurchaseLi = document.createElement("li")
@@ -200,7 +174,6 @@ function getTop5(InputValue) {
               currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase;
             }
             currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
-
             var coin = {
               Rank: rank,
               Name: name,
@@ -216,9 +189,30 @@ function getTop5(InputValue) {
           // savecripto()
         })
     })
-})
+}
 
-// getTop5()
+
+//*   VARIABLES  broken out for creating Coin Cards 
+//We are calling data for the top 5 coins; Each card will have:
+//Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
+// var currentCoinDataCard = document.createElement("div")
+// //card
+// var dashboard = document.querySelector(".card-container")
+// dashboard.classList = "card-container";
+// dashboard.appendChild(currentCoinDataCard)
+// //card-body
+// var currentCoinDataCardBody = document.createElement("div")
+// dashboard.appendChild(currentCoinDataCardBody)
+// //Title
+// var currentCoinDataTitle = document.createElement("h2")
+// currentCoinDataTitle.classList = "card-title"
+// currentCoinDataTitle.innerHTML = "Top 5 Coins"
+// dashboard.appendChild(currentCoinDataTitle)
+// //Ul
+// var currentCoinDataListUl = document.createElement("ul")
+// currentCoinDataListUl.classList = "list-group coin-list"
+// currentCoinDataCardBody.appendChild(currentCoinDataListUl)
+
 
 
 //    *******INPUT VALIDAITON    ****
@@ -245,12 +239,9 @@ var calculate = function (InputValue, price) {
   // return cryptoAmount.toFixed(2);
   return cryptoAmount;
 }
-var savecripto = function () {
-  localStorage.setItem("cripto", JSON.stringify(arrayinloop));
-}
-
-
-
+// var savecripto = function () {
+//   localStorage.setItem("cripto", JSON.stringify(arrayinloop));
+// }
 
 /************* SECOND FETCH CALL:  Fetch News ************/
 function getNews() {
@@ -283,9 +274,8 @@ function getNews() {
             var linkContainer = document.querySelector(".link-container")
             linkContainer.appendChild(linkDiv)
             linkDiv.appendChild(articleImgEl)
+
             $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
-
-
 
           }
         })
@@ -294,13 +284,14 @@ function getNews() {
 
 setTimeout(function () {
   getNews()
-}, 1000)
+}, 500)
 
 
 
 
 
 /**********NAV BAR MODAL POP UPS***************/
+
 /************* Modal 1:  ABOUT  Pop-Up control ************/
 var aboutPopUp = document.querySelector("#aboutBtn");
 var aboutModalContainer = document.querySelector("#modalContainer1");
@@ -325,6 +316,8 @@ faqPopUp.addEventListener("click", function () {
 close.addEventListener("click", function () {
   faqModalContainer.classList = "modalContainer";
 });
+
+
 /************* Modal 3: GLOASSARY  Pop-Up control ************/
 var glossPopUp = document.querySelector("#glossBtn");
 var glossModalContainer = document.querySelector("#modalContainer3");
@@ -339,6 +332,11 @@ close.addEventListener("click", function () {
 //save function
 
 
+
+
+
+
+
 //START LISTENER :  Start App Fetch and Open Modal
 
 // <!--Modal Pop-Up control-->
@@ -347,20 +345,18 @@ $("#myBtn").one('click', function (event) {
   event.preventDefault();
   var InputValue = document.querySelector(".input-value").value
   getTop5(InputValue)
-
 })
+
+
 // loadCripto();
 
 
 
+// var popUp = document.querySelector("#myBtn");
+// //var coinDashboard = document.querySelector("#dashboard");
 
-
-
-
-
-
-
-
-
-
-//  *************************     Items for possible use later ****************************
+// popUp.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   var InputValue = document.querySelector(".input-value").value
+//   getTop5(InputValue)
+// })
