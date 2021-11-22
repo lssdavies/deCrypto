@@ -25,12 +25,20 @@
 
 **WHEN**  I  enter a US Dollar amount
 
-**THEN** I am presented with top 6 cryptocurrency names, symbols, prices (USD) high and low  values, and percent changes in last 24 hours.
+**THEN** I am presented with top 5 cryptocurrency names, symbols, prices (USD), and percent changes in last 24 hours.
 
-
-**WHEN** I click on About Cryptocurrency link
+**WHEN** I click on About Button
 
 **THEN** I am  presented with basic facts about cryptocurrency
+
+**WHEN** I click on FAQs Button
+**THEN** I am  presented with answers to commonly asked  cryptocurrency questions
+
+**WHEN** I click on Glossary Button
+
+**THEN** I am  presented with definions of  cryptocurrency terms
+
+
 
 &nbsp;
 
@@ -58,10 +66,11 @@ Mohammad Jwair
 - HTML
 - CSS
   - Tailwind
-- JS &   ??jQuery?? TBD
-- APIS
+- JS &   jQuery
+- APIs
   - api.coincap.io
-  - TBD
+  - coinlib.io/api
+  - cryptoicon.api
 
 &nbsp;
 
@@ -81,12 +90,12 @@ Mohammad Jwair
 - Add list of exchanges with links
 - Hide API keys
 - Fetch call for icons
-- Reevaluate UI and other data pull options
+- Reevaluate UI and other data input flow options
 - Add option to calculate for currencies other than USD
 - Live market data - possible scroll effect
 - Color coded data point text - green for increase red for decrease for example
 - Possible linked pages for FAQs & buttons for individual glossary terms
-
+&nbsp;
 
 
 
