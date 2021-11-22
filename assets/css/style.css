@@ -44,8 +44,8 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    
-    
+    z-index: 1;
+
 }
 
 .largerResNav  nav button {
@@ -54,150 +54,6 @@ header {
     
 }
 
-    /*Positioning Hamburger Menu currently hidden to present MVP*/
-.navbar-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 1;
-}
-/*Styling Checkbox to be used to Animate Menu*/
-.navbar-menu .toggler   {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    cursor: pointer;
-    width: 80px;
-    height: 80px;
-    opacity: 0;/*hides check box*/
-}
-.navbar-menu .hamburgerMenu {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--primaryColor);
-    
-}
-/*Creates Center Line in HamburgerMenu*/
-.navbar-menu .hamburgerMenu > div   {
-    position: relative;
-    width: 75%;
-    height: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--secondYellow);
-    transition: all 0.5s ease;
-}
-/*Creates Top and Bottom lines, shows as one line above middle line*/
-.navbar-menu .hamburgerMenu div::before,
-.navbar-menu .hamburgerMenu div::after  {
-    content: '';
-    position: absolute;
-    top: -15px;
-    z-index: 1;
-    width: 100%;
-    height: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--secondYellow);
-}
-/*Moves Bottom line below middle line*/
-.navbar-menu .hamburgerMenu div::after  {
-    top: 15px
-}
-/*Animates HamburgerMenu when checkbox is checked*/
-.navbar-menu .toggler:checked + .hamburgerMenu div  {
-    transform: rotate(135deg);
-}
-/*Turn hamburgerMenu to a X*/
-.navbar-menu .toggler:checked + .hamburgerMenu div::before, .navbar-menu .toggler:checked + .hamburgerMenu div::after {
-    top: 0;
-    transform: rotate(90deg);
-}
-/*Animate X on hover*/
-.navbar-menu .toggler:checked:hover + .hamburgerMenu div  {
-    transform: rotate(220deg);
-}
-/* Displays Nav links when hamburgerMenu is clicked*/
-.navbar-menu .toggler:checked ~ .menu {
-    visibility: visible;
-}
-/*Animates overlay zooms out for nav menu*/  
-.navbar-menu .toggler:checked ~ .menu > div {
-    transform: scale(1);
-    transition-duration: 0.75s;
-}
-  
-  .navbar-menu .toggler:checked ~ .menu > div > div {
-    opacity: 1;
-    transition:  opacity 0.4s ease 0.4s;
-}
-  
-.navbar-menu .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    overflow: hidden;
-    z-index: 1;
-}
-  
-.navbar-menu .menu > div {
-    background: var(--accentColorOpague);
-    border-radius: 50%;
-    width: 200vw;
-    height: 200vh;
-    display: flex;
-    flex: none;
-    justify-content: center;
-    align-items: center;
-    transform: scale(0);
-    transition: all 0.4s ease;
-}
-  
-.navbar-menu .menu > div > div {
-    text-align: center;
-    max-width: 90vw;
-    max-height: 100vh;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-  
-  .navbar-menu .menu > div > div > ul > li {
-    list-style: none;
-    color: var(--primaryColor);
-    font-size: 6vw;
-    padding: 1rem;
-}
-  
-.navbar-menu .menu > div > div > ul > li > a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.4s ease;
-}
-.navbar-menu .menu > div > div > ul > li > a:hover {
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 2px 2px 3px var(--fourthColor) ;
-    transition: color 0.4s ease;
-    border-bottom: 2px solid var(--primaryColor);
-    padding: 0.5rem;
- }
 /*Hero Image Styling*/
 .hero   {
     display: flex;
@@ -232,24 +88,32 @@ header {
     
 }
 
-/*open and close modal*/
+/*open and close modal and styling*/
 .open   {
     opacity: 1;
     transform: scale(1);
-   pointer-events: auto;
+    pointer-events: auto;
 }
 
 .modal  {
     background-color: whitesmoke;
     margin: 0 auto;
     height: 90vh;
-    width: 85vw;
-    max-width: 100%;
-    border-radius: 1rem;
+    width: 50vw;
+    /* max-width: 100%; */
+    overflow-y: auto;
+    border-radius: 2rem;
     box-shadow: 4px 4px 5px rgba(0,0,0,0.3);
+}
+.modal h1, .modal h2 {
+    text-shadow: 6px 6px 6px rgba(0,0,0,0.3);;
+}
+.modalButton    {
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
 }
 
 /*Media Queries*/
+
 @media screen and (min-width: 481px)    {
     .hero   {
         background-image: url("../images/heroImage3.png");
@@ -275,32 +139,103 @@ header {
 }
 
 /*Dynamicall Generated HTMl*/
-.card-container {
+#dashboard  {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+
+.list-group  {
+    border: .2em solid var(--primaryColor);
+    background-color: white;
+    border-radius: 1em;
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
+    width: 15em;
+    height: 20em;
+    margin: 2em 1em;
+    text-align: center;
+
+}
+
+.rank-item {
+    margin: 0;
+    padding: .2em 0;
+    background-color: var(--additionalColor);
+    font-weight: bold;
+    border-top-right-radius: .75em;
+    border-top-left-radius: .75em;
+}
+
+.coin-icon img {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: .5em;
+}
+
+.name-item  {
+    margin-top: 0;
+    padding: .25em;
+    font-weight: bold;
+    font-size: 2em;
+    color: var(--primaryColor);
+    
+}
+
+/*News Section Styling*/
+
+.link-container {
+    display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    padding-bottom: 4em;
 }
-
-.card-body   {
-    border: .2em solid var(--primaryColor);
-    border-radius: .5em;
-    /* box-shadow: 4px 4px 5px rgba(0,0,0,0.3); */
-    padding: 0;
-    margin: 1em;
-    min-width: 20%;
-    text-align: center;
+.news-card  {
+    width: 15rem;
+    height: 15rem;
+    margin: 1rem 5rem;
     
-
 }
-.card-body h2{
-    margin: ;
-    padding: .5em;
-    background-color: var(--secondYellow);
-    font-weight: bold;
-    /*border-top-right-radius: .5em;
-    border-top-left-radius: .5em;*/
 
+.news-card img{
+    height: 10em;
+    border-radius: 1em;
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
+    margin-top: 1em;
+    margin-left: auto;
+    margin-bottom: 0.5em;
+    margin-right: auto;
+    border: 2px solid var(--accentColor);
+    
+}
 
+.news-card a   {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    color: var(--primaryColor);
+    text-align: center;
+}
+
+/*Form Styling*/
+.form   {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form .input-value  {
+    border: 2px solid var(--accentColor);
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.form button    {
+    box-shadow: 6px 6px 6px rgba(0,0,0,0.3);
 }

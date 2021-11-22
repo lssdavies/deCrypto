@@ -25,12 +25,20 @@
 
 **WHEN**  I  enter a US Dollar amount
 
-**THEN** I am presented with top 6 cryptocurrency names, symbols, prices (USD) high and low  values, and percent changes in last 24 hours.
+**THEN** I am presented with top 5 cryptocurrency names, symbols, prices (USD), and percent changes in last 24 hours.
 
-
-**WHEN** I click on About Cryptocurrency link
+**WHEN** I click on About Button
 
 **THEN** I am  presented with basic facts about cryptocurrency
+
+**WHEN** I click on FAQs Button
+**THEN** I am  presented with answers to commonly asked  cryptocurrency questions
+
+**WHEN** I click on Glossary Button
+
+**THEN** I am  presented with definions of  cryptocurrency terms
+
+
 
 &nbsp;
 
@@ -41,7 +49,7 @@ Decrypt crypto at *[deCrypto](https://lssdavies.github.io/deCrypto/)*
 
 &nbsp;
 
-## Contriburtors
+## Contributors
 ***
 Larry Davies
 
@@ -58,10 +66,11 @@ Mohammad Jwair
 - HTML
 - CSS
   - Tailwind
-- JS &   ??jQuery?? TBD
-- APIS
+- JS &   jQuery
+- APIs
   - api.coincap.io
-  - TBD
+  - coinlib.io/api
+  - cryptoicon.api
 
 &nbsp;
 
@@ -74,6 +83,20 @@ Mohammad Jwair
 <img src="./assets/images/deCryptoPic1.png" width="300" height="500" alt="Main deCrypto page">
 
 &nbsp;
+
+
+### Future Enhancements and Stretch Features
+***
+- Add list of exchanges with links
+- Hide API keys
+- Fetch call for icons
+- Reevaluate UI and other data input flow options
+- Add option to calculate for currencies other than USD
+- Live market data - possible scroll effect
+- Color coded data point text - green for increase red for decrease for example
+- Possible linked pages for FAQs & buttons for individual glossary terms
+&nbsp;
+
 
 
 ### Resource Licensing
@@ -103,6 +126,8 @@ https://www.coinbase.com/learn/crypto-basics/what-is-cryptocurrency
 https://help.coinbase.com/en/coinbase/trading-and-funding/buying-selling-or-converting-crypto/how-do-i-sell-or-cash-out-my-digital-currency
 
 https://www.coinbase.com/learn/crypto-basics/plp-what-is-a-blockchain?utm_source=google_search_nb&utm_medium=cpc&utm_campaign=1724683336&utm_content=113685634057&utm_term=blockchain%20explained&utm_creative=489097321868&cb_device=c&cb_placement=&cb_country=us&cb_city=open&cb_language=en_us&gclid=CjwKCAiAvriMBhAuEiwA8Cs5lfO5p_QExZZHfVL2McWoR6NPm1EDlMTqoxAThE0CgpTCzy1E-CoouBoCiCsQAvD_BwE
+
+https://cryptoicon-api.vercel.app/ powered by Token Tax https://tokentax.co/
 
 https://dataoverhaulers.com/purpose-point-of-cryptocurrency/cryptocurrency/convert-bitcoin-cash/
 
