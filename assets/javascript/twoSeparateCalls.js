@@ -110,7 +110,7 @@ var dashboard = document.querySelector("#dashboard")
 
 /*************  FIRST FETCH CALL: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER ************/
 function getTop5(InputValue) {
-  var apiUrl = "https://coinlib.io/api/v1/coinlist?key=c06378ec9fc1b93c&page=1&pref=USD&order=rank_asc";
+  var apiUrl = "https://coinlib.io/api/v1/coinlist?key=d47e0f39792a9fa3&page=1&pref=USD&order=rank_asc";
 
   const validInput = isValidInput(InputValue);
 
@@ -283,10 +283,13 @@ function getNews() {
             linkDiv.appendChild(articleImgEl)
             $(linkDiv).append(`<a href="${articleLink}" target="_blank">${articleTitle}</a>`)
 
-
+            $(articleImgEl).each(function () {
+              var currentImg = $(this);
+              currentImg.wrap("<a target='_blank' href='" + articleLink + "'</a>");
+            })
           }
-        })
-    })
+     })
+})
 }
 
 setTimeout(function () {
@@ -337,12 +340,14 @@ close.addEventListener("click", function () {
 
 //START LISTENER :  Start App Fetch and Open Modal
 // <!--Modal Pop-Up control-->
-
-
+var text = document.querySelector("#introP")
 $("#myBtn").one('click', function (event) {
   event.preventDefault();
   var InputValue = document.querySelector(".input-value").value
-  getTop5(InputValue)
+
+  $("#dollar-input").hide();
+  getTop5(InputValue);
+  text.textContent = "If you want to put Another Amount please press the button again"
 })
 loadCripto();
 
