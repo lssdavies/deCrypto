@@ -41,7 +41,7 @@ Decrypt crypto at *[deCrypto](https://lssdavies.github.io/deCrypto/)*
 
 &nbsp;
 
-## Contriburtors
+## Contributors
 ***
 Larry Davies
 
@@ -74,6 +74,20 @@ Mohammad Jwair
 <img src="./assets/images/deCryptoPic1.png" width="300" height="500" alt="Main deCrypto page">
 
 &nbsp;
+
+
+### Future Enhancements and Stretch Features
+***
+- Add list of exchanges with links
+- Hide API keys
+- Fetch call for icons
+- Reevaluate UI and other data pull options
+- Add option to calculate for currencies other than USD
+- Live market data - possible scroll effect
+- Color coded data point text - green for increase red for decrease for example
+- Possible linked pages for FAQs & buttons for individual glossary terms
+
+
 
 
 ### Resource Licensing
