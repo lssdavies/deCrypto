@@ -186,6 +186,11 @@ header {
     
 }
 
+.symbol-item, .price-item, .market-item, .purchase-item {
+    color: var(--primaryColor);
+    font-weight: bold;
+}
+
 /*News Section Styling*/
 
 .link-container {
