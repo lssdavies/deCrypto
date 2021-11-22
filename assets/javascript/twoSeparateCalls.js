@@ -188,12 +188,12 @@ var dashboard = document.querySelector("#dashboard")
               // ID - Name - 
               var currentCoinNameLi = document.createElement("li")
               currentCoinNameLi.classList = "list-group-item name-item"
-              currentCoinNameLi.textContent = "Name: " + name
+              currentCoinNameLi.textContent = name
               currentCoinDataListUl.appendChild(currentCoinNameLi)
               // Symbol
               var currentCoinSymbolLi = document.createElement("li")
               currentCoinSymbolLi.classList = "list-group-item symbol-item"
-              currentCoinSymbolLi.textContent = "Trading Symbol: " + symbol
+              currentCoinSymbolLi.textContent = "Symbol: " + symbol
               currentCoinDataListUl.appendChild(currentCoinSymbolLi)
               //Price
               var currentCoinPriceLi = document.createElement("li")
