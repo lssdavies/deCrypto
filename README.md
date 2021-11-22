@@ -76,11 +76,19 @@ Mohammad Jwair
 
 ## Screen Shots
 ***
-<img src="./assets/images/deCryptoPic1.png" width="300" height="500" alt="Main deCrypto page">
+<img src="./assets/images/screenShotDeCryptoPic1.png" width="200" height="375" alt="Main deCrypto page: cell phone size">
 
-<img src="./assets/images/deCryptoPic1.png" width="300" height="500" alt="Main deCrypto page">
+&nbsp;
 
-<img src="./assets/images/deCryptoPic1.png" width="300" height="500" alt="Main deCrypto page">
+<img src="./assets/images/screenShotDeCryptoPic2.png" width="200" height="375" alt="Coin results page: cell phone size.">
+
+&nbsp;
+
+<img src="./assets/images/screenShotDeCryptoPic3.png" width="700" height="400" alt="Main deCrypto page: desktop size">
+
+&nbsp;
+
+<img src="./assets/images/screenShotDeCryptoPic4.png" width="700" height="400" alt="Coin Results page: desktop size">
 
 &nbsp;
 
