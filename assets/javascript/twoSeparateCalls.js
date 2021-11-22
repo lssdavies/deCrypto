@@ -3,7 +3,19 @@ var coinLibKey = "d47e0f39792a9fa3"
 var symbols = ""
 var today = ""
 var price = ""
-var iconSymbolArr = []
+
+var dashboard = document.querySelector("#dashboard")
+
+var arrayinloop = [];
+var InputValue = document.querySelector(".input-value").value
+
+var savecripto = function() {
+        localStorage.setItem("cripto", JSON.stringify(arrayinloop));
+    }
+    // var createList = function(r, n, s, m, percent, price) {
+
+//     //Ul
+
 var arrayinloop = []
 
 
@@ -28,6 +40,7 @@ var savecripto = function () {
 //     var marketRound = arrayinloop[i].Market_cap
 //     var percentChange24 = arrayinloop[i].PercentChange24
 //     var priceRound = arrayinloop[i].Price
+
 //     var currentCoinDataListUl = document.createElement("ul")
 //     currentCoinDataListUl.classList = "list-group coin-list"
 //     currentCoinDataCardBody.appendChild(currentCoinDataListUl)
@@ -69,6 +82,38 @@ var savecripto = function () {
 //     coinPercentChangeLi.textContent = "Percent Change(24 hr): " + percentChange24
 //     currentCoinDataListUl.appendChild(coinPercentChangeLi)
 
+// //purchase
+// var currentCoinPurchaseLi = document.createElement("li")
+// currentCoinPurchaseLi.classList = "list-group-item purchase-item"
+
+// if (validInput) {
+//     currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase;
+// }
+// currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
+//}
+var loadCripto = function() {
+        var savedCripto = localStorage.getItem("cripto")
+        if (!savedCripto) {
+            return false
+        }
+
+        savedCripto = JSON.parse(savedCripto)
+            // console.log(savedCripto)
+        for (var i = 0; i < savedCripto.length; i++) {
+
+            const validInput = isValidInput(InputValue);
+
+            var name = savedCripto[i].Name
+                // console.log(name)
+            var symbol = savedCripto[i].Symbol
+            var rank = savedCripto[i].Rank
+                // var marketRound = savedCripto[i].Market_cap
+            var percentChange24 = savedCripto[i].PercentChange24
+            var priceRound = savedCripto[i].Price
+            var purchase = savedCripto[i].Purchase
+                //createList(rank, name, symbol, marketRound, percentChange24, priceRound, purchase);
+
+=======
 //     //purchase
 //     var currentCoinPurchaseLi = document.createElement("li")
 //     currentCoinPurchaseLi.classList = "list-group-item purchase-item"
@@ -81,23 +126,6 @@ var savecripto = function () {
 // }
 }
 
-var loadCripto = function () {
-  var savedCripto = localStorage.getItem("arrayinloop")
-  if (!savedCripto) {
-    return false
-  }
-  savedCripto = JSON.parse(savedCripto)
-  for (var i = 0; i < savedCripto.length; i++) {
-
-    var name = arrayinloop[i].Name
-    var symbol = arrayinloop[i].Symbol
-    var rank = arrayinloop[i].Rank
-    var market = arrayinloop[i].Market_cap
-    var marketRound = arrayinloop[i].Market_cap
-    var percentChange24 = arrayinloop[i].PercentChange24
-    var priceRound = arrayinloop[i].Price
-  }
-}
 
 
 /*************  FIRST FETCH CALL: GETS OUR CARD DATA POINTS AND CALCULATES  PURCHASE POWER ************/
@@ -122,9 +150,9 @@ function getTop5(InputValue) {
             var symbolLower = symbol.toLowerCase()
             console.log(symbolLower)
             var rank = data.coins[i].rank
-            var marketRound = (Math.round(data.coins[i].market_cap * 1) / 1).toLocaleString('en-US', {
-              style: 'currency',
-              currency: 'USD',
+            //var marketRound = (Math.round(data.coins[i].market_cap * 1) / 1).toLocaleString('en-US', {
+              //style: 'currency',
+              //currency: 'USD',
             });
             var percentChange24 = data.coins[i].delta_24h
             var priceRound = (Math.round(data.coins[i].price * 100) / 100).toLocaleString('en-US', {
@@ -174,6 +202,7 @@ function getTop5(InputValue) {
             currentCoinPriceLi.classList = "list-group-item price-item"
             currentCoinPriceLi.textContent = "Price (USD): " + priceRound
             currentCoinDataListUl.appendChild(currentCoinPriceLi)
+
             // //Market Cap
             // var currentCoinMarketLi = document.createElement("li")
             // currentCoinMarketLi.classList = "list-group-item market-item"
@@ -193,6 +222,17 @@ function getTop5(InputValue) {
               currentCoinPurchaseLi.textContent = "Purchase Power: " + purchase;
             }
             currentCoinDataListUl.appendChild(currentCoinPurchaseLi)
+          }
+      }
+
+
+                  console.log(arrayinloop)
+
+
+                    savecripto()
+
+                })
+
             var coin = {
               Rank: rank,
               Name: name,
@@ -210,15 +250,6 @@ function getTop5(InputValue) {
     })
 }
 
-
-//*   VARIABLES  broken out for creating Coin Cards 
-//We are calling data for the top 5 coins; Each card will have:
-//Name, Symbol, rank, marketCap, price, percent change in 24 hr, high 24 hr, low 24hr
-// var currentCoinDataCard = document.createElement("div")
-// //card
-// var dashboard = document.querySelector(".card-container")
-// dashboard.classList = "card-container";
-// dashboard.appendChild(currentCoinDataCard)
 
 //    *******INPUT VALIDAITON    ****
 var isValidInput = function (InputValue) {
@@ -335,16 +366,13 @@ close.addEventListener("click", function () {
 //START LISTENER :  Start App Fetch and Open Modal
 // <!--Modal Pop-Up control-->
 
+
 $("#myBtn").one('click', function (event) {
   event.preventDefault();
-  var InputValue = document.querySelector(".input-value").value
+  //var InputValue = document.querySelector(".input-value").value
   getTop5(InputValue)
 })
 // loadCripto();
-
-
-
-
 // var popUp = document.querySelector("#myBtn");
 // //var coinDashboard = document.querySelector("#dashboard");
 
