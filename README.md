@@ -1,4 +1,4 @@
-# deCrypto
+# deCrypto - Group Project - Team of 3 - see contributors
 
 ## Purpose
 ***
@@ -195,3 +195,20 @@ https://www.ramseysolutions.com/retirement/investing-in-cryptocurrency
 https://simple.wikipedia.org/wiki/Cryptocurrency
 
 https://time.com/nextadvisor/investing/cryptocurrency/what-is-cryptocurrency/
+
+&nbsp;
+
+
+##### Return to:
+***
+* [Purpose](#purpose)
+* [Usage](#usage)
+* [URL](#url)
+* [Screenshot](#screenshot)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Resources](#resources)
+* [Questions](#questions)
+* [License](#license)
+
+&nbsp;
