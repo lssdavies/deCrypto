@@ -56,11 +56,24 @@
 **THEN** I am  presented with definions of  cryptocurrency terms.
 
 
-
 &nbsp;
 
+## Table Of Contents:
+***
+* [Purpose](#purpose)
+* [Desired](#desired)
+* [URL](#url)
+* [Contributors](#contributors)
+* [Resources](#resources)
+* [Screenshots](#screenshots)
+* [Future](#future)
+* [Tests](#tests)
+* [References](#references)
+* [Contact](#contact)
 
-## deCrypto URL
+
+
+## URL
 Decrypt crypto at *[deCrypto](https://lssdavies.github.io/deCrypto/)*
 
 &nbsp;
@@ -79,7 +92,7 @@ Mohammad Jwair
 &nbsp;
 
 
-## Resources and Languages Used
+## Resources
 ***
 - HTML
 - CSS
@@ -92,9 +105,15 @@ Mohammad Jwair
   - googleapis
   - gstatic
 
+##### Resource Licensing - Coinlib API link: *[coinlib.io](https://coinlib.io/apidocs/)*
+License:
+You can use our API under a Creative Commons Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0) license. Please make sure you credit us with a link if you use our API on your website or app.
+
 &nbsp;
 
-## Screen Shots
+
+
+## Screenshots
 ***
 <img src="./assets/images/screenShotDeCryptoPic1.png" width="200" height="375" alt="Main deCrypto page: cell phone size">
 
@@ -113,7 +132,7 @@ Mohammad Jwair
 &nbsp;
 
 
-### Future Enhancements and Stretch Features
+### Future
 ***
 - Add list of exchanges with links
 - Hide API keys
@@ -128,21 +147,16 @@ Mohammad Jwair
 
 
 
-### Resource Licensing
+### **Tests**
 ***
-
-####  Coinlib API link: *[coinlib.io](https://coinlib.io/apidocs/)*
-License:
-You can use our API under a Creative Commons Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0) license. Please make sure you credit us with a link if you use our API on your website or app.
+No tests at this time.
 
 &nbsp;
 
 
-### Resources used or was inspired by...
+### References:
 ***
-&nbsp;
-
-#### Web Dev References
+##### Web Dev References
 PROXIES
 https://stackoverflow.com/questions/43262121/trying-to-use-fetch-and-pass-in-mode-no-cors  
 
@@ -151,7 +165,7 @@ https://developer.mozilla.org/en-US/docs/Web/API/WebSocket  needed for continous
 WHITESPACES
 https://stackoverflow.com/questions/20668872/remove-whitespace-only-array-elements
 
-#### ABOUT FAQ KEY TERMS APIs References
+##### ABOUT FAQ KEY TERMS APIs References
 https://www.banks.com/investing/crypto-banks/
 
 https://www.banks.com/articles/investing/
@@ -198,17 +212,24 @@ https://time.com/nextadvisor/investing/cryptocurrency/what-is-cryptocurrency/
 
 &nbsp;
 
+### **Contact**
+***
+Reach me directly at  mongaybay00@outlook.com </br>  
+Or checkout out my GitHub profile:  [github.com/MellieDee](https://github.com/MellieDee)
+
+&nbsp;
 
 ##### Return to:
 ***
 * [Purpose](#purpose)
-* [Usage](#usage)
+* [Desired](#desired)
 * [URL](#url)
-* [Screenshot](#screenshot)
-* [Contributing](#contributing)
-* [Tests](#tests)
+* [Contributors](#contributors)
 * [Resources](#resources)
-* [Questions](#questions)
-* [License](#license)
+* [Screenshots](#screenshots)
+* [Future](#future)
+* [Tests](#tests)
+* [References](#references)
+* [Contact](#contact)
 
 &nbsp;
